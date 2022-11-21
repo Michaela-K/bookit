@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect } from "react";
 import { Container } from '@mui/system';
+import { Button } from '@mui/material';
 
 function App() {
 
@@ -9,7 +10,9 @@ function App() {
   }, []);
 
   return (
-    <Container  maxWidth="xl"sx={{background: "#fff"}}> TEST </Container>
+    <Container  maxWidth="xl"sx={{background: "#fff"}}> 
+      <Button variant='contained'>TEST</Button>  
+    </Container>
   );
 }
 
