@@ -7,7 +7,7 @@ export const Colors = {
   marigold: '#F7CE3E',
 
   primary: "#5f2c3e",
-  secondary: "#d1adcc",
+  secondary: "#d1adcc", //icon
   success: "#4CAF50",
   info: "#00a2ff",
   danger: "#FF5722",
