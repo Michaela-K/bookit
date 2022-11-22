@@ -3,14 +3,14 @@ import { MyList } from "../../styles/Navbar";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Colors } from "../../styles/theme";
+import { ActionIconsContainerDesktop, ActionIconsContainerMobile } from "../../styles/Navbar/index";
 
 export default function Actions({ matches }) {
 
-  // const Component = matches ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
+  const Component = matches ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
 
   return (
-    // <Component>
-
+    <Component>
       <MyList type="row">
         <ListItemButton
           sx={{
@@ -45,6 +45,6 @@ export default function Actions({ matches }) {
         </ListItemButton>
         {/* <Divider orientation="vertical" flexItem /> */}
       </MyList>
-    // </Component>
+    </Component>
   );
 }

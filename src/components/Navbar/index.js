@@ -10,7 +10,7 @@ export default function Navbar(){
 
   return (
     <>
-      {matches? <Mobile/> : <Desktop/>}
+      {matches? <Mobile matches={matches}/> : <Desktop matches={matches}/>}
     </>
   );
 

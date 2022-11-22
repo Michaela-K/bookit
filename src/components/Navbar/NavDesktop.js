@@ -2,10 +2,9 @@ import { ListItemText, ListItemButton,ListItemIcon } from "@mui/material";
 import {NavbarContainer, NavbarHeader, MyList} from "../../styles/Navbar/index";
 import SearchIcon from "@mui/icons-material/Search";
 import Actions from "./Actions";
+import { PersonPinCircleOutlined } from "@mui/icons-material";
 
 export default function NavDesktop({matches}){
-
-  const Component = matches ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
 
   return (
     <>
@@ -16,14 +15,9 @@ export default function NavDesktop({matches}){
         {/* <ListItemText primary="Home" /> */}
         <ListItemText primary="Events" />
         <ListItemText primary="My Events" />
-      <Actions></Actions>
+      <Actions matches={matches}></Actions>
         <ListItemText primary="Log In" />
         <ListItemText primary="Register" />
-        <ListItemButton>
-          <ListItemIcon>
-            <SearchIcon />
-          </ListItemIcon>
-        </ListItemButton>
       </MyList>
      </NavbarContainer>
     </>
