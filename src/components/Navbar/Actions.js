@@ -1,4 +1,4 @@
-import { Divider, ListItemButton, ListItemIcon } from "@mui/material";
+import {ListItemButton, ListItemIcon } from "@mui/material";
 import { MyList } from "../../styles/Navbar";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";

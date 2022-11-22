@@ -2,7 +2,7 @@ import { List, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/system';
 // import "@fontsource/montez";
-import { Colors, DrawerWidth } from '../theme';
+import { Colors } from '../theme';
 // import { textPopUpTop } from "../../animation";
 
 export const NavbarContainer = styled(Box)(() => ({

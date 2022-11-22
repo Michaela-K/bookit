@@ -6,7 +6,7 @@ import Desktop from './NavDesktop'
 export default function Navbar(){
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('md'))
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <>

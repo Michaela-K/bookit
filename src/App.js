@@ -13,7 +13,6 @@ function App() {
   return (
     <Container  maxWidth="xl"sx={{background: "#fff"}}> 
     <Navbar></Navbar>
-      <Button variant='contained'>TEST</Button>  
     </Container>
   );
 }
