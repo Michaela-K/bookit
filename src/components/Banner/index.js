@@ -19,7 +19,7 @@ export default function Banner() {
       <BannerContent>
         {/* <Typography variant="h6">Huge Collection</Typography> */}
         <BannerTitle variant="h2">
-          On Your Time
+          You Decide
         </BannerTitle>
 
         <BannerDescription variant="subtitle">
