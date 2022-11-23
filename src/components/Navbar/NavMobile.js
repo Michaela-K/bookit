@@ -11,7 +11,7 @@ export default function NavMobile({matches}){
     <>
      <NavbarContainer>
       <NavbarHeader textAlign={"center"} variant="h4">
-        Booked
+        Finally!
       </NavbarHeader>
       {/* <IconButton>
         <PersonIcon />

@@ -22,6 +22,7 @@ export const BannerContent = styled(Box)((theme) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
+  alignItems: "center",
   maxWidth: 420,
   padding: "30px",
 }));
@@ -32,6 +33,7 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
   // backgroundRepeat: "no-repeat",
   // backgroundPosition: "center",
   width: "70vw",
+  minWidth: "60vw",
   [theme.breakpoints.down("md")]: {
     width: "40vw",
     // height: "45vw",
@@ -45,7 +47,7 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
 export const BannerTitle = styled(Typography)(({ matches, theme }) => ({
   color:Colors.white,
   lineHeight: 1.5,
-  fontSize: "4rem",
+  fontSize: "3rem",
   marginBottom: "20px",
   [theme.breakpoints.down('sm')]: {
     fontSize: '42px',    

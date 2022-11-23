@@ -7,7 +7,7 @@ export default function NavDesktop({matches}){
   return (
     <>
      <NavbarContainer>
-      <NavbarHeader>Booked</NavbarHeader>
+      <NavbarHeader>Finally!</NavbarHeader>
       <MyList type="row">
         <ListItemText primary="Events" />
         <ListItemText primary="My Events" />

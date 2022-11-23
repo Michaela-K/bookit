@@ -19,12 +19,12 @@ export default function Banner() {
       <BannerContent>
         {/* <Typography variant="h6">Huge Collection</Typography> */}
         <BannerTitle variant="h2">
-          You Decide
+          Agree to Disagree?
         </BannerTitle>
 
         <BannerDescription variant="subtitle">
-          Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo
-          tempor incididunt ut labore et dolore magna
+          How about No.
+          The App to use so you can ALL agree on the meet up time and date. Finally!
         </BannerDescription>
 
       </BannerContent>
