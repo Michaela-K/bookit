@@ -1,4 +1,4 @@
-import { Typography, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import {
   BannerContainer,
@@ -23,7 +23,7 @@ export default function Banner() {
         </BannerTitle>
 
         <BannerDescription variant="subtitle">
-          How about No.
+          <h3>How about No! </h3>
           The App to use so you can ALL agree on the meet up time and date. Finally!
         </BannerDescription>
 

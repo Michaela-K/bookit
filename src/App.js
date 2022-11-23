@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Container } from '@mui/system';
 import Navbar from './components/Navbar';
 import Banner from './components/Banner';
+import Testimonials from './components/Testimonials';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
     <Container  maxWidth="xl"sx={{background: "#fff"}}> 
     <Navbar></Navbar>
     <Banner></Banner>
+    <Testimonials></Testimonials>
     </Container>
   );
 }

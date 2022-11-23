@@ -55,6 +55,10 @@ export const BannerTitle = styled(Typography)(({ matches, theme }) => ({
 }));
 
 export const BannerDescription = styled(Typography)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
   lineHeight: 1.25,
   letterSpacing: 1.25,
   marginBottom: "3em",
