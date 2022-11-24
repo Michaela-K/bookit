@@ -2,12 +2,12 @@ import { Slide, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect, useRef, useState } from "react";
 import { MessageText, PromotionsContainer, TestimonialImage } from "../../styles/Testimonials";
-import { Colors } from "../../styles/theme";
+// import Hero from "../../assets/yellowHero.jpeg";
 
 const customers = [
-  "Agree to Agree !", 
-  "Manage your calendar",
-  "Connect to Gmail or Outlook",
+  {src:"/assets/yellowHero.jpeg", title:"Agree to Agree !"}, 
+  {src:"/assets/yellowHero.jpeg",title:"Manage your calendar"},
+  {src:"/assets/yellowHero.jpeg",title:"Connect to Gmail or Outlook"}
 ]
 
 export default function Testimonials() {
@@ -47,9 +47,10 @@ export default function Testimonials() {
         }}
       >
         <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-        <TestimonialImage src="/assets/yellowHero.jpeg" />
+        <TestimonialImage src="/assets/yellowHero.jpeg"/>
+           {/* {customers[messageIndex].title} */}
           <MessageText>
-            {customers[messageIndex]}
+            {customers[messageIndex].title}
           </MessageText>
         </Box>
       </Slide>

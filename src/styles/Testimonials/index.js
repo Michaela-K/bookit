@@ -27,6 +27,7 @@ export const MessageText = styled(Typography)(({ theme }) => ({
 
 export const TestimonialImage = styled("img")(({ src, theme }) => ({
   src: `url(${src})`,
+  // src: `url(${customers[messageIndex].src})`,
   // backgroundImage: `url(${src})`,
   // backgroundRepeat: "no-repeat",
   // backgroundPosition: "center",
