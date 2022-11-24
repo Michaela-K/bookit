@@ -3,8 +3,8 @@ import { Box, styled } from "@mui/system";
 import { Colors } from "../theme";
 
 export const PromotionsContainer = styled(Box)(({ theme }) => ({
-  height: '50vh',
-  marginTop: '5vh',
+  height: '100%',
+  marginTop: 5,
   [theme.breakpoints.up("md")]: {
     padding: "40px 0px 40px 0px",
   },
@@ -32,7 +32,7 @@ export const TestimonialImage = styled("img")(({ src, theme }) => ({
   // backgroundRepeat: "no-repeat",
   // backgroundPosition: "center",
   width: "70vw",
-  minWidth: "60vw",
+  maxWidth: "700px",
   [theme.breakpoints.down("md")]: {
     width: "40vw",
     // height: "45vw",

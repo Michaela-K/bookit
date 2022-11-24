@@ -5,8 +5,8 @@ import { MessageText, PromotionsContainer, TestimonialImage } from "../../styles
 // import Hero from "../../assets/yellowHero.jpeg";
 
 const customers = [
-  {src:"/assets/yellowHero.jpeg", title:"Agree to Agree !"}, 
-  {src:"/assets/yellowHero.jpeg",title:"Manage your calendar"},
+  {src:"/assets/agree.jpeg", title:"Agree to Agree !"}, 
+  {src:"/assets/pinkHero.jpeg",title:"Manage your calendar"},
   {src:"/assets/yellowHero.jpeg",title:"Connect to Gmail or Outlook"}
 ]
 
@@ -17,7 +17,7 @@ export default function Testimonials() {
     useEffect(() => {
             setTimeout(() => {
               setShow(false);
-            }, 3000);
+            }, 5000);
     const intervalId = setInterval(() => {
       // get next message
       setMessageIndex((i) => (i + 1) % customers.length);
@@ -27,8 +27,8 @@ export default function Testimonials() {
 
       setTimeout(() => {
         setShow(false);
-      }, 3000);
-    }, 4000);
+      }, 5000);
+    }, 6000);
 
     return () => {
       clearInterval(intervalId);
@@ -46,9 +46,8 @@ export default function Testimonials() {
           exit: 400,
         }}
       >
-        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-        <TestimonialImage src="/assets/yellowHero.jpeg"/>
-           {/* {customers[messageIndex].title} */}
+        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="50vh">
+        <TestimonialImage src={customers[messageIndex].src}/>
           <MessageText>
             {customers[messageIndex].title}
           </MessageText>

@@ -9,6 +9,7 @@ export const BannerContainer = styled(Box)(({ matches, theme }) => ({
   height: "100%",
   padding: "0px 0px",
   background: Colors.marigold,
+  borderRadius: "4px",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
     alignItems: "center",
@@ -34,6 +35,7 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
   // backgroundPosition: "center",
   width: "70vw",
   minWidth: "60vw",
+  borderRadius: "4px",
   [theme.breakpoints.down("md")]: {
     width: "40vw",
     // height: "45vw",

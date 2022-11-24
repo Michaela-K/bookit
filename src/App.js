@@ -12,7 +12,7 @@ function App() {
   }, []);
 
   return (
-    <Container  maxWidth="xl"sx={{background: "#fff"}}> 
+    <Container  maxWidth="xl"sx={{background: "#fcfcfc", fontFamily: "Roboto"}}> 
     <Navbar></Navbar>
     <Banner></Banner>
     <Testimonials></Testimonials>

@@ -7,7 +7,8 @@ import { Colors } from '../theme';
 
 export const NavbarContainer = styled(Box)(() => ({
  display: 'flex',
- marginTop: 4,
+ marginTop: 0,
+ marginBottom: 20,
  justifyContent: 'center',
  alignItems: 'center',
  padding: '2px 8px',
