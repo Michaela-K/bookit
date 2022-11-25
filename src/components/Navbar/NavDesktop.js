@@ -1,5 +1,4 @@
 import { Link, List, ListItem, ListItemText, Typography} from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import {NavbarContainer, NavbarHeader, MyList} from "../../styles/Navbar/index";
 import Actions from "./Actions";
 
@@ -31,11 +30,12 @@ export default function NavDesktop({matches}){
       <MyList type="row">
         <Actions matches={matches}></Actions>
           {listItem.map((list) => {
-              return (
-                <Link href={list.onclick} key={list.text} sx={{width: "15%",display: "flex", color:"white",textAlign: "right"}}>
+            return (
+              <Link href={list.onclick} key={list.text} 
+                sx={{width: "15%",display: "flex", color:"white",textAlign: "right"}}>
                   <ListItemText primary={list.text}></ListItemText>
                 </Link> 
-                )})};
+          )})};
       </MyList>
      </NavbarContainer>
     </>
