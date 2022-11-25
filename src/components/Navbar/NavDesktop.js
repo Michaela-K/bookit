@@ -13,7 +13,15 @@ export default function NavDesktop({matches}){
     {
       text:'My Events',
       onclick:"/myevents"
-    } 
+    }, 
+    {
+      text:'Login',
+      onclick:"/login"
+    }, 
+    {
+      text:'Register',
+      onclick:"/register"
+    }, 
 ];
 
   return (
@@ -21,21 +29,13 @@ export default function NavDesktop({matches}){
      <NavbarContainer>
       <NavbarHeader>Finally!</NavbarHeader>
       <MyList type="row">
-
-      <List >
-      {listItem.map((list) => {
-        // const { text, onclick } = item;
-          return (
-            <Link href={list.onclick} key={list.text}>
-              <Typography variant="h5">{list.text}</Typography>
-            </Link> 
-            )})};
-      </List>
-        {/* <ListItemText primary="Events" sx={{textAlign: "center"}} />
-        <ListItemText primary="My Events"  sx={{textAlign: "center"}}/>
-      <Actions matches={matches}></Actions>
-        <ListItemText primary="Log In"  sx={{textAlign: "center"}}/>
-        <ListItemText primary="Register"  sx={{textAlign: "center"}}/> */}
+        <Actions matches={matches}></Actions>
+          {listItem.map((list) => {
+              return (
+                <Link href={list.onclick} key={list.text} sx={{width: "15%",display: "flex", color:"white",textAlign: "right"}}>
+                  <ListItemText primary={list.text}></ListItemText>
+                </Link> 
+                )})};
       </MyList>
      </NavbarContainer>
     </>
