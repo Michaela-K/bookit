@@ -4,10 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import { MessageText, PromotionsContainer, TestimonialImage } from "../../styles/Testimonials";
 // import Hero from "../../assets/yellowHero.jpeg";
 
+// const customers = [
+//   {src:"/assets/agree.jpeg", title:"Agree to Agree !"}, 
+//   {src:"/assets/pinkHero.jpeg",title:"Manage your calendar"},
+//   {src:"/assets/yellowHero.jpeg",title:"Connect to Gmail or Outlook"}
+// ]
 const customers = [
-  {src:"/assets/agree.jpeg", title:"Agree to Agree !"}, 
-  {src:"/assets/pinkHero.jpeg",title:"Manage your calendar"},
-  {src:"/assets/yellowHero.jpeg",title:"Connect to Gmail or Outlook"}
+  {title:"Agree to Agree !"}, 
+  {title:"Manage your calendar"},
+  {title:"Connect to Gmail or Outlook"}
 ]
 
 export default function Testimonials() {
@@ -46,8 +51,8 @@ export default function Testimonials() {
           exit: 400,
         }}
       >
-        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="50vh">
-        <TestimonialImage src={customers[messageIndex].src}/>
+        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="10px">
+        {/* <TestimonialImage src={customers[messageIndex].src}/> */}
           <MessageText>
             {customers[messageIndex].title}
           </MessageText>

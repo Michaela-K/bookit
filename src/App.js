@@ -1,9 +1,12 @@
-import './App.css';
+import './AppIndex.js';
 import { useEffect } from "react";
 import { Container } from '@mui/system';
 import Navbar from './components/Navbar';
 import Banner from './components/Banner';
 import Testimonials from './components/Testimonials';
+import theme from "./styles/theme/index"
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
 
@@ -12,11 +15,14 @@ function App() {
   }, []);
 
   return (
-    <Container  maxWidth="xl"sx={{background: "#fcfcfc", fontFamily: "Roboto"}}> 
-    <Navbar></Navbar>
-    <Banner></Banner>
-    <Testimonials></Testimonials>
-    </Container>
+    <ThemeProvider theme={theme}>
+      <CssBaseline /> 
+      <Container  maxWidth="false"sx={{background: "#f5f2e8", fontFamily: "Roboto"}}> 
+      <Navbar></Navbar>
+      <Banner></Banner>
+      <Testimonials></Testimonials>
+      </Container>
+    </ThemeProvider>
   );
 }
 

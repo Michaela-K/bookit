@@ -8,8 +8,8 @@ export const BannerContainer = styled(Box)(({ matches, theme }) => ({
   width: "100%",
   height: "100%",
   padding: "0px 0px",
+  // marginBottom: "8vh",
   background: Colors.marigold,
-  borderRadius: "4px",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
     alignItems: "center",
@@ -34,8 +34,7 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
   // backgroundRepeat: "no-repeat",
   // backgroundPosition: "center",
   width: "70vw",
-  minWidth: "60vw",
-  borderRadius: "4px",
+  minWidth: "45vw",
   [theme.breakpoints.down("md")]: {
     width: "40vw",
     // height: "45vw",

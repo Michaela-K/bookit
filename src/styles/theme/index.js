@@ -5,6 +5,7 @@ export const Colors = {
   steel: '#0A1612',
   denim: '#1A2930',
   marigold: '#F7CE3E',
+  news: '#F5F2E8',
 
   primary: "#5f2c3e",
   secondary: "#d1adcc", //icon
@@ -39,6 +40,9 @@ const theme = createTheme({
     },
     secondary: {
       main: Colors.secondary,
+    },
+    background: {
+      default: '#F5F2E8'
     },
   },
 

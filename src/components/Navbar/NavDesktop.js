@@ -9,11 +9,11 @@ export default function NavDesktop({matches}){
      <NavbarContainer>
       <NavbarHeader>Finally!</NavbarHeader>
       <MyList type="row">
-        <ListItemText primary="Events" />
-        <ListItemText primary="My Events" />
+        <ListItemText primary="Events" sx={{textAlign: "center"}} />
+        <ListItemText primary="My Events"  sx={{textAlign: "center"}}/>
       <Actions matches={matches}></Actions>
-        <ListItemText primary="Log In" />
-        <ListItemText primary="Register" />
+        <ListItemText primary="Log In"  sx={{textAlign: "center"}}/>
+        <ListItemText primary="Register"  sx={{textAlign: "center"}}/>
       </MyList>
      </NavbarContainer>
     </>

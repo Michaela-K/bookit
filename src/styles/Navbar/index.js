@@ -8,14 +8,13 @@ import { Colors } from '../theme';
 export const NavbarContainer = styled(Box)(() => ({
  display: 'flex',
  marginTop: 0,
- marginBottom: 20,
  justifyContent: 'center',
  alignItems: 'center',
- padding: '2px 8px',
+ padding: '2px 0px',
 }));
 
 export const NavbarHeader = styled(Typography)(() => ({
- padding: '4px',
+//  padding: '4px',
  flexGrow: 1,
  fontSize: '3em',
  // fontFamily: '"Montez", "cursive"',

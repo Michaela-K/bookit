@@ -3,8 +3,8 @@ import { Box, styled } from "@mui/system";
 import { Colors } from "../theme";
 
 export const PromotionsContainer = styled(Box)(({ theme }) => ({
-  height: '100%',
-  marginTop: 5,
+  height: '20%',
+  // marginTop: 5,
   [theme.breakpoints.up("md")]: {
     padding: "40px 0px 40px 0px",
   },
@@ -13,15 +13,15 @@ export const PromotionsContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   padding: "20px 0px 20px 0px",
   overflow: "hidden",
-  // background: Colors.secondary,
+  background: Colors.denim,
 }));
 
 export const MessageText = styled(Typography)(({ theme }) => ({
-     fontFamily: '"Montez", "cursive"',
+  fontFamily: '"Montez", "cursive"',
   [theme.breakpoints.up("md")]: {
-    fontSize: "3rem",
+    fontSize: "2rem",
   },
-  // color: Colors.white,
+  color: Colors.white,
   fontSize: "1.5rem",
 }));
 
