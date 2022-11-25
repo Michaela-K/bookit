@@ -40,7 +40,7 @@ export default function Actions({ matches }) {
               color: matches && Colors.secondary,
             }}
           >
-            <PersonIcon />
+        <PersonIcon />
           </ListItemIcon>
         </ListItemButton>
         {/* <Divider orientation="vertical" flexItem /> */}

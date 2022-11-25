@@ -7,6 +7,8 @@ import Testimonials from './components/Testimonials';
 import theme from "./styles/theme/index"
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from "@mui/material/CssBaseline";
+import Banner2 from './components/Banner2/index.js';
+import Footer from './components/Footer/index.js';
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
       <Navbar></Navbar>
       <Banner></Banner>
       <Testimonials></Testimonials>
+      <Banner2 ></Banner2>
+      <Footer></Footer>
       </Container>
     </ThemeProvider>
   );

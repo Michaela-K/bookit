@@ -7,10 +7,16 @@ import { Colors } from '../theme';
 
 export const NavbarContainer = styled(Box)(() => ({
  display: 'flex',
+ background: Colors.denim,
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: '100%',
+  alignItems: 'center',
+  zIndex: 99,  
  marginTop: 0,
  justifyContent: 'center',
- alignItems: 'center',
- padding: '2px 0px',
+ padding: '2px 2.2vh',
 }));
 
 export const NavbarHeader = styled(Typography)(() => ({
@@ -18,7 +24,7 @@ export const NavbarHeader = styled(Typography)(() => ({
  flexGrow: 1,
  fontSize: '3em',
  // fontFamily: '"Montez", "cursive"',
- color: Colors.denim,
+ color: Colors.white,
  // "&:hover": {
  //   animation: `${textPopUpTop} 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both`,
  // },
