@@ -18,6 +18,7 @@ export default function Footer() {
     <Box
       sx={{
         background: Colors.denim,
+        height: "4vh",
         width: "100%",
         display: "flex",
         // flexDirection: "column",
@@ -34,16 +35,12 @@ export default function Footer() {
         boxShadow: "0px -5px 13px -7px grey",
       }}
     >
-      {/* <Grid container spacing={1} justifyContent="center">
-        <Grid item md={6} lg={2}> */}
-          <List sx={{ display:"flex", alignItems:"center", width: "80vw", padding: "10px"}}>
+          {/* <List sx={{ display:"flex", alignItems:"center", width: "80vw", padding: "10px"}}>
             <ListItemText>
               <Button href="/login" sx={{color:"#F7CE3E"}}>Login</Button>
               <Button href="/register" sx={{color:"#F7CE3E"}}>Register</Button>
             </ListItemText>
-          </List>
-        {/* </Grid>
-      </Grid> */}
+          </List> */}
       <Typography variant="body2" color="text.white" align="center">
         {'Copyright © '}
         <Link color="white" href="https://mui.com/">

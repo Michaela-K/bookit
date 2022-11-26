@@ -10,9 +10,12 @@ import { MessageText, PromotionsContainer, SliderImage } from "../../styles/Slid
 //   {src:"/assets/yellowHero.jpeg",title:"Connect to Gmail or Outlook"}
 // ]
 const customers = [
+  {title:"Plan the Family Reunion"}, 
+  {title:"Brainstorm with the Group"},
+  {title:"Get the girls to agree on a lunch date"},
+  {title:"No more postponing"},
   {title:"Agree to Agree !"}, 
-  {title:"Manage your calendar"},
-  {title:"Connect to Gmail or Outlook"}
+  {title:"Manage your entire calendar"},
 ]
 
 export default function Sliders() {
@@ -22,7 +25,7 @@ export default function Sliders() {
     useEffect(() => {
             setTimeout(() => {
               setShow(false);
-            }, 5000);
+            }, 4000);
     const intervalId = setInterval(() => {
       // get next message
       setMessageIndex((i) => (i + 1) % customers.length);
@@ -32,8 +35,8 @@ export default function Sliders() {
 
       setTimeout(() => {
         setShow(false);
-      }, 5000);
-    }, 6000);
+      }, 4000);
+    }, 5000);
 
     return () => {
       clearInterval(intervalId);
