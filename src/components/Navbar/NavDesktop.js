@@ -1,4 +1,4 @@
-import { Link, List, ListItem, ListItemText, Typography} from "@mui/material";
+import { Button, Link, List, ListItem, ListItemText, Typography} from "@mui/material";
 import {NavbarContainer, NavbarHeader, MyList} from "../../styles/Navbar/index";
 import Actions from "./Actions";
 
@@ -26,7 +26,7 @@ export default function NavDesktop({matches}){
   return (
     <>
      <NavbarContainer  sx={{boxShadow: 3}}>
-      <NavbarHeader>Finally!</NavbarHeader>
+      <NavbarHeader><Button href="/" sx={{color:"white", fontSize:"2.8rem",fontFamily:'"Playfair Display"',textTransform: "none"}}>Finally !</Button></NavbarHeader>
       <MyList type="row">
         <Actions matches={matches}></Actions>
           {listItem.map((list) => {
