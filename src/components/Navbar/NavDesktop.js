@@ -35,7 +35,7 @@ export default function NavDesktop({matches}){
                 sx={{width: "15%",display: "flex", color:"white",textAlign: "center", textDecoration:"none" }}>
                   <ListItemText primary={list.text}></ListItemText>
                 </Link> 
-          )})};
+          )})}
       </MyList>
      </NavbarContainer>
     </>

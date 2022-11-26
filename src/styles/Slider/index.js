@@ -25,7 +25,7 @@ export const MessageText = styled(Typography)(({ theme }) => ({
   fontSize: "1.5rem",
 }));
 
-export const TestimonialImage = styled("img")(({ src, theme }) => ({
+export const SliderImage = styled("img")(({ src, theme }) => ({
   src: `url(${src})`,
   // src: `url(${customers[messageIndex].src})`,
   // backgroundImage: `url(${src})`,
@@ -42,3 +42,4 @@ export const TestimonialImage = styled("img")(({ src, theme }) => ({
     height: "300px",
   },
 }));
+
