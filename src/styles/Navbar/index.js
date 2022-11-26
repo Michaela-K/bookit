@@ -8,7 +8,7 @@ import { Colors } from '../theme';
 export const NavbarContainer = styled(Box)(() => ({
  display: 'flex',
  background: Colors.denim,
-  position: "fixed",
+  position: "static",
   top: 0,
   left: 0,
   width: '100%',
@@ -16,7 +16,7 @@ export const NavbarContainer = styled(Box)(() => ({
   zIndex: 99,  
  marginTop: 0,
  justifyContent: 'center',
- padding: '2px 2.2vh',
+ padding: '2px 2.2vh'
 }));
 
 export const NavbarHeader = styled(Typography)(() => ({

@@ -19,12 +19,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline /> 
-        <Container  maxWidth="false"sx={{background: "#f5f2e8", fontFamily: "Roboto"}}> 
-        <Navbar></Navbar>
+        <Container  maxWidth="false" sx={{background: "#f5f2e8", 
+        fontFamily: "Roboto",display: "flex", minHeight: "87vh", flexDirection: "column"}}> 
         <Banner></Banner>
         <Testimonials></Testimonials>
         <Banner2 ></Banner2>
-        <Footer></Footer>
         </Container>
     </ThemeProvider>
   );

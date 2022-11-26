@@ -16,21 +16,17 @@ export default function Footer() {
     <Box
       sx={{
         background: Colors.denim,
-        paddingTop: "20px",
-        height: "5vh",
-        display: "flex",
-        position: "fixed",
-        flexDirection: "row",
+        // paddingTop: "20px",
+        // height: "5vh",
+        position: "static",
         bottom: 0,
         left: 0,
         width: '100%',
         alignItems: 'center',
         zIndex: 99,  
         color: Colors.white,
-        // p: { xs: 12, md: 12 },
-        pt: 12,
-        pb: 12,
-        fontSize: { xs: '12px', md: '14px' }
+        fontSize: { xs: '12px', md: '14px' },
+        boxShadow: "0px -5px 13px -7px grey",
       }}
     >
       {/* <Grid container spacing={1} justifyContent="center">
