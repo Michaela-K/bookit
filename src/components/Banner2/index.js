@@ -17,7 +17,7 @@ export default function Banner2() {
       <BannerContent2>
         {/* <Typography variant="h6">Huge Collection</Typography> */}
         <BannerTitle2 variant="h2">
-          You're in Control
+          Control your Calendar
         </BannerTitle2>
 
         <BannerDescription2 variant="subtitle">

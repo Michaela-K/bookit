@@ -6,8 +6,8 @@ import { Colors } from '../theme';
 // import { textPopUpTop } from "../../animation";
 
 export const NavbarContainer = styled(Box)(() => ({
- display: 'flex',
- background: Colors.denim,
+  display: 'flex',
+  background: Colors.denim,
   position: "static",
   top: 0,
   left: 0,
@@ -16,14 +16,14 @@ export const NavbarContainer = styled(Box)(() => ({
   zIndex: 99,  
  marginTop: 0,
  justifyContent: 'center',
- padding: '2px 2.2vh'
+ padding: '2px 2.2vh',
 }));
 
 export const NavbarHeader = styled(Typography)(() => ({
-//  padding: '4px',
- flexGrow: 1,
+  //  padding: '4px',
+  flexGrow: 1,
  fontSize: '3em',
- // fontFamily: '"Montez", "cursive"',
+ fontFamily: '"Playfair Display", "serif"',
  color: Colors.white,
  // "&:hover": {
  //   animation: `${textPopUpTop} 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both`,
@@ -31,15 +31,15 @@ export const NavbarHeader = styled(Typography)(() => ({
 }));
 
 export const MyList = styled(List)(({ type }) => ({
- display: type === 'row' ? 'flex' : 'block',
- flexGrow: 3,
- justifyContent: 'center',
- alignItems: 'center',
+  display: type === 'row' ? 'flex' : 'block',
+  flexGrow: 3,
+  justifyContent: 'right',
+  alignItems: 'center',
 }));
 
 export const ActionIconsContainerMobile = styled(Box)(() => ({
   display: 'flex',
-  background: Colors.shaft,
+  background: Colors.white,
   position: "fixed",
   bottom: 0,
   left: 0,

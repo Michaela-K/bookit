@@ -45,6 +45,7 @@ export const BannerImage2 = styled("img")(({ src, theme }) => ({
 }));
 
 export const BannerTitle2 = styled(Typography)(({ matches, theme }) => ({
+  fontFamily: '"Playfair Display", "serif"',
   color:Colors.white,
   lineHeight: 1.5,
   fontSize: "2.5rem",
@@ -57,6 +58,7 @@ export const BannerTitle2 = styled(Typography)(({ matches, theme }) => ({
 }));
 
 export const BannerDescription2 = styled(Typography)(({ theme }) => ({
+  fontFamily: '"Alice", "serif"',
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

@@ -6,22 +6,27 @@ import {
   Typography,
   Button,
   Stack,
-  Container,
+  Container
 } from "@mui/material";
 import { Box } from "@mui/system";
+import { Link } from "react-router-dom";
 import { Colors } from "../../styles/theme";
 
 export default function Footer() {
   return (
+  <>
     <Box
       sx={{
         background: Colors.denim,
+        width: "100%",
+        display: "flex",
+        // flexDirection: "column",
+        justifyContent:"center",
         // paddingTop: "20px",
         // height: "5vh",
-        position: "static",
+        position: "fixed",
         bottom: 0,
-        left: 0,
-        width: '100%',
+        // left: 0,
         alignItems: 'center',
         zIndex: 99,  
         color: Colors.white,
@@ -31,20 +36,22 @@ export default function Footer() {
     >
       {/* <Grid container spacing={1} justifyContent="center">
         <Grid item md={6} lg={2}> */}
-          <List>
+          <List sx={{ display:"flex", alignItems:"center", width: "80vw", padding: "10px"}}>
             <ListItemText>
-              {/* <Typography lineHeight={2} variant="caption2"> */}
-                Login
-              {/* </Typography> */}
-            </ListItemText>
-            <ListItemText>
-              {/* <Typography lineHeight={2} variant="caption2"> */}
-                My Account
-              {/* </Typography> */}
+              <Button href="/login" sx={{color:"#F7CE3E"}}>Login</Button>
+              <Button href="/register" sx={{color:"#F7CE3E"}}>Register</Button>
             </ListItemText>
           </List>
         {/* </Grid>
       </Grid> */}
+      <Typography variant="body2" color="text.white" align="center">
+        {'Copyright © '}
+        <Link color="white" href="https://mui.com/">
+          Filled!
+        </Link>{' '}
+        {new Date().getFullYear()}
+      </Typography>
     </Box>
+  </>
   );
 }

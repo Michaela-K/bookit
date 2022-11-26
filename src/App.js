@@ -19,8 +19,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline /> 
-        <Container  maxWidth="false" sx={{background: "#f5f2e8", 
-        fontFamily: "Roboto",display: "flex", minHeight: "87vh", flexDirection: "column"}}> 
+        <Container  maxWidth="false" sx={{background: "#f5f2e8", fontFamily: "Roboto",
+        display: "flex", minHeight: "100vh", flexDirection: "column"}}> 
         <Banner></Banner>
         <Testimonials></Testimonials>
         <Banner2 ></Banner2>

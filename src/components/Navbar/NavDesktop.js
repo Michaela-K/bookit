@@ -32,7 +32,7 @@ export default function NavDesktop({matches}){
           {listItem.map((list) => {
             return (
               <Link href={list.onclick} key={list.text} 
-                sx={{width: "15%",display: "flex", color:"white",textAlign: "right" }}>
+                sx={{width: "15%",display: "flex", color:"white",textAlign: "center", textDecoration:"none" }}>
                   <ListItemText primary={list.text}></ListItemText>
                 </Link> 
           )})};

@@ -44,6 +44,9 @@ const theme = createTheme({
     background: {
       default: '#F5F2E8'
     },
+    button: {
+      default:Colors.marigold
+    }
   },
 
   components: {
@@ -53,7 +56,7 @@ const theme = createTheme({
         disableElevation: true,
       }
     }
-  }
+},
 });
 
 export default theme;

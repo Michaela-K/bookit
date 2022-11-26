@@ -1,6 +1,7 @@
 import {ListItemButton, ListItemIcon } from "@mui/material";
 import { MyList } from "../../styles/Navbar";
 import PersonIcon from "@mui/icons-material/Person";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Colors } from "../../styles/theme";
 import { ActionIconsContainerDesktop, ActionIconsContainerMobile } from "../../styles/Navbar/index";
 
@@ -11,7 +12,7 @@ export default function Actions({ matches }) {
   return (
     <Component>
       <MyList type="row">
-        <ListItemButton
+        {/* <ListItemButton
           sx={{
             justifyContent: "center",
           }}
@@ -23,8 +24,9 @@ export default function Actions({ matches }) {
               color: matches && Colors.secondary,
             }}
           >
+            <FavoriteIcon />
           </ListItemIcon>
-        </ListItemButton>
+        </ListItemButton> */}
         {/* <Divider orientation="vertical" flexItem /> */}
         <ListItemButton
           sx={{
