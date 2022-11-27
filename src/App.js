@@ -25,8 +25,8 @@ function App() {
         display: "flex", minHeight: "100vh", flexDirection: "column"}}> 
         <Banner></Banner>
         <Slider></Slider>
-        <Review></Review>
         <Banner2 ></Banner2>
+        <Review></Review>
         </Box>
     </ThemeProvider>
   );

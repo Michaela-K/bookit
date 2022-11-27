@@ -15,7 +15,7 @@ export default function Banner() {
 
   return (
     <BannerContainer >
-      <BannerImage src="/assets/yellowHero.jpeg" />
+      <BannerImage src="/assets/happyHero.png" />
       <BannerContent>
         {/* <Typography variant="h6">Huge Collection</Typography> */}
         <BannerTitle variant="h2">

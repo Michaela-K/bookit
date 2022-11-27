@@ -26,13 +26,13 @@ export default function NavDesktop({matches}){
   return (
     <>
      <NavbarContainer  sx={{boxShadow: 3}}>
-      <NavbarHeader><Button href="/" sx={{color:"white", fontSize:"2.8rem",fontFamily:'"Playfair Display"',textTransform: "none"}}>Finally !</Button></NavbarHeader>
+      <NavbarHeader><Button href="/" sx={{color:"black", fontSize:"2.8rem",fontFamily:'"Playfair Display"',textTransform: "none"}}>Finally !</Button></NavbarHeader>
       <MyList type="row">
         <Actions matches={matches}></Actions>
           {listItem.map((list) => {
             return (
               <Link href={list.onclick} key={list.text} 
-                sx={{width: "15%",display: "flex", color:"white",textAlign: "center", textDecoration:"none" }}>
+                sx={{width: "15%",display: "flex", color:"black",textAlign: "center", textDecoration:"none" }}>
                   <ListItemText primary={list.text}></ListItemText>
                 </Link> 
           )})}

@@ -9,7 +9,7 @@ export const BannerContainer2 = styled(Box)(({ matches, theme }) => ({
   height: "100%",
   padding: "0px 0px",
   marginBottom: "4vh",
-  background: "#006360",
+  background: "Colors.news",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
     alignItems: "center",
@@ -46,7 +46,7 @@ export const BannerImage2 = styled("img")(({ src, theme }) => ({
 
 export const BannerTitle2 = styled(Typography)(({ matches, theme }) => ({
   fontFamily: '"Playfair Display", "serif"',
-  color:Colors.white,
+  // color:Colors.white,
   lineHeight: 1.5,
   fontSize: "2.5rem",
   marginBottom: "20px",
@@ -58,7 +58,7 @@ export const BannerTitle2 = styled(Typography)(({ matches, theme }) => ({
 }));
 
 export const BannerDescription2 = styled(Typography)(({ theme }) => ({
-  fontFamily: '"Alice", "serif"',
+  fontFamily: '"Playfair Display", "serif"',
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

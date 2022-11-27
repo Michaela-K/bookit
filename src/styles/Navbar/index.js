@@ -7,7 +7,7 @@ import { Colors } from '../theme';
 
 export const NavbarContainer = styled(Box)(() => ({
   display: 'flex',
-  background: Colors.denim,
+  background: Colors.news,
   position: "static",
   top: 0,
   left: 0,
@@ -24,7 +24,7 @@ export const NavbarHeader = styled(Typography)(() => ({
   flexGrow: 1,
  fontSize: '3em',
  fontFamily: '"Playfair Display", "serif"',
- color: Colors.white,
+ color: Colors.denim,
  // "&:hover": {
  //   animation: `${textPopUpTop} 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both`,
  // },
@@ -39,7 +39,7 @@ export const MyList = styled(List)(({ type }) => ({
 
 export const ActionIconsContainerMobile = styled(Box)(() => ({
   display: 'flex',
-  background: Colors.white,
+  // background: Colors.white,
   position: "fixed",
   bottom: 0,
   left: 0,

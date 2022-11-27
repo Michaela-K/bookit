@@ -26,7 +26,7 @@ export default function Banner2() {
         </BannerDescription2>
 
       </BannerContent2>
-      <BannerImage2 src="/assets/planImg.jpeg" />
+      <BannerImage2 src="/assets/happyYouthHero.png" />
     </BannerContainer2>
   );
 }
