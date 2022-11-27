@@ -28,7 +28,7 @@ export default function Actions({ matches }) {
           </ListItemIcon>
         </ListItemButton> */}
         {/* <Divider orientation="vertical" flexItem /> */}
-        <ListItemButton
+        <ListItemButton href="/myevents"
           sx={{
             justifyContent: "center",
           }}

@@ -1,59 +1,3 @@
-// import MenuIcon from "@mui/icons-material/Menu";
-// import { IconButton, List, ListItem, ListItemText } from "@mui/material";
-// import React from "react";
-// // import PersonIcon from "@mui/icons-material/Person";
-// import { NavbarContainer, NavbarHeader } from "../../styles/Navbar";
-// import Actions from "./Actions";
-
-
-
-// export default function NavMobile({matches}){
-
-//   const dummyCategories = ['Hokusai', 'Hiroshige', 'Utamaro', 'Kuniyoshi', 'Yoshitoshi']
-//   // const classes = useStyles();
-//   // const theme = useTheme();
-//   const [mobileOpen, setMobileOpen] = React.useState(false);
-
-//   function handleDrawerToggle() {
-//     setMobileOpen(!mobileOpen)
-//   }
-
-//   const drawer = (
-//     <div>
-//       <List>
-//         {dummyCategories.map((text, index) => (
-//           <ListItem button key={text}>
-//             <ListItemText primary={text} />
-//           </ListItem>
-//         ))}
-//       </List>
-//     </div>
-//   );
-
-//   return (
-//     <>
-//      <NavbarContainer>
-//       <NavbarHeader textAlign={"center"} variant="h4">
-//         Finally!
-//       </NavbarHeader>
-//       {/* <IconButton>
-//         <PersonIcon />
-//       </IconButton> */}
-//       <IconButton color="inherit"
-//             aria-label="Open drawer"
-//             edge="start"
-//             onClick={handleDrawerToggle}
-//             // className={classes.menuButton}
-//             >
-//         <MenuIcon />
-//       </IconButton>
-//       {/* <Actions matches={matches} /> */}
-//     </NavbarContainer>
-//     </>
-//   );
-
-// }
-
 import React, { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -138,7 +82,7 @@ export default function NavMobile() {
                 <Box sx={{
                   p: 2,
                   height: 1,
-                  backgroundColor: "pink",
+                  backgroundColor: "#D8C3A5",
                   width:"50vw"
                 }}>
 
@@ -166,7 +110,7 @@ export default function NavMobile() {
                     justifyContent:"center", 
                     }}
                   >
-                    <Button variant="outlined" sx={{m:1, width: .3}}>Login</Button> 
+                    <Button variant="contained" sx={{m:1, width: .3,backgroundColor: "#E85A4F"}}>Login</Button> 
                   </Box>
                   </Box>
                   
