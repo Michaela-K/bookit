@@ -1,4 +1,4 @@
-import { useMediaQuery } from "@mui/material";
+import { Button, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import {
   BannerContainer,
@@ -25,6 +25,7 @@ export default function Banner() {
         <BannerDescription variant="subtitle">
           <h3>How about No! </h3>
           The App to use so you can ALL agree on the meet up time and date. Finally!
+          <Button variant="contained" href="/register" sx={{background:"#E98074", borderRadius: "2px", mt: "2vh"}}>Register</Button>
         </BannerDescription>
 
       </BannerContent>

@@ -3,9 +3,9 @@ import { createTheme } from "@mui/material/styles";
 export const Colors = {
   screen: '#C5C1C0',
   steel: '#0A1612',
-  denim: '#1A2930',
+  denim: '#E98074',
   marigold: '#F7CE3E',
-  news: '#F5F2E8',
+  news: '#EAE7DC',
 
   primary: "#5f2c3e",
   secondary: "#d1adcc", //icon
@@ -42,7 +42,7 @@ const theme = createTheme({
       main: Colors.secondary,
     },
     background: {
-      default: '#F5F2E8'
+      default: '#EAE7DC'
     },
     button: {
       default:Colors.marigold

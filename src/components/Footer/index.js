@@ -18,7 +18,7 @@ export default function Footer() {
     <Box
       sx={{
         background: Colors.denim,
-        height: "4vh",
+        height: "3vh",
         width: "100%",
         display: "flex",
         // flexDirection: "column",

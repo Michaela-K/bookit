@@ -21,12 +21,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline /> 
-        <Box  maxWidth="false" sx={{background: "#f5f2e8", fontFamily: "Roboto",
+        <Box  maxWidth="false" sx={{background: "#fcfcfc", fontFamily: "Arial",
         display: "flex", minHeight: "100vh", flexDirection: "column"}}> 
         <Banner></Banner>
+        <Review></Review>
         <Slider></Slider>
         <Banner2 ></Banner2>
-        <Review></Review>
         </Box>
     </ThemeProvider>
   );

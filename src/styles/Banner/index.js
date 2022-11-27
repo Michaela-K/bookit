@@ -6,9 +6,8 @@ export const BannerContainer = styled(Box)(({ matches, theme }) => ({
   display: "flex",
   justifyContent: "center",
   width: "100%",
-  height: "100%",
-  padding: "0px 0px",
-  // marginTop: "3vh",
+  height: "auto",
+  padding: "10vh 0vh 0vh 0vh",
   background: Colors.news,
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
@@ -33,7 +32,7 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
   // backgroundImage: `url(${src})`,
   // backgroundRepeat: "no-repeat",
   // backgroundPosition: "center",
-  width: "70vw",
+  width: "60vw",
   minWidth: "45vw",
   [theme.breakpoints.down("md")]: {
     width: "40vw",
@@ -46,20 +45,22 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
 }));
 
 export const BannerTitle = styled(Typography)(({ matches, theme }) => ({
-  fontFamily: '"Playfair Display", "serif"',
-  // color:Colors.white,
+  fontFamily: '"Montserrat", "sans-serif"',
+  fontWeight: "400",
   lineHeight: 1.5,
-  fontSize: "2.5rem",
+  fontSize: "3rem",
   marginBottom: "20px",
+  width: "100%",
   display: "flex",
   justifyContent: "center",
+  alignItems: "center",
   [theme.breakpoints.down('sm')]: {
     fontSize: '42px',    
   }
 }));
 
 export const BannerDescription = styled(Typography)(({ theme }) => ({
-  fontFamily: '"Alice", "serif"',
+  fontFamily: '"Montserrat", "sans-serif"',
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

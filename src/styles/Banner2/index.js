@@ -33,7 +33,8 @@ export const BannerImage2 = styled("img")(({ src, theme }) => ({
   // backgroundImage: `url(${src})`,
   // backgroundRepeat: "no-repeat",
   // backgroundPosition: "center",
-  width: "100%",
+  width: "1%",
+  height: "auto",
   minWidth: "45vw",
   [theme.breakpoints.down("md")]: {
     width: "40vw",
@@ -45,10 +46,11 @@ export const BannerImage2 = styled("img")(({ src, theme }) => ({
 }));
 
 export const BannerTitle2 = styled(Typography)(({ matches, theme }) => ({
-  fontFamily: '"Playfair Display", "serif"',
+  fontFamily: '"Montserrat", "sans-serif"',
+  fontWeight: "500",
   // color:Colors.white,
   lineHeight: 1.5,
-  fontSize: "2.5rem",
+  fontSize: "2rem",
   marginBottom: "20px",
   display: "flex",
   justifyContent: "center",
@@ -58,7 +60,7 @@ export const BannerTitle2 = styled(Typography)(({ matches, theme }) => ({
 }));
 
 export const BannerDescription2 = styled(Typography)(({ theme }) => ({
-  fontFamily: '"Playfair Display", "serif"',
+  fontFamily: '"Montserrat", "sans-serif"',
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
