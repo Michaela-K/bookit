@@ -12,15 +12,15 @@ import Box from '@mui/material/Box';
 import CreateIcon from '@mui/icons-material/Create';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { Divider } from '@mui/material';
 
 const Events = () => {
   return (
-    <div> Events
       <Container component="main" maxWidth="lg">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            margin: "8vh 0vh",
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -76,28 +76,6 @@ const Events = () => {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid container justifyContent="center"  item xs={12}>
-              <input
-                accept="image/*"
-                // className={classes.input}
-                style={{ display: 'none' }}
-                id="raised-button-file"
-                multiple
-                type="file"
-                hidden
-                />
-              <label htmlFor="raised-button-file">
-                <Button 
-                 variant="contained"
-                 component="label"
-                  // variant="raised" 
-                  // component="span" 
-                  // className={classes.button}
-                  >
-                  Upload Attachments
-                </Button>
-              </label> 
-              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
@@ -110,7 +88,35 @@ const Events = () => {
                   autoComplete="description"
                 />
               </Grid>
-            {/* <Grid container spacing={2}> */}
+              <Grid container justifyContent="center"  item xs={12}>
+              <input
+                accept="image/*"
+                // className={classes.input}
+                style={{ display: 'none' }}
+                id="raised-button-file"
+                multiple
+                type="file"
+                hidden
+                />
+              <label htmlFor="raised-button-file">
+                <Button 
+                //  variant="contained"
+                 variant="outlined"
+                 component="label"
+                  // variant="raised" 
+                  // component="span" 
+                  // className={classes.button}
+                  >
+                  Upload Attachments
+                </Button>
+              </label> 
+              </Grid>
+            </Grid>
+              {/* <Divider orientation="vertical" flexItem /> */}
+            <Typography component="h1" variant="h5" sx={{mt: "15vh", display: "flex", justifyContent: "center"}}>
+              Your Information
+            </Typography>
+            <Grid container spacing={2} mt={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
@@ -118,7 +124,7 @@ const Events = () => {
                   required
                   fullWidth
                   id="firstName"
-                  label=" Your First Name"
+                  label="First Name"
                   autoFocus
                 />
               </Grid>
@@ -127,7 +133,7 @@ const Events = () => {
                   required
                   fullWidth
                   id="lastName"
-                  label=" Your Last Name"
+                  label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
                 />
@@ -137,12 +143,11 @@ const Events = () => {
                   required
                   fullWidth
                   id="email"
-                  label="Your Best Email Address"
+                  label="Email Address"
                   name="email"
                   autoComplete="email"
                 />
               </Grid>
-            {/* </Grid> */}
             </Grid>
             <Grid container justifyContent="center">
               <Grid item>
@@ -158,7 +163,6 @@ const Events = () => {
           </Box>
         </Box>
       </Container>
-    </div>
   )
 }
 
