@@ -98,7 +98,7 @@ export default function NavMobile() {
                   </IconButton>
                   <Divider sx={{mb: 2}} />
                     <ListItemButton>
-                      <ListItemText primary="Events" />
+                      <ListItemText primary="Create" />
                     </ListItemButton>
 
                     <ListItemButton>

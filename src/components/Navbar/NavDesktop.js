@@ -6,7 +6,7 @@ export default function NavDesktop({matches}){
   
   const listItem = [
     {
-      text:'Events',
+      text:'Create',
       onclick:"/events"
     }, 
     {
