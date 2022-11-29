@@ -76,6 +76,48 @@ const Events = () => {
                   autoComplete="new-password"
                 />
               </Grid>
+              <Grid item xs={12} sm={6}>
+              <TextField
+                id="date"
+                label="Date"
+                type="date"
+                defaultValue="2017-05-24"
+                fullWidth
+                // sx={{ width: 220 }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+              <TextField
+                id="time"
+                label="Time"
+                type="time"
+                defaultValue="07:30"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                inputProps={{
+                  step: 300, // 5 min
+                }}
+                // sx={{ width: 150 }}
+              />
+              </Grid>
+              <Grid item xs={12}>
+              <TextField
+                id="datetime-local"
+                label="Date & Time"
+                type="datetime-local"
+                defaultValue={Date.now()}
+                fullWidth
+                // sx={{ width: 250 }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                />
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
