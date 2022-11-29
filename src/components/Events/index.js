@@ -147,6 +147,8 @@ const Events = () => {
                   autoComplete="description"
                 />
               </Grid>
+
+              <Grid container justifyContent="center"  item xs={12}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Grid container spacing={2} mt={5}>
                 <Grid item xs={12} sm={6}>
@@ -185,6 +187,7 @@ const Events = () => {
                 </Grid>
               </Grid>
               </LocalizationProvider>
+              </Grid>
 
               <Grid container justifyContent="center"  item xs={12}>
               <input
