@@ -14,7 +14,24 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Divider } from '@mui/material';
 
+import dayjs from 'dayjs';
+import Stack from '@mui/material/Stack';
+// import TextField from '@mui/material/TextField';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+
 const Events = () => {
+
+  const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
+
   return (
       <Container component="main" maxWidth="lg">
         <CssBaseline />
@@ -130,6 +147,45 @@ const Events = () => {
                   autoComplete="description"
                 />
               </Grid>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <Grid container spacing={2} mt={5}>
+                <Grid item xs={12} sm={6}>
+                  <DesktopDatePicker
+                    label="Date desktop"
+                    inputFormat="MM/DD/YYYY"
+                    value={value}
+                    onChange={handleChange}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <MobileDatePicker
+                    label="Date mobile"
+                    inputFormat="MM/DD/YYYY"
+                    value={value}
+                    onChange={handleChange}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                        </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TimePicker
+                    label="Time"
+                    value={value}
+                    onChange={handleChange}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <DateTimePicker
+                    label="Date&Time picker"
+                    value={value}
+                    onChange={handleChange}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </Grid>
+              </Grid>
+              </LocalizationProvider>
+
               <Grid container justifyContent="center"  item xs={12}>
               <input
                 accept="image/*"
