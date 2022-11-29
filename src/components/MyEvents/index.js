@@ -3,7 +3,7 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-// import { INITIAL_EVENTS, createEventId } from './event-utils'
+import { INITIAL_EVENTS, createEventId } from './event-utils'
 
 const MyEvents = () => {
   const [weekendsVisible, setWeekendsVisible] = useState(true);
@@ -52,7 +52,7 @@ const MyEvents = () => {
   
     if (title) {
       calendarApi.addEvent({
-        // id: createEventId(),
+        id: createEventId(),
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
@@ -91,6 +91,7 @@ const MyEvents = () => {
     </li>
   )
   }
+  
 
   return (
     <>
@@ -110,7 +111,7 @@ const MyEvents = () => {
             selectMirror={true}
             dayMaxEvents={true}
             weekends={weekendsVisible}
-            initialEvents={`events`} // alternatively, use the `events` setting to fetch from a feed
+            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
             select={handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={handleEventClick}
