@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
+import { ConnectingAirportsOutlined } from '@mui/icons-material'
 
 const MyEvents = () => {
   const [weekendsVisible, setWeekendsVisible] = useState(true);
@@ -47,17 +48,30 @@ const MyEvents = () => {
   const handleDateSelect = (selectInfo) => {
     let title = prompt('Please enter a new title for your event')
     let calendarApi = selectInfo.view.calendar
-  
+    
     calendarApi.unselect() // clear date selection
-  
+    
     if (title) {
       calendarApi.addEvent({
         id: createEventId(),
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
-        allDay: selectInfo.allDay
-      })
+        allDay: selectInfo.allDay,
+      }, setCurrentEvents(title)); 
+      console.log(currentEvents)
+      // console.log(title)
+      // const obj = {
+      //   id: createEventId(),
+      //   title,
+      //   start: selectInfo.startStr,
+      //   end: selectInfo.endStr,
+      //   allDay: selectInfo.allDay};
+      //   console.log(obj)
+      //   console.log(currentEvents)
+      // setCurrentEvents([...currentEvents, obj]);
+      // setCurrentEvents(calendarApi.getEventById("1"))
+      // setCurrentEvents(prevCurrentEvents =>  prevCurrentEvents + title);
     }
   }
   
