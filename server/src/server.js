@@ -7,7 +7,6 @@ const morgan = require("morgan");
 
 const app = express();
 
-app.use(express.static("public"));
 app.use(morgan('dev'))
 // const router = express.Router();
 // const cookieSession = require('cookie-session');
@@ -18,3 +17,8 @@ app.use(morgan('dev'))
 
 app.listen(4000)
 console.log("server on port 4000")
+
+app.use(express.static("public"));
+
+const usersRouter = require('./routes/usersRoutes');
+app.use('/users', usersRouter);

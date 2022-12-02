@@ -2,31 +2,27 @@ const {Router} = require('express');
 
 const router = Router();
 
-// GET /users/:id
+// GET/tasks/
 router.get("/", (req, res) => {
   res.send('Hello WOrld!')
 });
 
-// GET /users/:id/create
-router.get("/", (req, res) => {
+// GET/tasks/:id
+router.get("/:id", (req, res) => {
   res.send('Hello WOrld!')
 });
 
-// GET /users/:id/myevents
-router.get("/", (req, res) => {
-  res.send('Hello WOrld!')
-});
-////////////////////
-
-
+// POST/tasks/
 router.post("/", (req, res) => {
   res.send('Hello WOrld!')
 });
 
+// DELETE/tasks/
 router.delete("/", (req, res) => {
   res.send('Hello WOrld!')
 });
 
+// PUT/tasks/
 router.put("/", (req, res) => {
   res.send('Hello WOrld!')
 });
