@@ -1,3 +1,9 @@
+-- Drop and recreate Users table (Example)
+-- CREATE DATABASE interest;
+-- \c interest
+-- \d interest ? - is for what output?
+-- \i db/schema/01_schema.sql
+
 DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users (
