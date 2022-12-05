@@ -22,3 +22,6 @@ app.use(express.static("public"));
 
 const usersRouter = require('./routes/usersRoutes');
 app.use('/users', usersRouter);
+
+const eventsRouter = require('./routes/eventsRoutes');
+app.use('/events', eventsRouter);

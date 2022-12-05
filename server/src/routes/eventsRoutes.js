@@ -2,27 +2,27 @@ const {Router} = require('express');
 
 const router = Router();
 
-// GET/tasks/
+// GET/events/
 router.get("/", (req, res) => {
-  res.send('Hello WOrld!')
+  res.send('Task List')
 });
 
-// GET/tasks/:id
+// GET/events/:id
 router.get("/:id", (req, res) => {
-  res.send('Hello WOrld!')
+  res.send('One from the Task List')
 });
 
-// POST/tasks/
+// POST/events/
 router.post("/", (req, res) => {
   res.send('Hello WOrld!')
 });
 
-// DELETE/tasks/
+// DELETE/events/
 router.delete("/", (req, res) => {
   res.send('Hello WOrld!')
 });
 
-// PUT/tasks/
+// PUT/events/
 router.put("/", (req, res) => {
   res.send('Hello WOrld!')
 });
