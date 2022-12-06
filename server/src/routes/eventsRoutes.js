@@ -4,12 +4,12 @@ const router = Router();
 
 // GET/events/
 router.get("/", (req, res) => {
-  res.send('Task List')
+  res.send('Events List')
 });
 
 // GET/events/:id
 router.get("/:id", (req, res) => {
-  res.send('One from the Task List')
+  res.send('One from the Events List')
 });
 
 // POST/events/
