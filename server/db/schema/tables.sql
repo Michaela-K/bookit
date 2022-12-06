@@ -5,7 +5,7 @@
 -- \i db/schema/tables.sql
 
 DROP TABLE IF EXISTS users CASCADE;
--- CREATE DATABASE bookit;
+DROP TABLE IF EXISTS events CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
