@@ -15,6 +15,9 @@ app.use(morgan('dev'))
 //   keys: ['key1', 'key2']
 // }));
 
+//database import
+const pool = require("./lib/db.js");
+
 app.listen(4000)
 console.log("server on port 4000")
 
