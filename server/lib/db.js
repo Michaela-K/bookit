@@ -17,4 +17,4 @@ const { Pool } = require("pg");
 const pool = new Pool(dbParams);
 pool.connect();
 
-module.exports = pool;
+module.exports = {dbParams, pool};

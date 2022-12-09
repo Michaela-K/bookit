@@ -16,7 +16,7 @@ app.use(morgan('dev'))
 // }));
 
 //database import
-const pool = require("./lib/db.js");
+const {pool} = require("../lib/db");
 
 app.listen(4000)
 console.log("server on port 4000")
@@ -24,7 +24,7 @@ console.log("server on port 4000")
 app.use(express.static("public"));
 
 const usersRouter = require('./routes/usersRoutes');
-app.use('/users', usersRouter);
+app.use('/users', usersRouter(pool));
 
 const eventsRouter = require('./routes/eventsRoutes');
-app.use('/events', eventsRouter);
+app.use('/events', eventsRouter(pool));

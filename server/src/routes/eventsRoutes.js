@@ -1,10 +1,14 @@
 const {Router} = require('express');
+const router = express.Router();
+const {pool} = require('../../lib/db.js')
 
-const router = Router();
 
 // GET/events/
 router.get("/", (req, res) => {
-  res.send('Events List')
+  return pool.query(`SELECT * FROM events`)
+  .then(res => {
+    return console.log(res)
+  })
 });
 
 // GET/events/:id
@@ -26,4 +30,5 @@ router.delete("/", (req, res) => {
 router.put("/", (req, res) => {
   res.send('Hello WOrld!')
 });
+
 module.exports = router;
