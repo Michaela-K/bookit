@@ -3,17 +3,17 @@ const {Router} = require('express');
 const router = Router();
 
 // GET /users/:id
-router.get("/", (req, res) => {
+router.get("/:id", (req, res) => {
   res.send('Hello WOrld!')
 });
 
 // GET /users/:id/create
-router.get("/", (req, res) => {
+router.get("/create", (req, res) => {
   res.send('Hello WOrld!')
 });
 
 // GET /users/:id/myevents
-router.get("/", (req, res) => {
+router.get("/myevents", (req, res) => {
   res.send('Hello WOrld!')
 });
 ////////////////////

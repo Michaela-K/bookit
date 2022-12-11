@@ -24,7 +24,7 @@ console.log("server on port 4000")
 app.use(express.static("public"));
 
 const usersRouter = require('./routes/usersRoutes');
-app.use('/users', usersRouter(pool));
+app.use('/users', usersRouter);
 
 const eventsRouter = require('./routes/eventsRoutes');
-app.use('/events', eventsRouter(pool));
+app.use('/events', eventsRouter);
