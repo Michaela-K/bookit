@@ -27,4 +27,8 @@ const usersRouter = require('./routes/usersRoutes');
 app.use('/users', usersRouter);
 
 const eventsRouter = require('./routes/eventsRoutes');
-app.use('/events', eventsRouter);
+app.use('/events', eventsRouter(pool));
+
+//API ROUTE HANDLERS
+const apiEvents = require('./routes/api/api_events');
+app.use('/api/events', apiEvents(pool));
