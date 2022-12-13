@@ -1,7 +1,7 @@
 // load .env data into process.env
-// require("dotenv").config(); 
+require("dotenv").config(); 
 // Web server config
-// const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8081;
 const express = require("express");
 const morgan = require("morgan");
 
@@ -29,6 +29,9 @@ app.use('/users', usersRouter);
 
 const eventsRouter = require('./routes/events');
 app.use('/events', eventsRouter(pool));
+
+const createRouter = require('./routes/create');
+app.use('/new', createRouter(pool));
 
 //API ROUTE HANDLERS
 const apiEvents = require('./routes/api/api_events');
