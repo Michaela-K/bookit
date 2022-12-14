@@ -10,11 +10,11 @@ const app = express();
 app.use(morgan('dev'))
 app.use(express.json())
 // const router = express.Router();
-// const cookieSession = require('cookie-session');
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: ['key1', 'key2']
-// }));
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
 
 //database import
 const {pool} = require("../lib/db");

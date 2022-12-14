@@ -3,47 +3,70 @@ const router = Router();
 // const {pool} = require('../../lib/db.js')
 
 module.exports = (pool) => {
-// GET/events/
-router.get("/", (req, res) => {
-  // res.send('List should be in the Terminal Console');
-  return pool.query(`SELECT * FROM events`)
-  .then(result => {
-    return res.json(result.rows)
-  })
-  .catch((err) => console.log("ERROR", err.message ));
-});
 
-// GET/events/:id
-router.get("/:id", (req, res) => {
-  // res.send('One from the Events List')
-  const id = req.params.id;
-  return pool.query(`SELECT * FROM events WHERE id = $1`, [id])
-  .then(result => {
-    return res.json(result.rows[0])
+   // GET /events/search
+   router.get("/search", (req, res) => {
+    const templateVars = {
+      user_id: req.session["user_id"],
+      id: req.params.id,
+      query: req.body.query
+    }
+    res.render('search', templateVars);
   })
-  .catch(err => {
-    res
-      .status(500)
-      .json({ error: err.message });
+
+
+
+  // GET /events/:id/edit
+  router.get("/:id/edit", (req, res) => {
+      const templateVars = {
+      user_id: req.session["user_id"],
+      id: req.params.id
+    }
+    res.render('edit', templateVars);
+  })
+
+  // POST /events/:id/edit
+  router.post("/:id/edit", (req, res) => {
+    const event = req.body
+    user_id = req.session.user_id;
+    let id = req.params.id;
+    const queryString = `UPDATE events SET title = $1, category = $2, descrip = $3, thumbnail = $4, link = $5 WHERE id = $6 ;`;
+    const values = [event.title, event.category, event.descrip, event.thumbnail, event.link, id];
+    return pool
+      .query(queryString, values)
+      .then(result => {
+        console.log(result);
+        if (!result) {
+          console.log("post edit result", result);
+          res.send({error: "error"});
+          return;
+        }
+        res.redirect(`/users/${user_id}`);
+      })
+
   });
-});
 
-// POST/events/
-router.post("/", (req, res) => {
-  res.send('Hello WOrld!')
-});
 
-// DELETE/events/
-router.delete("/", (req, res) => {
-  res.send('Hello WOrld!')
-});
+  //events/delete/:id
+  router.post('/delete/:id', (req, res) => {
+    // if (!req.session["user_id"]) {
+    //   res.statusCode(400).send("Only authorized users can delete");
+    // }
+    let user_id = req.session.user_id;
+    let id = req.params.id;
+    console.log(id)
+    const queryString = `DELETE FROM events WHERE id = $1`;
+    return pool
+      .query(queryString, [id])
+      .then(response => {                                        //why does this give error res.redirect is not a function if i put res here instead of response
+        res.redirect(`/users/${user_id}`);
+      })
+      .catch(error => {
+        console.log('Error: ', error.message);
+      })
+      });
 
-// PUT/events/
-router.put("/", (req, res) => {
-  res.send('Hello WOrld!')
-});
 
-// module.exports = router;
   return router;
 
 };
