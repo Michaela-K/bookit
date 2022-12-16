@@ -16,7 +16,7 @@ root.render(
   <Navbar></Navbar>
    <Routes>
     <Route path="/" element={<App/>}/>
-      <Route path="/events" element={<Events/>}/>
+      <Route path="/events" element={<Events/>}/>        {/*    /create     */}
       <Route path="/myevents" element={<MyEvents/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
