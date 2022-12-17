@@ -49,7 +49,7 @@ export default function NavMobile() {
   return (
 
     <NavbarContainer position="static">
-      <Container maxWidth="lg" disableGutters="true">
+      <Container maxWidth="lg" disableGutters={true}>
         <Toolbar>
         <NavbarHeader textAlign={"center"} variant="h4">
          Finally!
