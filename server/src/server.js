@@ -4,16 +4,17 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8081;
 const express = require("express");
 const morgan = require("morgan");
+const cookieSession = require('cookie-session');
 
 const app = express();
-
+//middleware
 app.use(morgan('dev'))
-app.use(express.json())
+app.use(express.json())  //req.body
 // const router = express.Router();
-const cookieSession = require('cookie-session');
 app.use(cookieSession({
   name: 'session',
-  keys: ['key1', 'key2']
+  keys: ['key1', 'key2'],
+  maxAge: 24 * 60 * 60 * 1000
 }));
 
 //database import
