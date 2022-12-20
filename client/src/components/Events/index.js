@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -35,6 +35,15 @@ const Events = () => {
     e.preventDefault();
     console.log("submitted")
   }
+
+  const [event, setEvent] = useState({
+    organizer: "",
+    title:"",
+    location:"",
+    date:"",
+    time:"",
+    description:""   
+  })
 
   return (
       <Container component="main" maxWidth="lg">
@@ -77,7 +86,7 @@ const Events = () => {
                   autoComplete="title"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
@@ -87,7 +96,7 @@ const Events = () => {
                   autoComplete="location"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
@@ -97,13 +106,13 @@ const Events = () => {
                   id="password"
                   autoComplete="new-password"
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12} sm={6}>
               <TextField
                 id="date"
                 label="Date"
                 type="date"
-                defaultValue="2017-05-24"
+                defaultValue="2022-12-30"
                 fullWidth
                 // sx={{ width: 220 }}
                 InputLabelProps={{
@@ -116,7 +125,7 @@ const Events = () => {
                 id="time"
                 label="Time"
                 type="time"
-                defaultValue="07:30"
+                defaultValue="08:30"
                 fullWidth
                 InputLabelProps={{
                   shrink: true,
@@ -127,7 +136,7 @@ const Events = () => {
                 // sx={{ width: 150 }}
               />
               </Grid>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
               <TextField
                 id="datetime-local"
                 label="Date & Time"
@@ -139,7 +148,7 @@ const Events = () => {
                   shrink: true,
                 }}
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -153,7 +162,7 @@ const Events = () => {
                 />
               </Grid>
 
-              <Grid container justifyContent="center"  item xs={12}>
+              {/* <Grid container justifyContent="center"  item xs={12}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Grid container spacing={2} mt={5}>
                 <Grid item xs={12} sm={6}>
@@ -192,7 +201,7 @@ const Events = () => {
                 </Grid>
               </Grid>
               </LocalizationProvider>
-              </Grid>
+              </Grid> */}
 
               <Grid container justifyContent="center"  item xs={12}>
               <input
