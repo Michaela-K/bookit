@@ -31,10 +31,10 @@ const Events = () => {
   const handleChange = (newValue) => {
     setValue(newValue);
   };
-  // const handleSubmit =(e) =>{
-  //   e.preventDefault();
-  //   console.log("submitted")
-  // }
+  const handleSubmit = e =>{
+    e.preventDefault();
+    console.log("submitted")
+  }
 
   return (
       <Container component="main" maxWidth="lg">
@@ -53,8 +53,8 @@ const Events = () => {
           <Typography component="h1" variant="h5">
            Create an Event
           </Typography>
-          {/* <form onSubmit ={handleSubmit()}> */}
-          <Box component="form" noValidate sx={{ mt: 3 }}>
+          <form onSubmit={handleSubmit}>
+          <Box noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -267,7 +267,7 @@ const Events = () => {
               </Grid>
             </Grid>
           </Box>
-          {/* </form> */}
+          </form>
         </Box>
       </Container>
   )
