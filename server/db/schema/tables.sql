@@ -23,6 +23,5 @@ CREATE TABLE events (
   time VARCHAR(255),
   description TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  thumbnail VARCHAR(255),
-  link VARCHAR(255) NOT NULL
+  thumbnail VARCHAR(255)
 );
