@@ -32,15 +32,15 @@ const Events = () => {
     setValue(newValue);
   };
 
+  const user_id = 1;
   const [event, setEvent] = useState({
-    organizer: "",
+    organizer: user_id,
     title:"",
     location:"",
     date:"",
     time:"",
     description:"",
-    firstName:"",
-    lastName:"",
+    fullName:"",
     email:""
   })
 
@@ -78,10 +78,9 @@ const Events = () => {
                 <TextField
                   autoComplete="organizer"
                   name="organizer"
-                  required
                   fullWidth
                   id="organizer"
-                  label="Organizer"
+                  label="User Name"
                   autoFocus
                   onChange={handleChange2}
                 />
@@ -172,7 +171,7 @@ const Events = () => {
                   multiline
                   rows={4}
                   id="description"
-                  label="Description"
+                  label="Description: describe the event, attach a map location or a pinterest idea board"
                   name="description"
                   autoComplete="description"
                   onChange={handleChange2}
@@ -249,19 +248,19 @@ const Events = () => {
               Your Information
             </Typography>
             <Grid container spacing={2} mt={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="fullName"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="fullName"
+                  label="Full Name"
                   autoFocus
                   onChange={handleChange2}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
@@ -271,7 +270,7 @@ const Events = () => {
                   autoComplete="family-name"
                   onChange={handleChange2}
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   required

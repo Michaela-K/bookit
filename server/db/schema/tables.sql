@@ -19,11 +19,10 @@ CREATE TABLE events (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR(255),
   location VARCHAR(255),
-  lat DECIMAL,
-  lng DECIMAL,
   date VARCHAR(255),
   time VARCHAR(255),
   description TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  thumbnail VARCHAR(255)
+  thumbnail VARCHAR(255),
+  link VARCHAR(255) NOT NULL
 );
