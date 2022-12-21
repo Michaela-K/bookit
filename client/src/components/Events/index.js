@@ -31,10 +31,6 @@ const Events = () => {
   const handleChange = (newValue) => {
     setValue(newValue);
   };
-  const handleSubmit = e =>{
-    e.preventDefault();
-    console.log("submitted")
-  }
 
   const [event, setEvent] = useState({
     organizer: "",
@@ -42,8 +38,21 @@ const Events = () => {
     location:"",
     date:"",
     time:"",
-    description:""   
+    description:"",
+    firstName:"",
+    lastName:"",
+    email:""
   })
+
+  const handleChange2 = (e) => {
+    setEvent({...event, [e.target.name]: e.target.value});
+    // console.log(e.target.name, e.target.value)
+  };
+  const handleSubmit = e =>{
+    e.preventDefault();
+    console.log(event)
+  }
+
 
   return (
       <Container component="main" maxWidth="lg">
@@ -74,6 +83,7 @@ const Events = () => {
                   id="organizer"
                   label="Organizer"
                   autoFocus
+                  onChange={handleChange2}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -84,6 +94,7 @@ const Events = () => {
                   label="Event Name"
                   name="title"
                   autoComplete="title"
+                  onChange={handleChange2}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -94,6 +105,7 @@ const Events = () => {
                   label="Location"
                   name="location"
                   autoComplete="location"
+                  onChange={handleChange2}
                 />
               </Grid>
               {/* <Grid item xs={12} sm={6}>
@@ -112,8 +124,10 @@ const Events = () => {
                 id="date"
                 label="Date"
                 type="date"
-                defaultValue="2022-12-30"
+                name="date"
+                // defaultValue="2022-12-30"
                 fullWidth
+                onChange={handleChange2}
                 // sx={{ width: 220 }}
                 InputLabelProps={{
                   shrink: true,
@@ -125,8 +139,10 @@ const Events = () => {
                 id="time"
                 label="Time"
                 type="time"
-                defaultValue="08:30"
+                name="time"
+                // defaultValue="08:30"
                 fullWidth
+                onChange={handleChange2}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -159,6 +175,7 @@ const Events = () => {
                   label="Description"
                   name="description"
                   autoComplete="description"
+                  onChange={handleChange2}
                 />
               </Grid>
 
@@ -241,6 +258,7 @@ const Events = () => {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={handleChange2}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -251,6 +269,7 @@ const Events = () => {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={handleChange2}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -261,6 +280,7 @@ const Events = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={handleChange2}
                 />
               </Grid>
             </Grid>
