@@ -24,13 +24,19 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
+
 const Events = () => {
-
   const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
+  const [selectedFile, setSelectedFile] = useState(null);
+  const fileInput = React.useRef();
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
+  const fileSelected = e => {
+    setSelectedFile(e.target.files[0].name)
+  }
+
+  // const handleChange = (newValue) => {
+  //   setValue(newValue);
+  // };
 
   const user_id = 1;
   const [event, setEvent] = useState({
@@ -117,17 +123,6 @@ const Events = () => {
                   onChange={handleChange2}
                 />
               </Grid>
-              {/* <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="I'm not sure what this should be yet?"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid> */}
               <Grid item xs={12} sm={6}>
               <TextField
                 id="date"
@@ -230,20 +225,23 @@ const Events = () => {
               </Grid> */}
 
               <Grid container justifyContent="center"  item xs={12}>
+              <label htmlFor="thumbnail">
               <input
                 accept="image/*"
+                ref={fileInput} 
                 // className={classes.input}
                 style={{ display: 'none' }}
-                id="raised-button-file"
-                multiple
+                id="thumbnail"
+                name="thumbnail"
                 type="file"
                 hidden
+                onChange={fileSelected}
                 />
-              <label htmlFor="raised-button-file">
                 <Button 
                 //  variant="contained"
                  variant="outlined"
                  component="label"
+                 onClick={()=>fileInput.current.click()}
                   // variant="raised" 
                   // component="span" 
                   // className={classes.button}
@@ -270,17 +268,6 @@ const Events = () => {
                   onChange={handleChange2}
                 />
               </Grid>
-              {/* <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                  onChange={handleChange2}
-                />
-              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   required
