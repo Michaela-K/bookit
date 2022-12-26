@@ -48,8 +48,18 @@ const Events = () => {
     setEvent({...event, [e.target.name]: e.target.value});
     // console.log(e.target.name, e.target.value)
   };
-  const handleSubmit = e =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
+    console.log(event)
+
+    const res = await fetch('http://localhost:4000/api/events',{
+      method:'POST',
+      body: JSON.stringify(event),
+      headers: {"Content-Type": "application/json",
+      'Access-Control-Allow-Origin': '*'}
+    });
+    const data = await res.json()
+    console.log(data)
     console.log(event)
   }
 
@@ -71,7 +81,7 @@ const Events = () => {
           <Typography component="h1" variant="h5">
            Create an Event
           </Typography>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} action="/create" method="POST">
           <Box noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>

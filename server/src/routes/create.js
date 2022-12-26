@@ -4,19 +4,20 @@ const router = Router();
 
 module.exports = (pool) => {
 
-  //post /new events data for a user
+  //post /create events data for a user
   router.post('/', (req, res) => {
     const event = req.body
-    const user_id = 4;
+    console.log(event);
+    const id = 4;
+    const user_id = 1;
     const title = 'Freds Retirement';
     const location = 'Pizza Hut';
-    const lat = 43.6532;
-    const lng = 79.3832;
+    const date = "2022-12-12";
+    const time = "08:30";
     const description = 'Freds send off at his favourite place';
-    const created_at ='2022-12-12T07:00:00.000Z';
     const thumbnail = 'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
     const queryString = `INSERT INTO events(user_id, title, location, lat, lng, description, created_at, thumbnail) VALUES($1, $2, $3, $4, $5, $6) RETURNING *;`;
-    const values = [user_id, title, location, lat, lng, description, created_at, thumbnail];
+    const values = [user_id, title, location, date, time, description, thumbnail];
     // const values = [user_id, event.title, event.location, event.password, event.date, event.description];
     return pool
       .query(queryString, values)
@@ -31,7 +32,7 @@ module.exports = (pool) => {
         // console.log(result.rows[0].id);
         // res.redirect(`/`);
         // res.redirect(`/users/${user_id}`);
-        res.redirect(`/events/${user_id}`);
+        res.redirect(`/events/${id}`);
         })
   });
 

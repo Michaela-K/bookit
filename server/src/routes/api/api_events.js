@@ -2,6 +2,32 @@ const {Router} = require('express');
 const router = Router();
 
 module.exports = (pool) => {
+  //post /create events data for a user
+  router.post('/', (req, res) => {
+    const event = req.body;
+    console.log(event);
+    const user_id = 1;
+    const thumbnail = 'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+    const queryString = `INSERT INTO events(user_id, title, location, date, time, description, thumbnail) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
+    const values = [user_id, event.title, event.location, event.date, event.time, event.description, thumbnail];
+    // const values = [user_id, event.title, event.location, event.password, event.date, event.description];
+    return pool
+      .query(queryString, values)
+      .then(result => {
+        console.log(result);
+        if (!result) {
+          console.log("post create result", result);
+          res.send({error: "error"});
+          return;
+        }
+        // req.session["user_id"] = result.rows[0].id;
+        // console.log(result.rows[0].id);
+        // res.redirect(`/`);
+        // res.redirect(`/users/${user_id}`);
+        res.redirect(`/events/${id}`);
+        })
+  });
+
 // GET api/events/search
   router.get("/search", (req, res) => {
     const id = req.params.id;
