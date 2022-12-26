@@ -173,6 +173,18 @@ const Events = () => {
                 <TextField
                   required
                   fullWidth
+                  id="thumbnail"
+                  label="add a link to your event image"
+                  name="thumbnail"
+                  autoComplete="thumbnail"
+                  onChange={handleChange2}
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
                   multiline
                   rows={4}
                   id="description"
@@ -224,7 +236,8 @@ const Events = () => {
               </LocalizationProvider>
               </Grid> */}
 
-              <Grid container justifyContent="center"  item xs={12}>
+
+              {/* <Grid container justifyContent="center"  item xs={12}>
               <label htmlFor="thumbnail">
               <input
                 accept="image/*"
@@ -249,7 +262,9 @@ const Events = () => {
                   Upload Attachments
                 </Button>
               </label> 
-              </Grid>
+              </Grid> */}
+
+
             </Grid>
               {/* <Divider orientation="vertical" flexItem /> */}
             <Typography component="h1" variant="h5" sx={{mt: "15vh", display: "flex", justifyContent: "center"}}>
