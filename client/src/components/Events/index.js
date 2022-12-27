@@ -26,7 +26,7 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 
 const Events = () => {
-  const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
+  const [value, setValue] = React.useState(dayjs().format());
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInput = React.useRef();
 
@@ -34,9 +34,9 @@ const Events = () => {
     setSelectedFile(e.target.files[0].name)
   }
 
-  // const handleChange = (newValue) => {
-  //   setValue(newValue);
-  // };
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
 
   const user_id = 1;
   const [event, setEvent] = useState({
@@ -51,7 +51,7 @@ const Events = () => {
   })
 
   const handleChange2 = (e) => {
-    setEvent({...event, [e.target.name]: e.target.value});
+    setEvent({...event, [e.target.name]: e.target.value, "date":value});
     // console.log(e.target.name, e.target.value)
   };
   const handleSubmit = async (e) =>{
@@ -123,7 +123,7 @@ const Events = () => {
                   onChange={handleChange2}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
               <TextField
                 id="date"
                 label="Date"
@@ -137,7 +137,7 @@ const Events = () => {
                   shrink: true,
                 }}
               />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12} sm={6}>
               <TextField
                 id="time"
@@ -158,9 +158,12 @@ const Events = () => {
               </Grid>
               {/* <Grid item xs={12}>
               <TextField
-                id="datetime-local"
-                label="Date & Time"
+                id="date"
+                label="date"
                 type="datetime-local"
+                // pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
+                inputFormat="yyyy-MM-dd"
+                name="date"
                 defaultValue={Date.now()}
                 fullWidth
                 // sx={{ width: 250 }}
@@ -195,10 +198,10 @@ const Events = () => {
                 />
               </Grid>
 
-              {/* <Grid container justifyContent="center"  item xs={12}>
+              <Grid container justifyContent="center"  item xs={12}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Grid container spacing={2} mt={5}>
-                <Grid item xs={12} sm={6}>
+                {/* <Grid item xs={12} sm={6}>
                   <DesktopDatePicker
                     label="Date desktop"
                     inputFormat="MM/DD/YYYY"
@@ -223,18 +226,24 @@ const Events = () => {
                     onChange={handleChange}
                     renderInput={(params) => <TextField {...params} />}
                   />
-                </Grid>
+                </Grid> */}
                 <Grid item xs={12} sm={6}>
                   <DateTimePicker
                     label="Date&Time picker"
+                    name="date"
                     value={value}
-                    onChange={handleChange}
+                    onChange={(newValue) => {
+                      console.log(value)
+                      setValue(newValue.format());
+                      console.log(value)
+                      handleChange2();
+                    }}
                     renderInput={(params) => <TextField {...params} />}
                   />
                 </Grid>
               </Grid>
               </LocalizationProvider>
-              </Grid> */}
+              </Grid>
 
 
               {/* <Grid container justifyContent="center"  item xs={12}>
