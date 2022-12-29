@@ -43,8 +43,8 @@ const Events = () => {
     organizer: user_id,
     title:"",
     location:"",
-    date:"",
-    time:"",
+    startdate:"",
+    startend:"",
     description:"",
     fullName:"",
     email:""
@@ -139,7 +139,7 @@ const Events = () => {
                 }}
               />
               </Grid> */}
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
               <TextField
                 id="time"
                 label="Time"
@@ -156,7 +156,7 @@ const Events = () => {
                 }}
                 // sx={{ width: 150 }}
               />
-              </Grid>
+              </Grid> */}
               {/* <Grid item xs={12}>
               <TextField
                 id="date"
@@ -231,7 +231,21 @@ const Events = () => {
                 <Grid item xs={12} sm={6}>
                   <DateTimePicker
                     label="Date&Time picker"
-                    name="date"
+                    name="startdate"
+                    onChange={(newValue) => {
+                      setValue(newValue.format());
+                      // handleChange(newValue);
+                      console.log(newValue)
+                      handleChange2(value);
+                    }}
+                    value={value}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <DateTimePicker
+                    label="Date&Time picker"
+                    name="enddate"
                     onChange={(newValue) => {
                       setValue(newValue.format());
                       // handleChange(newValue);
