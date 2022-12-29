@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Calendar } from '@fullcalendar/core';
 import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -9,6 +10,10 @@ import { ConnectingAirportsOutlined } from '@mui/icons-material'
 const MyEvents = () => {
   const [weekendsVisible, setWeekendsVisible] = useState(true);
   const [currentEvents, setCurrentEvents] = useState([]);
+
+  var calendar = new Calendar(calendarEl,{
+    events: 'http://localhost:4000/api/events'
+  });
  
   const renderSidebar=()=>{
     return (
@@ -125,7 +130,7 @@ const MyEvents = () => {
             selectMirror={true}
             dayMaxEvents={true}
             weekends={weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+            initialEvents={calendar} // alternatively, use the `events` setting to fetch from a feed
             select={handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={handleEventClick}
