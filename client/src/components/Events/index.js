@@ -35,7 +35,7 @@ const Events = () => {
   }
 
   const handleChange = (newValue) => {
-    setValue(newValue);
+    setValue(newValue.format());
   };
 
   const user_id = 1;
@@ -65,6 +65,7 @@ const Events = () => {
       'Access-Control-Allow-Origin': '*'}
     });
     const data = await res.json()
+    // window.location.reload()
     console.log(data)
     console.log(event)
   }
@@ -231,13 +232,13 @@ const Events = () => {
                   <DateTimePicker
                     label="Date&Time picker"
                     name="date"
-                    value={value}
                     onChange={(newValue) => {
-                      console.log(value)
                       setValue(newValue.format());
-                      console.log(value)
-                      handleChange2();
+                      // handleChange(newValue);
+                      console.log(newValue)
+                      handleChange2(value);
                     }}
+                    value={value}
                     renderInput={(params) => <TextField {...params} />}
                   />
                 </Grid>
