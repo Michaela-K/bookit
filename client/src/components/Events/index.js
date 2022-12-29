@@ -26,7 +26,8 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 
 const Events = () => {
-  const [value, setValue] = React.useState(dayjs().format());
+  const [valueStart, setValueStart] = React.useState(dayjs().format());
+  const [valueEnd, setValueEnd] = React.useState(dayjs().format());
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInput = React.useRef();
 
@@ -34,8 +35,11 @@ const Events = () => {
     setSelectedFile(e.target.files[0].name)
   }
 
-  const handleChange = (newValue) => {
-    setValue(newValue.format());
+  const handleChangeStart = (startValue) => {
+    setValueStart(startValue.format());
+  };
+  const handleChangeEnd = (endValue) => {
+    setValueEnd(endValue.format());
   };
 
   const user_id = 1;
@@ -44,14 +48,14 @@ const Events = () => {
     title:"",
     location:"",
     startdate:"",
-    startend:"",
+    enddate:"",
     description:"",
     fullName:"",
     email:""
   })
 
   const handleChange2 = (e) => {
-    setEvent({...event, [e.target.name]: e.target.value, "date":value});
+    setEvent({...event, [e.target.name]: e.target.value, "startdate":valueStart,"enddate":valueEnd});
     // console.log(e.target.name, e.target.value)
   };
   const handleSubmit = async (e) =>{
@@ -232,13 +236,13 @@ const Events = () => {
                   <DateTimePicker
                     label="Date&Time picker"
                     name="startdate"
-                    onChange={(newValue) => {
-                      setValue(newValue.format());
-                      // handleChange(newValue);
-                      console.log(newValue)
-                      handleChange2(value);
+                    onChange={(startValue) => {
+                      setValueStart(startValue.format());
+                      // handleChange(startValue);
+                      console.log(startValue)
+                      handleChange2(valueStart);
                     }}
-                    value={value}
+                    value={valueStart}
                     renderInput={(params) => <TextField {...params} />}
                   />
                 </Grid>
@@ -246,13 +250,13 @@ const Events = () => {
                   <DateTimePicker
                     label="Date&Time picker"
                     name="enddate"
-                    onChange={(newValue) => {
-                      setValue(newValue.format());
-                      // handleChange(newValue);
-                      console.log(newValue)
-                      handleChange2(value);
+                    onChange={(endValue) => {
+                      setValueEnd(endValue.format());
+                      // handleChange(endValue);
+                      console.log(endValue)
+                      handleChange2(valueEnd);
                     }}
-                    value={value}
+                    value={valueEnd}
                     renderInput={(params) => <TextField {...params} />}
                   />
                 </Grid>
