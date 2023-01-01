@@ -19,7 +19,7 @@ CREATE TABLE events (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR(255),
   location VARCHAR(255),
-  startdate VARCHAR(255),
+  start VARCHAR(255),
   enddate VARCHAR(255),
   description TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

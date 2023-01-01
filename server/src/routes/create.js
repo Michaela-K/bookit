@@ -12,12 +12,12 @@ module.exports = (pool) => {
     const user_id = 1;
     const title = 'Freds Retirement';
     const location = 'Pizza Hut';
-    const startdate = "2022-12-12";
+    const start = "2022-12-12";
     const enddate = "08:30";
     const description = 'Freds send off at his favourite place';
     const thumbnail = 'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
-    const queryString = `INSERT INTO events(user_id, title, location, startdate, enddate, description, created_at, thumbnail) VALUES($1, $2, $3, $4, $5, $6) RETURNING *;`;
-    const values = [user_id, title, location, startdate, enddate, description, thumbnail];
+    const queryString = `INSERT INTO events(user_id, title, location, start, enddate, description, created_at, thumbnail) VALUES($1, $2, $3, $4, $5, $6) RETURNING *;`;
+    const values = [user_id, title, location, start, enddate, description, thumbnail];
     // const values = [user_id, event.title, event.location, event.password, event.date, event.description];
     return pool
       .query(queryString, values)

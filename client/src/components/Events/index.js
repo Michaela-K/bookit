@@ -47,7 +47,7 @@ const Events = () => {
     organizer: user_id,
     title:"",
     location:"",
-    startdate:"",
+    start:"",
     enddate:"",
     description:"",
     fullName:"",
@@ -55,7 +55,7 @@ const Events = () => {
   })
 
   const handleChange2 = (e) => {
-    setEvent({...event, [e.target.name]: e.target.value, "startdate":valueStart,"enddate":valueEnd});
+    setEvent({...event, [e.target.name]: e.target.value, "start":valueStart,"enddate":valueEnd});
     // console.log(e.target.name, e.target.value)
   };
   const handleSubmit = async (e) =>{
@@ -69,9 +69,9 @@ const Events = () => {
       'Access-Control-Allow-Origin': '*'}
     });
     const data = await res.json()
-    // window.location.reload()
     console.log(data)
     console.log(event)
+    window.location.reload()
   }
 
 
@@ -235,7 +235,7 @@ const Events = () => {
                 <Grid item xs={12} sm={6}>
                   <DateTimePicker
                     label="Date&Time picker"
-                    name="startdate"
+                    name="start"
                     onChange={(startValue) => {
                       setValueStart(startValue.format());
                       // handleChange(startValue);
