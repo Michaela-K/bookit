@@ -116,11 +116,16 @@ const MyEvents = () => {
   function renderEventContent(eventInfo) {
   return (
     <>
-      <b>{eventInfo.timeText}</b>
-      <b>{eventInfo.event._def.extendedProps.enddate}</b>
-      <i>{eventInfo.event.title}</i>
-      <b>{eventInfo.event._def.extendedProps.location}</b>
+    <div>
+      <u><b>{eventInfo.timeText}</b></u>
+      <br></br>
+      {/* <b>{eventInfo.event._def.extendedProps.enddate}</b> */}
+      <b>{eventInfo.event.title}</b>
+      <br></br>
+      <i>{eventInfo.event._def.extendedProps.location}</i>
+      <br></br>
       <i>{eventInfo.event.title, console.log(eventInfo.event._def.extendedProps)}</i>
+    </div>
     </>
   )
   }
