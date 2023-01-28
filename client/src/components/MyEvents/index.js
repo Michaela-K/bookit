@@ -7,6 +7,10 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import { ConnectingAirportsOutlined } from '@mui/icons-material'
 
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+dayjs.extend(customParseFormat);
+
 
 const MyEvents = () => {
   const [weekendsVisible, setWeekendsVisible] = useState(true);
@@ -114,6 +118,9 @@ const MyEvents = () => {
   // }
   
   function renderEventContent(eventInfo) {
+    let endDate = eventInfo.event._def.extendedProps.enddate;
+    let end = dayjs('1:02:03 PM -05:00', 'H:mm:ss A Z');
+    console.log({end}.end.$d)
   return (
     <>
     <div>
