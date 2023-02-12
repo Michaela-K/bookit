@@ -56,6 +56,22 @@ router.delete("/:id", (req, res) => {
       });
   });
 
+//Update one evemnt
+//  /events/update/:id
+router.put("/:id", (req, res) => {
+  const event = req.body;
+  return pool.query("UPDATE events SET user_id = $1, title = $2, location = $3, start = $4, enddate = $5, description = $6, thumbnail = $7 where id = $8 returning *",
+    [event.user_id, event.title, event.location, event.start, event.enddate, event.description, event.thumbnail, req.params.id])
+  .then(result => {
+    return res.json(result.rows[0])
+  })
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message });
+  });
+});
+
 // GET api/events/:id
 router.get("/:id", (req, res) => {
   const id = req.params.id;
