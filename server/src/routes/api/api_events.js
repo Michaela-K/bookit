@@ -2,11 +2,24 @@ const {Router} = require('express');
 const router = Router();
 
 module.exports = (pool) => {
+  //DELETE  an event
+router.delete("/:id", (req, res) => {
+  return pool.query("DELETE FROM events where id = $1", [req.params.id])
+  .then(result => {
+    return res.json(result.rows[0])
+  })
+  .catch(err => {
+    res
+    .status(500)
+    .json({ error: err.message });
+  });
+});
+
   //post /create events data for a user
-  router.post('/', (req, res) => {
+  router.post('/:id', (req, res) => {
     const event = req.body;
     console.log(event);
-    const user_id = 1;
+    const user_id = req.params.id;
     // const thumbnail = 'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
     const queryString = `INSERT INTO events(user_id, title, location, start, enddate, description, thumbnail) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
     const values = [user_id, event.title, event.location, event.start, event.enddate, event.description, event.thumbnail];
@@ -15,29 +28,20 @@ module.exports = (pool) => {
       .query(queryString, values)
       .then(result => {
         console.log(result);
-        if (!result) {
-          console.log("post create result", result);
-          res.send({error: "error"});
-          return;
-        }
-        // req.session["user_id"] = result.rows[0].id;
-        // console.log(result.rows[0].id);
-        // res.redirect(`/`);
-        // res.redirect(`/users/${user_id}`);
-        res.redirect(`api/events/`);
-        })
+        return res.json(result.rows[0])
+    })
+    .catch(err => {
+      res
+      .status(500)
+      .json({ error: err.message });
+    });
   });
 
 // GET api/events/search
   router.get("/search", (req, res) => {
     const id = req.params.id;
     const query = req.params.query;
-    pool
-    .query(`
-        SELECT *
-        FROM events
-        WHERE title LIKE $1;`
-        , ['%'||query||'%'])
+    pool.query(`SELECT * FROM events WHERE title LIKE $1;`, ['%'||query||'%'])
         .then(data => {
             // console.log("api_events data", data);
         console.log("query Data", data);
