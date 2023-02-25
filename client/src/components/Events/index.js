@@ -68,9 +68,6 @@ const Events = () => {
       headers: {"Content-Type": "application/json",
       'Access-Control-Allow-Origin': '*'}
     })
-//     .then((response) => response.json())
-//  .then((data) => console.log(data))
-//  .catch((error) => console.log(error));
     const data = await res.json()
     console.log(data)
     console.log(event)
@@ -239,6 +236,7 @@ const Events = () => {
                   <DateTimePicker
                     label="Date&Time picker"
                     name="start"
+                    renderInput={(params) => <TextField {...params} />}
                     onChange={(startValue) => {
                       setValueStart(startValue.format());
                       // handleChange(startValue);
@@ -246,7 +244,6 @@ const Events = () => {
                       handleChange2(valueStart);
                     }}
                     value={valueStart}
-                    renderInput={(params) => <TextField {...params} />}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
