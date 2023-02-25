@@ -27,95 +27,11 @@ const MyEvents = () => {
     return data;
 })
 
-  // let calendarEl = document.getElementById('calendar');
-
-  // let cal = new Calendar(calendarEl,{
-  //   events: "http://localhost:4000/api/events"
-  //   });
-
-  // let event = calendar.getEventById('a') // an event object!
-  // let start = event.start
- 
-  // const renderSidebar=()=>{
-  //   return (
-  //     <div className='demo-app-sidebar'>
-  //       <div className='demo-app-sidebar-section'>
-  //         <h2>Instructions</h2>
-  //         <ul>
-  //           <li>Select dates and you will be prompted to create a new event</li>
-  //           <li>Drag, drop, and resize events</li>
-  //           <li>Click an event to delete it</li>
-  //         </ul>
-  //       </div>
-  //       <div className='demo-app-sidebar-section'>
-  //         <label>
-  //           <input
-  //             type='checkbox'
-  //             checked={weekendsVisible}
-  //             onChange={handleWeekendsToggle}
-  //           ></input>
-  //           toggle weekends
-  //         </label>
-  //       </div>
-  //       <div className='demo-app-sidebar-section'>
-  //         <h2>All Events ({currentEvents.length})</h2>
-  //         <ul>
-  //           {/* {currentEvents.map(renderSidebarEvent)} */}
-  //         </ul>
-  //       </div>
-  //     </div>
-  //   )
-  // }
-  
-  const handleWeekendsToggle = () => {
-    setWeekendsVisible(!weekendsVisible)
-  }
-  
-  const handleDateSelect = (selectInfo) => {
-    let title = prompt('Please enter a new title for your event')
-    let calendarApi = selectInfo.view.calendar
-    console.log(selectInfo)
-    console.log(selectInfo.view)
-    console.log(calendarApi)
-    
-    calendarApi.unselect() // clear date selection
-    
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-      }, setCurrentEvents(title)); 
-      console.log(currentEvents)
-      // console.log(title)
-      // const obj = {
-      //   id: createEventId(),
-      //   title,
-      //   start: selectInfo.startStr,
-      //   end: selectInfo.endStr,
-      //   allDay: selectInfo.allDay};
-      //   console.log(obj)
-      //   console.log(currentEvents)
-      // setCurrentEvents([...currentEvents, obj]);
-      // setCurrentEvents(calendarApi.getEventById("1"))
-      // setCurrentEvents(prevCurrentEvents =>  prevCurrentEvents + title);
-    }
-  }
-  
-  // const handleEventClick = (clickInfo) => {
-  //   if (window.confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-  //     clickInfo.event.remove()
-  //   }
-  // }
   
   const handleEvents = (events) => {
     setCurrentEvents({currentEvents: events
     })
   }
-  
-  // }
   
   function renderEventContent(eventInfo) {
     let endDate = eventInfo.event._def.extendedProps.enddate;
@@ -131,26 +47,15 @@ const MyEvents = () => {
       <br></br>
       <i>{eventInfo.event._def.extendedProps.location}</i>
       <br></br>
-      <i>{eventInfo.event.title, console.log(eventInfo.event._def.extendedProps)}</i>
+      <i>{eventInfo.event.title}</i>
     </div>
     </>
   )
   }
-  
-  // function renderSidebarEvent(event) {
-  // return (
-  //   <li key={event.id}>
-  //     <b>{formatDate(event.start, {year: 'numeric', month: 'short', day: 'numeric'})}</b>
-  //     <i>{event.title}</i>
-  //   </li>
-  // )
-  // }
-  
 
   return (
     <>
       <div className='demo-app'>
-        {/* {renderSidebar()} */}
         <div className='demo-app-main'>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -165,17 +70,9 @@ const MyEvents = () => {
             selectMirror={true}
             dayMaxEvents={true}
             weekends={weekendsVisible}
-            // events={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
             events={events}
-            select={handleDateSelect}
             eventContent={renderEventContent} // custom render function
-            // eventClick={handleEventClick}
             eventsSet={handleEvents} // called after events are initialized/added/changed/removed
-            /* you can update a remote database when these fire:
-            eventAdd={function(){}}
-            eventChange={function(){}}
-            eventRemove={function(){}}
-            */
           />
         </div>
       </div>

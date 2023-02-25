@@ -62,12 +62,15 @@ const Events = () => {
     e.preventDefault();
     console.log(event)
 
-    const res = await fetch('http://localhost:4000/api/events',{
+    const res = await fetch('http://localhost:4000/api/events/user_id',{
       method:'POST',
       body: JSON.stringify(event),
       headers: {"Content-Type": "application/json",
       'Access-Control-Allow-Origin': '*'}
-    });
+    })
+//     .then((response) => response.json())
+//  .then((data) => console.log(data))
+//  .catch((error) => console.log(error));
     const data = await res.json()
     console.log(data)
     console.log(event)
