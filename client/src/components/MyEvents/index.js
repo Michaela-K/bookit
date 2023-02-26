@@ -24,6 +24,9 @@ const MyEvents = () => {
     setModal(!modal);
   };
 
+  //GetId of Event Clicked
+  const  [eventId, setEventId]=useState(0)
+
   const [eventsData, setEventsData] = useState(async() => {
     const res = await fetch('http://localhost:4000/api/events');
     const data = await res.json();
@@ -34,12 +37,6 @@ const MyEvents = () => {
 
     return data;
 })
-
-const eventDetails ={
-  onClick: (e) => {
-    console.log(e)
-  }
-}
 
   // let calendarEl = document.getElementById('calendar');
 
@@ -123,10 +120,11 @@ const eventDetails ={
   //     clickInfo.event.remove()
   //   }
   // }
-  let publicId = 0;
-  const handleEventClick = (eventsData) => {
+  
+  const handleEventClick = (e) => {
+    setEventId(e.event._def.publicId); //id of clicked event
+    console.log(eventId)
     setModal(!modal)
-    publicId = eventsData.event._def.publicId;  //id of clicked event
   }
   
   const handleEvents = (events) => {
@@ -170,7 +168,7 @@ const eventDetails ={
       <div className='demo-app'>
         {renderSidebar()}
         <div className='demo-app-main'>
-          <Modal modal={modal} setModal={setModal} toggleModal={toggleModal} eventsData={eventsData} publicId={publicId}></Modal>
+          <Modal modal={modal} setModal={setModal} toggleModal={toggleModal} eventsData={eventsData} eventId={eventId}></Modal>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
