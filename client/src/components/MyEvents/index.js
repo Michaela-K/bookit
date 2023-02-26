@@ -9,6 +9,7 @@ import { ConnectingAirportsOutlined } from '@mui/icons-material'
 
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import Modal from '../Modal/Modal';
 dayjs.extend(customParseFormat);
 
 
@@ -17,11 +18,11 @@ const MyEvents = () => {
   const [currentEvents, setCurrentEvents] = useState([]);
 
   // Modal
-  const [modalInfo, setModalInfo] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   const [eventsData, setEventsData] = useState(async() => {
     const res = await fetch('http://localhost:4000/api/events');
@@ -35,8 +36,8 @@ const MyEvents = () => {
 })
 
 const eventDetails ={
-  onClick: (data) => {
-    console.log(data)
+  onClick: (e) => {
+    console.log(e)
   }
 }
 
@@ -122,11 +123,10 @@ const eventDetails ={
   //     clickInfo.event.remove()
   //   }
   // }
-
+  let publicId = 0;
   const handleEventClick = (eventsData) => {
-    // onClick: (data) => {
-      console.log(eventsData.event._def.publicId)  //id of clicked event
-    // }
+    setModal(!modal)
+    publicId = eventsData.event._def.publicId;  //id of clicked event
   }
   
   const handleEvents = (events) => {
@@ -170,6 +170,7 @@ const eventDetails ={
       <div className='demo-app'>
         {renderSidebar()}
         <div className='demo-app-main'>
+          <Modal modal={modal} setModal={setModal} toggleModal={toggleModal} eventsData={eventsData} publicId={publicId}></Modal>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
