@@ -16,16 +16,29 @@ const MyEvents = () => {
   const [weekendsVisible, setWeekendsVisible] = useState(true);
   const [currentEvents, setCurrentEvents] = useState([]);
 
-  const [events, setEvents] = useState(async() => {
+  // Modal
+  const [modalInfo, setModalInfo] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [eventsData, setEventsData] = useState(async() => {
     const res = await fetch('http://localhost:4000/api/events');
     const data = await res.json();
     console.log(res)
     console.log(data)
-    console.log(INITIAL_EVENTS)
-    setEvents(data)
+    // console.log(INITIAL_EVENTS)
+    setEventsData(data)
 
     return data;
 })
+
+const eventDetails ={
+  onClick: (data) => {
+    console.log(data)
+  }
+}
 
   // let calendarEl = document.getElementById('calendar');
 
@@ -36,36 +49,36 @@ const MyEvents = () => {
   // let event = calendar.getEventById('a') // an event object!
   // let start = event.start
  
-  // const renderSidebar=()=>{
-  //   return (
-  //     <div className='demo-app-sidebar'>
-  //       <div className='demo-app-sidebar-section'>
-  //         {/* <h2>Instructions</h2>
-  //         <ul>
-  //           <li>Select dates and you will be prompted to create a new event</li>
-  //           <li>Drag, drop, and resize events</li>
-  //           <li>Click an event to delete it</li>
-  //         </ul> */}
-  //       </div>
-  //       <div className='demo-app-sidebar-section'>
-  //         <label>
-  //           <input
-  //             type='checkbox'
-  //             checked={weekendsVisible}
-  //             onChange={handleWeekendsToggle}
-  //           ></input>
-  //           toggle weekends
-  //         </label>
-  //       </div>
-  //       <div className='demo-app-sidebar-section'>
-  //         {/* <h4>All Events ({currentEvents.currentEvents.length})</h4> */}
-  //         <ul>
-  //           {events.map(renderSidebarEvent)}
-  //         </ul>
-  //       </div>
-  //     </div>
-  //   )
-  // }
+  const renderSidebar=()=>{
+    return (
+      <div className='demo-app-sidebar'>
+        <div className='demo-app-sidebar-section'>
+          {/* <h2>Instructions</h2>
+          <ul>
+            <li>Select dates and you will be prompted to create a new event</li>
+            <li>Drag, drop, and resize events</li>
+            <li>Click an event to delete it</li>
+          </ul> */}
+        </div>
+        <div className='demo-app-sidebar-section'>
+          <label>
+            <input
+              type='checkbox'
+              checked={weekendsVisible}
+              onChange={handleWeekendsToggle}
+            ></input>
+            toggle weekends
+          </label>
+        </div>
+        <div className='demo-app-sidebar-section'>
+          <h4>All Events ({eventsData.length})</h4>
+          <ul>
+            {/* {eventsData.map(renderSidebarEvent)} */}
+          </ul>
+        </div>
+      </div>
+    )
+  }
   
   const handleWeekendsToggle = () => {
     setWeekendsVisible(!weekendsVisible)
@@ -89,7 +102,7 @@ const MyEvents = () => {
         allDay: selectInfo.allDay,
       }, setCurrentEvents(title)); 
       console.log(currentEvents.currentEvents)
-      console.log(events)
+      // console.log(events)
       // const obj = {
       //   id: createEventId(),
       //   title,
@@ -109,6 +122,12 @@ const MyEvents = () => {
   //     clickInfo.event.remove()
   //   }
   // }
+
+  const handleEventClick = (eventsData) => {
+    // onClick: (data) => {
+      console.log(eventsData.event._def.publicId)  //id of clicked event
+    // }
+  }
   
   const handleEvents = (events) => {
     setCurrentEvents({currentEvents: events
@@ -137,19 +156,19 @@ const MyEvents = () => {
   )
   }
   
-  // function renderSidebarEvent(event) {
-  // return (
-  //   <li key={event.id}>
-  //     <div>{event.title}</div>
-  //     {/* <i>{formatDate(event._def.extendedProps.created_at, {year: 'numeric', month: 'short', day: 'numeric'})}</i> */}
-  //   </li>)
-  // }
+  function renderSidebarEvent(event) {
+  return (
+    <li key={event.id}>
+      <b>{event.title}</b> : 
+      <i>{formatDate(event.start, {year: 'numeric', month: 'short', day: 'numeric'})}</i>
+    </li>)
+  }
   
 
   return (
     <>
       <div className='demo-app'>
-        {/* {renderSidebar()} */}
+        {renderSidebar()}
         <div className='demo-app-main'>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -165,16 +184,17 @@ const MyEvents = () => {
             dayMaxEvents={true}
             weekends={weekendsVisible}
             // events={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-            events={events}
+            events={eventsData}
             // select={handleDateSelect}
             eventContent={renderEventContent} // custom render function
-            // eventClick={handleEventClick}
+            eventClick={handleEventClick}
             eventsSet={handleEvents} // called after events are initialized/added/changed/removed
             /* you can update a remote database when these fire:
             eventAdd={function(){}}
             eventChange={function(){}}
             eventRemove={function(){}}
             */
+          //  eventInfo={eventInfo}
           />
         </div>
       </div>
