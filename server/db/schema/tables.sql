@@ -4,6 +4,7 @@
 -- \d bookit ? - is for what output?
 -- \i db/schema/tables.sql
 
+
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS events CASCADE;
 

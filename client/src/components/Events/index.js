@@ -128,55 +128,7 @@ const Events = () => {
                   onChange={handleChange2}
                 />
               </Grid>
-              {/* <Grid item xs={12} sm={6}>
-              <TextField
-                id="date"
-                label="Date"
-                type="date"
-                name="date"
-                // defaultValue="2022-12-30"
-                fullWidth
-                onChange={handleChange2}
-                // sx={{ width: 220 }}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-              </Grid> */}
-              {/* <Grid item xs={12} sm={6}>
-              <TextField
-                id="time"
-                label="Time"
-                type="time"
-                name="time"
-                // defaultValue="08:30"
-                fullWidth
-                onChange={handleChange2}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                inputProps={{
-                  step: 300, // 5 min
-                }}
-                // sx={{ width: 150 }}
-              />
-              </Grid> */}
-              {/* <Grid item xs={12}>
-              <TextField
-                id="date"
-                label="date"
-                type="datetime-local"
-                // pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
-                inputFormat="yyyy-MM-dd"
-                name="date"
-                defaultValue={Date.now()}
-                fullWidth
-                // sx={{ width: 250 }}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                />
-              </Grid> */}
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -206,32 +158,7 @@ const Events = () => {
               <Grid container justifyContent="center"  item xs={12}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Grid container spacing={2} mt={5}>
-                {/* <Grid item xs={12} sm={6}>
-                  <DesktopDatePicker
-                    label="Date desktop"
-                    inputFormat="MM/DD/YYYY"
-                    value={value}
-                    onChange={handleChange}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <MobileDatePicker
-                    label="Date mobile"
-                    inputFormat="MM/DD/YYYY"
-                    value={value}
-                    onChange={handleChange}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                        </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TimePicker
-                    label="Time"
-                    value={value}
-                    onChange={handleChange}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                </Grid> */}
+                
                 <Grid item xs={12} sm={6}>
                   <DateTimePicker
                     label="Date&Time picker"
@@ -263,34 +190,6 @@ const Events = () => {
               </Grid>
               </LocalizationProvider>
               </Grid>
-
-
-              {/* <Grid container justifyContent="center"  item xs={12}>
-              <label htmlFor="thumbnail">
-              <input
-                accept="image/*"
-                ref={fileInput} 
-                // className={classes.input}
-                style={{ display: 'none' }}
-                id="thumbnail"
-                name="thumbnail"
-                type="file"
-                hidden
-                onChange={fileSelected}
-                />
-                <Button 
-                //  variant="contained"
-                 variant="outlined"
-                 component="label"
-                 onClick={()=>fileInput.current.click()}
-                  // variant="raised" 
-                  // component="span" 
-                  // className={classes.button}
-                  >
-                  Upload Attachments
-                </Button>
-              </label> 
-              </Grid> */}
 
 
             </Grid>
