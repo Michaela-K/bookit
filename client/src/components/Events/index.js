@@ -55,9 +55,24 @@ const Events = () => {
   })
 
   const handleChange2 = (e) => {
-    setEvent({...event, [e.target.name]: e.target.value, "start":valueStart,"enddate":valueEnd});
-    // console.log(e.target.name, e.target.value)
+    console.log(e);
+    setEvent({
+      ...event,
+      start: valueStart,
+      enddate: valueEnd,
+      [e.target.name]: e.target.name ? e.target.value : undefined
+    });
   };
+
+  const handleDatePickerChange = (name, dateValue) => {
+    setEvent({
+      ...event,
+      start: valueStart,
+      enddate: valueEnd,
+      [name]: dateValue
+    });
+  };
+
   const handleSubmit = async (e) =>{
     e.preventDefault();
     console.log(event)
@@ -161,29 +176,27 @@ const Events = () => {
                 
                 <Grid item xs={12} sm={6}>
                   <DateTimePicker
-                    label="Date&Time picker"
+                    label="Start date and time"
                     name="start"
                     renderInput={(params) => <TextField {...params} />}
                     onChange={(startValue) => {
-                      setValueStart(startValue.format());
-                      // handleChange(startValue);
-                      console.log(startValue)
-                      handleChange2(valueStart);
+                      setValueStart(startValue);
+                      handleDatePickerChange("start", startValue);
                     }}
                     value={valueStart}
+                    format="YYYY-MM-DD HH:mm:ss"
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <DateTimePicker
-                    label="Date&Time picker"
+                    label="End date and time"
                     name="enddate"
                     onChange={(endValue) => {
-                      setValueEnd(endValue.format());
-                      // handleChange(endValue);
-                      console.log(endValue)
-                      handleChange2(valueEnd);
+                      setValueEnd(endValue);
+                      handleDatePickerChange("enddate", endValue);
                     }}
                     value={valueEnd}
+                    format="YYYY-MM-DD HH:mm:ss"
                     renderInput={(params) => <TextField {...params} />}
                   />
                 </Grid>

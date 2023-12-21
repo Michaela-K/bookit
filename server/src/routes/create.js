@@ -9,7 +9,6 @@ module.exports = (pool) => {
     const event = req.body
     console.log("post event in create file", event);
     const user_id = 1;
-    const id = 1;
     const queryString = `INSERT INTO events(user_id, event.title, event.location, event.start, event.enddate, event.description, event.thumbnail) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
     const values = [user_id, event.title, event.location, event.start, event.enddate, event.description, event.thumbnail];
     return pool
@@ -22,7 +21,7 @@ module.exports = (pool) => {
           return;
         }
 
-        res.redirect(`/events/${id}`);
+        res.redirect(`/myevents`);
         })
   });
 
