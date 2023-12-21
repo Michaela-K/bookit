@@ -46,9 +46,9 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
 
 export const BannerTitle = styled(Typography)(({ matches, theme }) => ({
   fontFamily: '"Montserrat", "sans-serif"',
-  fontWeight: "400",
+  fontWeight: "700",
   lineHeight: 1.5,
-  fontSize: "3rem",
+  fontSize: "5rem",
   marginBottom: "20px",
   width: "100%",
   display: "flex",

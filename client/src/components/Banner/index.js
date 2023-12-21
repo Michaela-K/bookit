@@ -18,13 +18,15 @@ export default function Banner() {
       <BannerImage src="/assets/happyHero.png" />
       <BannerContent>
         {/* <Typography variant="h6">Huge Collection</Typography> */}
-        <BannerTitle variant="h2">
-          Agree to Disagree?
+        <BannerTitle>
+            Agree to Disagree?
         </BannerTitle>
 
         <BannerDescription variant="subtitle">
-          <h3>How about No! </h3>
-          The App to use so you can ALL agree on the meet up time and date. Finally!
+          <h1>I don't think so! </h1>
+          <h4>
+            The App to use so you can ALL agree on the meet up time and date. Finally!
+          </h4>
           <Button variant="contained" href="/register" sx={{background:"#E98074", mt: "2vh"}}>Get Started</Button>
         </BannerDescription>
 

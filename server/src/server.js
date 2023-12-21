@@ -51,6 +51,10 @@ console.log("server on port 4000")
 
 app.use(express.static("public"));
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
 const eventsRouter = require('./routes/events');
 app.use('/events', eventsRouter(pool));
 
