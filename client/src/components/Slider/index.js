@@ -2,13 +2,7 @@ import { Slide, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect, useRef, useState } from "react";
 import { MessageText, PromotionsContainer, SliderImage } from "../../styles/Slider";
-// import Hero from "../../assets/yellowHero.jpeg";
 
-// const customers = [
-//   {src:"/assets/agree.jpeg", title:"Agree to Agree !"}, 
-//   {src:"/assets/pinkHero.jpeg",title:"Manage your calendar"},
-//   {src:"/assets/yellowHero.jpeg",title:"Connect to Gmail or Outlook"}
-// ]
 const customers = [
   {title:"Plan the Family Reunion"}, 
   {title:"Brainstorm with the Group"},

@@ -14,21 +14,21 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 const reviews = [
  {
   name: 'Anna Karenina',
-  date: 'September 12th,2022',
+  date: 'January 12th,2024',
   initials: 'AK',
   statement:
    '- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
  },
  {
   name: 'Alice Zhao',
-  date: 'June 19th,2022',
+  date: 'February 19th,2024',
   initials: 'AZ',
   statement:
-   '- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+   '- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
  },
  {
-  name: 'Maliyah Pie',
-  date: 'December 22nd,2022',
+  name: 'Mali Pie',
+  date: 'March 22nd,2024',
   initials: 'MP',
   statement:
    '- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
@@ -39,16 +39,16 @@ const Review = ({}) => {
  return (
   <>
   <Box
-    sx={{mt: "8vh",display:"flex", flexDirection: "column",justifyContent:"center", alignItems:"center", width: '100vw', padding: "50px 20px" }}
+    sx={{mt: "8vh", display:"flex", flexDirection: "column", justifyContent:"center", alignItems:"center", width: '100%', padding: "50px 20px" }}
    >
 
-   <Typography variant="h5">What people have to say:</Typography>
+   <Typography variant="h4">What some of our customers have to say:</Typography>
    <Box
-    sx={{ display: 'flex', mt: '2vh', transform: 'scale(0.8)', width: '100%' }}
+    sx={{ display: 'flex', flexDirection: "row", justifyContent:"center", alignItems:"center", flexWrap:"wrap"}}
    >
     {reviews.map((list) => {
      return (
-      <Card key={list.name} sx={{ width: "40vw",minWidth: 250, mr: '30px'}}>
+      <Card key={list.name} sx={{ width: "29vw", margin:"30px 10px", minWidth: "290px" }}>
        <CardHeader
         avatar={
          <Avatar

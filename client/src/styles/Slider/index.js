@@ -3,8 +3,8 @@ import { Box, styled } from "@mui/system";
 import { Colors } from "../theme";
 
 export const PromotionsContainer = styled(Box)(({ theme }) => ({
-  height: '4vh',
-  margin: "8vh 0vh",
+  height: '8vh',
+  margin: "0vh 0vh",
   [theme.breakpoints.up("md")]: {
     padding: "5px",
   },
@@ -19,7 +19,7 @@ export const PromotionsContainer = styled(Box)(({ theme }) => ({
 export const MessageText = styled(Typography)(({ theme }) => ({
   fontFamily: '"Playfair Display", "serif"',
   [theme.breakpoints.up("md")]: {
-    fontSize: "1.4rem",
+    fontSize: "2.5rem",
   },
   color: Colors.white,
   fontSize: "1.3rem",
