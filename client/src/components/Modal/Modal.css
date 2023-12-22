@@ -1,6 +1,8 @@
+.modal{
+  z-index: 1000;
+}
 body.active-modal {
   overflow-y: hidden;
-  /* z-index: 100; */
 }
 
 .btn-modal {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FullCalendar, { formatDate } from '@fullcalendar/react'
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -16,7 +16,9 @@ dayjs.extend(customParseFormat);
 const MyEvents = () => {
   const [weekendsVisible, setWeekendsVisible] = useState(true);
   const [currentEvents, setCurrentEvents] = useState([]);
-
+  const [clickedEvent, setClickedEvent] = useState([]);
+  const [eventId, setEventId]=useState(0)
+  const [eventData, setEventData] = useState([]);
   // Modal
   const [modal, setModal] = useState(false);
 
@@ -24,20 +26,21 @@ const MyEvents = () => {
     setModal(!modal);
   };
 
-  //GetId of Event Clicked
-  const  [eventId, setEventId]=useState(0)
 
-  const [eventsData, setEventsData] = useState(async() => {
-    const res = await fetch('http://localhost:4000/api/events');
-    const data = await res.json();
-    console.log(res)
-    console.log(data)
-    // console.log(INITIAL_EVENTS)
-    setEventsData(data)
-
-    return data;
-})
-
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('http://localhost:4000/api/events');
+        const data = await res.json();
+        setEventData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchData();
+  }, []); // Empty dependency array ensures the effect runs once after the initial render
+  
   // let calendarEl = document.getElementById('calendar');
 
   // let calendar = new Calendar(calendarEl,{
@@ -69,9 +72,9 @@ const MyEvents = () => {
           </label>
         </div>
         <div className='demo-app-sidebar-section'>
-          <h4>All Events ({eventsData.length})</h4>
+          <h4>All Events ({eventData.length})</h4>
           <ul>
-            {/* {eventsData.map(renderSidebarEvent)} */}
+            {/* {eventData.map(renderSidebarEvent)} */}
           </ul>
         </div>
       </div>
@@ -115,29 +118,31 @@ const MyEvents = () => {
     }
   }
   
-  // const handleEventClick = (clickInfo) => {
-  //   if (window.confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-  //     clickInfo.event.remove()
-  //   }
-  // }
-  
   const handleEventClick = (e) => {
-    setEventId(e.event._def.publicId); //id of clicked event
-    console.log(eventId)
-    setModal(!modal)
-  }
+    const clickedEventId = Number(e.event._def.publicId);
+    console.log(clickedEventId)  //1
+    const clickedEvent = eventData.find(event => event.id === clickedEventId); // Find the clicked event by ID
+    console.log("MyEvents clickedEvent",clickedEvent)  //undefined
+    console.log(eventData.find(event => event.id === 1))  //if i put the number directly, it works
+    setEventId(clickedEventId); //this is being set to undefined
+    setClickedEvent(clickedEvent); //this is also being set to undefined
+    setModal(!modal);
+  };
+
+  useEffect(() => {
+    console.log("Updated eventId:", eventId);
+    console.log("Updated clickedEvent:", clickedEvent);
+  }, [eventId, clickedEvent]);
   
   const handleEvents = (events) => {
     setCurrentEvents({currentEvents: events
     })
   }
   
-  // }
-  
   function renderEventContent(eventInfo) {
     let endDate = eventInfo.event._def.extendedProps.enddate;
     let end = dayjs('1:02:03 PM -05:00', 'H:mm:ss A Z');
-    console.log({end}.end.$d)
+    // console.log({end}.end.$d)
   return (
     <>
     <div>
@@ -148,7 +153,8 @@ const MyEvents = () => {
       <br></br>
       <i>{eventInfo.event._def.extendedProps.location}</i>
       <br></br>
-      <i>{eventInfo.event.title, console.log(eventInfo.event._def.extendedProps)}</i>
+      <i>{eventInfo.event.title}</i>
+      {/* <i>{eventInfo.event.title, console.log(eventInfo.event._def.extendedProps)}</i> */}
     </div>
     </>
   )
@@ -168,7 +174,7 @@ const MyEvents = () => {
       <div className='demo-app'>
         {renderSidebar()}
         <div className='demo-app-main'>
-          <Modal modal={modal} setModal={setModal} toggleModal={toggleModal} eventsData={eventsData} eventId={eventId}></Modal>
+          <Modal modal={modal} setModal={setModal} toggleModal={toggleModal} eventData={eventData} eventId={eventId} clickedEvent={clickedEvent}></Modal>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
@@ -183,7 +189,7 @@ const MyEvents = () => {
             dayMaxEvents={true}
             weekends={weekendsVisible}
             // events={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-            events={eventsData}
+            events={eventData}
             // select={handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={handleEventClick}

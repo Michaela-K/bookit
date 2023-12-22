@@ -1,33 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { formatDate } from '@fullcalendar/react'
 import "./Modal.css";
 
-export default function Modal({modal, setModal, toggleModal, eventsData, eventId}) {
+export default function Modal({modal, setModal, toggleModal, eventData, eventId, clickedEvent}) {
 
-  if(modal) {
-    document.body.classList.add('active-modal')
-  } else {
-    document.body.classList.remove('active-modal')
-  }
+  useEffect(() => {
+    // Check if eventId and eventData are defined before accessing them
+    if (modal && eventId !== undefined && eventData.length > 0) {
+      document.body.classList.add('active-modal');
+      // You can access eventId, eventData, and clickedEvent here and update the modal content
+      console.log("modal eventId",eventId);
+      console.log("modal eventData", eventData);
+      console.log("modal clickedEvent",clickedEvent);
+    } else {
+      document.body.classList.remove('active-modal');
+    }
+  }, [modal, eventId, eventData, clickedEvent]);
 
-  const deleteEvent = async (e, eventId, eventsData)=>{
+  const deleteEvent = (e) => {
     e.preventDefault();
-    // console.log(eventsData)
-    // const id =eventsData[eventId].id;
     let id = e.target.id;
-    console.log(id)
-    console.log(eventId)
-
-    // fetch(`http://localhost:4000/api/events/${id}`,{
-    //   method:'DELETE',
-    //   headers: {"Content-Type": "application/json",
-    //   'Access-Control-Allow-Origin': '*'}
+    console.log(id);
+  
+    // fetch(`http://localhost:4000/api/events/${id}`, {
+    //   method: 'DELETE',
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     'Access-Control-Allow-Origin': '*'
+    //   }
     // })
-    // const data = await res.json()
-    // console.log(data)
-    // console.log(eventsData)
-    // window.location.reload()
-  }
+    //   .then((res) => {
+    //     if (res.status === 204) {
+    //       // Successful DELETE request, no JSON to parse
+    //       console.log("Event deleted successfully");
+    //       window.location.reload();
+    //     } else if (!res.ok) {
+    //       throw new Error(`HTTP error! Status: ${res.status}`);
+    //     } else {
+    //       // Handle other status codes here
+    //       return res.json();
+    //     }
+    //   })
+    //   .then((data) => {
+    //     if (data) {
+    //       // Handle JSON data (if any) here
+    //       console.log(data);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error('There was a problem with the fetch operation:', error);
+    //   });
+  };
 
   return (
     <>
@@ -36,22 +59,22 @@ export default function Modal({modal, setModal, toggleModal, eventsData, eventId
           <div className="overlay" onClick={toggleModal}></div>
           <div className="modal-content">
           <br></br>
-            <h2>{eventsData[eventId].title}</h2>
-            <img src={eventsData[eventId].thumbnail} width={350} height={300} alt="new" />
+            <h2>{clickedEvent.title}</h2>
+            <img src={clickedEvent.thumbnail} width={350} height={300} alt="new" />
             <br></br>
             <br></br>
             <div></div>
               <div className="events">
-              <b>Time:  </b>{formatDate(eventsData[eventId].start,{hour: 'numeric', minute: '2-digit'})} - {formatDate(eventsData[eventId].enddate,{hour: 'numeric', minute: '2-digit'})}
+              <b>Time:  </b>{formatDate(clickedEvent.start,{hour: 'numeric', minute: '2-digit'})} - {formatDate(clickedEvent.enddate,{hour: 'numeric', minute: '2-digit'})}
               <br></br>
-              <b>Date: </b>{formatDate(eventsData[eventId].start, {year: 'numeric', month: 'short', day: 'numeric'})}
+              <b>Date: </b>{formatDate(clickedEvent.start, {year: 'numeric', month: 'short', day: 'numeric'})}
               <br></br>
-              <b>Location: </b>{eventsData[eventId].location}
+              <b>Location: </b>{clickedEvent.location}
               <br></br>
-              <b>id: </b>{eventsData[eventId].id}
+              <b>id: </b>{clickedEvent.id}
               </div>
             <button className="edit-modal">EDIT</button>
-            <button className="delete-modal" onClick={deleteEvent} id={eventsData[eventId].id} action="/create" method="POST">DELETE</button>
+            <button className="delete-modal" onClick={deleteEvent} id={clickedEvent.id} action="/create" method="POST">DELETE</button>
             <button className="close-modal" onClick={toggleModal}>X</button>
           </div>
         </div>
