@@ -120,10 +120,7 @@ const MyEvents = () => {
   
   const handleEventClick = (e) => {
     const clickedEventId = Number(e.event._def.publicId);
-    console.log(clickedEventId)  //1
     const clickedEvent = eventData.find(event => event.id === clickedEventId); // Find the clicked event by ID
-    console.log("MyEvents clickedEvent",clickedEvent)  //undefined
-    console.log(eventData.find(event => event.id === 1))  //if i put the number directly, it works
     setEventId(clickedEventId); //this is being set to undefined
     setClickedEvent(clickedEvent); //this is also being set to undefined
     setModal(!modal);

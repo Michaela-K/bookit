@@ -4,14 +4,20 @@ const router = Router();
 module.exports = (pool) => {
   //DELETE  an event
 router.delete("/:id", (req, res) => {
-  return pool.query("DELETE FROM events where id = $1", [req.params.id])
+  const eventId = req.params.id;
+  return pool.query("DELETE FROM events where id = $1", [eventId])
   .then(result => {
-    return res.json(result.rows[0])
+    if (result.rowCount === 1) {
+      // Event deleted successfully
+      res.sendStatus(204); // Send a 204 No Content status
+    } else {
+      // Event with the specified ID was not found
+      res.status(404).json({ error: "Event not found" });
+    }
   })
   .catch(err => {
-    res
-    .status(500)
-    .json({ error: err.message });
+    console.error("Error deleting event:", err);
+    res.status(500).json({ error: "Internal server error" });
   });
 });
 

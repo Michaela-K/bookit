@@ -9,9 +9,6 @@ export default function Modal({modal, setModal, toggleModal, eventData, eventId,
     if (modal && eventId !== undefined && eventData.length > 0) {
       document.body.classList.add('active-modal');
       // You can access eventId, eventData, and clickedEvent here and update the modal content
-      console.log("modal eventId",eventId);
-      console.log("modal eventData", eventData);
-      console.log("modal clickedEvent",clickedEvent);
     } else {
       document.body.classList.remove('active-modal');
     }
@@ -22,34 +19,28 @@ export default function Modal({modal, setModal, toggleModal, eventData, eventId,
     let id = e.target.id;
     console.log(id);
   
-    // fetch(`http://localhost:4000/api/events/${id}`, {
-    //   method: 'DELETE',
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     'Access-Control-Allow-Origin': '*'
-    //   }
-    // })
-    //   .then((res) => {
-    //     if (res.status === 204) {
-    //       // Successful DELETE request, no JSON to parse
-    //       console.log("Event deleted successfully");
-    //       window.location.reload();
-    //     } else if (!res.ok) {
-    //       throw new Error(`HTTP error! Status: ${res.status}`);
-    //     } else {
-    //       // Handle other status codes here
-    //       return res.json();
-    //     }
-    //   })
-    //   .then((data) => {
-    //     if (data) {
-    //       // Handle JSON data (if any) here
-    //       console.log(data);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error('There was a problem with the fetch operation:', error);
-    //   });
+    fetch(`http://localhost:4000/api/events/${id}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+    .then((res) => {
+      if (res.ok === true) {
+        console.log("Event deleted successfully");
+      } else if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      } else {
+        // Handle other status codes here
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+    setModal(!modal)
+    // window.location.reload();
   };
 
   return (
