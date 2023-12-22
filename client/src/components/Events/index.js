@@ -31,17 +31,6 @@ const Events = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInput = React.useRef();
 
-  const fileSelected = e => {
-    setSelectedFile(e.target.files[0].name)
-  }
-
-  const handleChangeStart = (startValue) => {
-    setValueStart(startValue.format());
-  };
-  const handleChangeEnd = (endValue) => {
-    setValueEnd(endValue.format());
-  };
-
   const user_id = 1;
   const [event, setEvent] = useState({
     organizer: user_id,

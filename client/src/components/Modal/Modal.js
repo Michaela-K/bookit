@@ -1,8 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { formatDate } from '@fullcalendar/react'
 import "./Modal.css";
+import EditEvent from "../EditEvent"
+
 
 export default function Modal({modal, setModal, toggleModal, eventData, eventId, clickedEvent}) {
+
+  const [editMode, setEditMode] = useState(false); // Flag to track edit mode
+
+  const handleEditClick = () => {
+    setEditMode(true);
+  };
+
+  const handleSaveClick = () => {
+    // Send a request to update the event with editedTitle and editedLocation
+    // Update the event data in the state with the updated values if needed
+    // Then, setEditMode to false to exit edit mode
+    setEditMode(false);
+  };
 
   useEffect(() => {
     if (modal && eventId !== undefined && eventData.length > 0) {
@@ -15,7 +30,6 @@ export default function Modal({modal, setModal, toggleModal, eventData, eventId,
   const deleteEvent = (e) => {
     e.preventDefault();
     let id = e.target.id;
-    console.log(id);
   
     fetch(`http://localhost:4000/api/events/${id}`, {
       method: 'DELETE',
@@ -40,18 +54,56 @@ export default function Modal({modal, setModal, toggleModal, eventData, eventId,
     window.location.reload();
   };
 
+  const updateEvent = (e) => {
+    e.preventDefault();
+    let id = e.target.id;
+  
+    fetch(`http://localhost:4000/api/events/edit/${id}`, {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+    .then((res) => {
+      if (res.ok === true) {
+        console.log("Event deleted successfully");
+      } else if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      } else {
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+    setModal(!modal)
+    // window.location.reload();
+  };
+
   return (
     <>
-      {modal && (
-        <div className="modal">
+    {editMode ? 
+
+      (
+        <EditEvent clickedEvent={clickedEvent} onSave={handleSaveClick} onCancel={() => setEditMode(false)}/>
+      )
+
+      :
+
+      (
+      
+        modal && 
+          (
+          <div className="modal">
           <div className="overlay" onClick={toggleModal}></div>
           <div className="modal-content">
-          <br></br>
-            <h2>{clickedEvent.title}</h2>
-            <img src={clickedEvent.thumbnail} width={350} height={300} alt="new" />
-            <br></br>
-            <br></br>
-            <div></div>
+              <br></br>
+              <h2>{clickedEvent.title}</h2>
+              <img src={clickedEvent.thumbnail} width={350} height={300} alt="new" />
+              <br></br>
+              <br></br>
+              <div></div>
               <div className="events">
               <b>Time:  </b>{formatDate(clickedEvent.start,{hour: 'numeric', minute: '2-digit'})} - {formatDate(clickedEvent.enddate,{hour: 'numeric', minute: '2-digit'})}
               <br></br>
@@ -61,12 +113,14 @@ export default function Modal({modal, setModal, toggleModal, eventData, eventId,
               <br></br>
               <b>id: </b>{clickedEvent.id}
               </div>
-            <button className="edit-modal">EDIT</button>
-            <button className="delete-modal" onClick={deleteEvent} id={clickedEvent.id} action="/create" method="POST">DELETE</button>
-            <button className="close-modal" onClick={toggleModal}>X</button>
-          </div>
-        </div>
-      )}
+              <button className="edit-modal" onClick={handleEditClick} id={clickedEvent.id}>EDIT</button>
+              <button className="delete-modal" onClick={deleteEvent} id={clickedEvent.id} >DELETE</button>
+              <button className="close-modal" onClick={toggleModal}>X</button>
+              </div>
+              </div>
+          )
+      )
+    }
     </>
   );
 }

@@ -2,7 +2,7 @@ const {Router} = require('express');
 const router = Router();
 
 module.exports = (pool) => {
-  //DELETE  an event
+  //DELETE an event
 router.delete("/:id", (req, res) => {
   const eventId = req.params.id;
   return pool.query("DELETE FROM events where id = $1", [eventId])
@@ -63,12 +63,13 @@ router.delete("/:id", (req, res) => {
       });
   });
 
-//Update one evemnt
-//  /events/update/:id
-router.put("/:id", (req, res) => {
+//Update one event
+//  api/events/edit/:id
+router.post("/edit/:id", (req, res) => {
+  const eventId = req.params.id;
   const event = req.body;
   return pool.query("UPDATE events SET user_id = $1, title = $2, location = $3, start = $4, enddate = $5, description = $6, thumbnail = $7 where id = $8 returning *",
-    [event.user_id, event.title, event.location, event.start, event.enddate, event.description, event.thumbnail, req.params.id])
+    [event.user_id, event.title, event.location, event.start, event.enddate, event.description, event.thumbnail, eventId])
   .then(result => {
     return res.json(result.rows[0])
   })
