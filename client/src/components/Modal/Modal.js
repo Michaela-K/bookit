@@ -5,10 +5,8 @@ import "./Modal.css";
 export default function Modal({modal, setModal, toggleModal, eventData, eventId, clickedEvent}) {
 
   useEffect(() => {
-    // Check if eventId and eventData are defined before accessing them
     if (modal && eventId !== undefined && eventData.length > 0) {
       document.body.classList.add('active-modal');
-      // You can access eventId, eventData, and clickedEvent here and update the modal content
     } else {
       document.body.classList.remove('active-modal');
     }
@@ -32,7 +30,6 @@ export default function Modal({modal, setModal, toggleModal, eventData, eventId,
       } else if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
       } else {
-        // Handle other status codes here
         return res.json();
       }
     })
@@ -40,12 +37,12 @@ export default function Modal({modal, setModal, toggleModal, eventData, eventId,
       console.error('There was a problem with the fetch operation:', error);
     });
     setModal(!modal)
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (
     <>
-      {modal && (  //if modal is true it will show the modal, if not, it will return nothing at all
+      {modal && (
         <div className="modal">
           <div className="overlay" onClick={toggleModal}></div>
           <div className="modal-content">
