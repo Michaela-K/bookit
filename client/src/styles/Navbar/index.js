@@ -16,7 +16,7 @@ export const NavbarContainer = styled(Box)(() => ({
   zIndex: 99,  
  marginTop: 0,
  justifyContent: 'center',
- padding: '2px 2.2vh',
+ padding: '2px 3vw',
 }));
 
 export const NavbarHeader = styled(Typography)(() => ({
