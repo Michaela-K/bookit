@@ -6,10 +6,11 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import { ConnectingAirportsOutlined } from '@mui/icons-material'
+import Event from "../Event"
 
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import Modal from '../Modal/Modal';
+import Modal2 from '../Modal/Modal2';
 dayjs.extend(customParseFormat);
 
 
@@ -157,13 +158,13 @@ const MyEvents = () => {
   )
   }
   
-  function renderSidebarEvent(event) {
-  return (
-    <li key={event.id}>
-      <b>{event.title}</b> : 
-      <i>{formatDate(event.start, {year: 'numeric', month: 'short', day: 'numeric'})}</i>
-    </li>)
-  }
+  // function renderSidebarEvent(event) {
+  // return (
+  //   <li key={event.id}>
+  //     <b>{event.title}</b> : 
+  //     <i>{formatDate(event.start, {year: 'numeric', month: 'short', day: 'numeric'})}</i>
+  //   </li>)
+  // }
   
 
   return (
@@ -171,7 +172,9 @@ const MyEvents = () => {
       <div className='demo-app'>
         {renderSidebar()}
         <div className='demo-app-main'>
-          <Modal modal={modal} setModal={setModal} toggleModal={toggleModal} eventData={eventData} eventId={eventId} clickedEvent={clickedEvent}></Modal>
+          <Modal2 modal={modal} setModal={setModal} toggleModal={toggleModal}>
+            <Event modal={modal} setModal={setModal} toggleModal={toggleModal} eventData={eventData} eventId={eventId} clickedEvent={clickedEvent}/>
+          </Modal2>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { formatDate } from '@fullcalendar/react'
-import "./Modal.css";
+import "../Modal/Modal.css";
 import EditEvent from "../EditEvent"
+import Modal2 from "../Modal/Modal2"
 
 
-export default function Modal({children, modal, setModal, toggleModal, eventData, eventId, clickedEvent}) {
+export default function Event({modal, setModal, toggleModal, eventData, eventId, clickedEvent}) {
 
   const [editMode, setEditMode] = useState(false); // Flag to track edit mode
 
@@ -20,12 +21,14 @@ export default function Modal({children, modal, setModal, toggleModal, eventData
   };
 
   useEffect(() => {
+    console.log(editMode)
+    console.log(modal)
     if (modal && eventId !== undefined && eventData.length > 0) {
       document.body.classList.add('active-modal');
     } else {
       document.body.classList.remove('active-modal');
     }
-  }, [modal, eventId, eventData, clickedEvent]);
+  }, [modal, eventId, eventData, clickedEvent, editMode]);
 
   const deleteEvent = (e) => {
     e.preventDefault();
@@ -86,7 +89,9 @@ export default function Modal({children, modal, setModal, toggleModal, eventData
     {editMode ? 
 
       (
-        <EditEvent clickedEvent={clickedEvent} onSave={handleSaveClick} onCancel={() => setEditMode(false)}/>
+        <Modal2 modal={editMode} setModal={setModal} toggleModal={toggleModal}>
+          <EditEvent clickedEvent={clickedEvent} onSave={handleSaveClick} onCancel={() => setEditMode(false)}/>
+        </Modal2>
       )
 
       :

@@ -17,7 +17,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { EventRepeat } from '@mui/icons-material';
 
 
-const Events = ({clickedEvent, handleEventSave}) => {
+const EditEvent = ({clickedEvent, handleEventSave}) => {
   const [valueStart, setValueStart] = React.useState(dayjs().format());
   const [valueEnd, setValueEnd] = React.useState(dayjs().format());
   
@@ -203,4 +203,4 @@ const Events = ({clickedEvent, handleEventSave}) => {
   )
 }
 
-export default Events
+export default EditEvent
