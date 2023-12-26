@@ -8,7 +8,8 @@ export const BannerContainer = styled(Box)(({ matches, theme }) => ({
   width: "100%",
   height: "100%",
   padding: "7vh 4vh 2vh 4vh",
-  background: Colors.news,
+  background:" rgb(234,231,220)",
+  background:"linear-gradient(120deg, rgba(234,231,220,1) 20%, rgba(255,255,255,1) 100%)",
   [theme.breakpoints.down("md")]: {
     padding: "10vh 0vh 2vh 2vh",
     marginBottom: "0vh",
@@ -50,7 +51,7 @@ export const BannerTitle = styled(Typography)(({ matches, theme }) => ({
   fontFamily: '"Montserrat", "sans-serif"',
   fontWeight: "600",
   lineHeight: 1.5,
-  fontSize: "4.5rem",
+  fontSize: "4rem",
   marginBottom: "40px",
   width: "100%",
   display: "flex",
@@ -58,6 +59,7 @@ export const BannerTitle = styled(Typography)(({ matches, theme }) => ({
   alignItems: "center",
   textAlign:"center",
   padding: "0px, 40px",
+  color: "#282003",
   [theme.breakpoints.down('md')]: {
     fontSize: '3.5rem',    
   },

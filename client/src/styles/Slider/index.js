@@ -18,11 +18,14 @@ export const PromotionsContainer = styled(Box)(({ theme }) => ({
 
 export const MessageText = styled(Typography)(({ theme }) => ({
   fontFamily: '"Playfair Display", "serif"',
+  color: Colors.white,
+  fontSize: "1.8rem",
   [theme.breakpoints.up("md")]: {
     fontSize: "2.5rem",
   },
-  color: Colors.white,
-  fontSize: "1.3rem",
+  [theme.breakpoints.up("sm")]: {
+    fontSize: "2rem",
+  },
 }));
 
 export const SliderImage = styled("img")(({ src, theme }) => ({

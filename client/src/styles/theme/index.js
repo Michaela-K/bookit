@@ -5,7 +5,7 @@ export const Colors = {
   steel: '#0A1612',
   denim: '#E98074',
   marigold: '#F7CE3E',
-  news: '#EAE7DC',
+  news: '#fffcf3',
 
   primary: "#5f2c3e",
   secondary: "#d1adcc", //icon

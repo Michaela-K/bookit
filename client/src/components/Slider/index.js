@@ -5,11 +5,11 @@ import { MessageText, PromotionsContainer } from "../../styles/Slider";
 
 const customers = [
   {title:"Plan the Family Reunion"}, 
-  {title:"Brainstorm with the Group"},
-  {title:"Get the girls to agree on a lunch date"},
+  {title:"Quick Brainstorm meet with the Group"},
+  {title:"Get the girls to agree on a lunch date !"},
+  {title:"Plan the meeting"},
   {title:"No more postponing"},
-  {title:"Agree to Agree !"}, 
-  {title:"Manage your entire calendar"},
+  {title:"Finally We all Agree !"}, 
 ]
 
 export default function Sliders() {
