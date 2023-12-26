@@ -17,7 +17,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { EventRepeat } from '@mui/icons-material';
 
 
-const EditEvent = ({clickedEvent, handleEventSave}) => {
+const EditEvent = ({clickedEvent, onSave, onCancel}) => {
   const [valueStart, setValueStart] = React.useState(dayjs().format());
   const [valueEnd, setValueEnd] = React.useState(dayjs().format());
   
@@ -93,14 +93,27 @@ const EditEvent = ({clickedEvent, handleEventSave}) => {
         alignItems: 'center',
       }}
     >
-      <Avatar sx={{ m: 1, bgcolor: "#E85A4F" }}>
-        <EditIcon />
-      </Avatar>
+
+    <Box
+       sx={{
+        display: 'flex',
+        width: "100%",
+        justifyContent: "space-between",
+        alignItems: 'center',
+        color: "#E85A4F" 
+      }}>
       <Typography component="h1" variant="h5">
        Edit the Event
       </Typography>
+      <Button
+        onClick={onCancel}
+        variant="contained"
+        sx={{mb:1, borderRadius:100, width:2 }}
+       > X
+      </Button>
+    </Box>
       <form onSubmit={handleSubmit} action={`/edit/${clickedEvent.id}`} method="POST">
-      <Box noValidate sx={{ mt: 3 }}>
+      <Box noValidate >
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
@@ -153,7 +166,7 @@ const EditEvent = ({clickedEvent, handleEventSave}) => {
 
           <Grid container justifyContent="center"  item xs={12}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Grid container spacing={2} mt={5}>
+          <Grid container spacing={2} mt={3}>
             
             <Grid item xs={12} sm={6}>
               <DateTimePicker
