@@ -5,11 +5,8 @@ import {
  Card,
  CardContent,
  CardHeader,
- IconButton,
  Typography,
 } from '@mui/material';
-import { useState } from 'react';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const reviews = [
  {
@@ -35,7 +32,7 @@ const reviews = [
  },
 ];
 
-const Review = ({}) => {
+const Review = () => {
  return (
   <>
   <Box

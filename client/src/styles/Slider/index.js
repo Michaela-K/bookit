@@ -27,15 +27,10 @@ export const MessageText = styled(Typography)(({ theme }) => ({
 
 export const SliderImage = styled("img")(({ src, theme }) => ({
   src: `url(${src})`,
-  // src: `url(${customers[messageIndex].src})`,
-  // backgroundImage: `url(${src})`,
-  // backgroundRepeat: "no-repeat",
-  // backgroundPosition: "center",
   width: "70vw",
   maxWidth: "700px",
   [theme.breakpoints.down("md")]: {
     width: "40vw",
-    // height: "45vw",
   },
   [theme.breakpoints.down("sm")]: {
     width: "320px",

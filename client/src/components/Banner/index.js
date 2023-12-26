@@ -1,5 +1,4 @@
-import { Button, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/system";
+import { Button } from "@mui/material";
 import {
   BannerContainer,
   BannerContent,
@@ -9,13 +8,10 @@ import {
 } from "../../styles/Banner";
 
 export default function Banner() {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <BannerContainer >
       <BannerContent>
-        {/* <Typography variant="h6">Huge Collection</Typography> */}
         <BannerTitle>
            Finalize the details and Let's meet!
         </BannerTitle>

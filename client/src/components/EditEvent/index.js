@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import EditIcon from '@mui/icons-material/Edit';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
@@ -14,7 +12,6 @@ import dayjs from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { EventRepeat } from '@mui/icons-material';
 
 
 const EditEvent = ({clickedEvent, onSave, onCancel}) => {
@@ -33,7 +30,6 @@ const EditEvent = ({clickedEvent, onSave, onCancel}) => {
   })
 
   const handleChange = (e) => {
-    console.log(e);
     setEvent({
       ...clickedEvent,
       start: valueStart,
@@ -54,8 +50,6 @@ const EditEvent = ({clickedEvent, onSave, onCancel}) => {
   const handleSubmit = (e) =>{
     e.preventDefault();
     let id = Number(clickedEvent.id);
-    console.log(id)
-    console.log(event)
     
     fetch(`http://localhost:4000/api/events/edit/${id}`,{
       method:'POST',
@@ -64,7 +58,6 @@ const EditEvent = ({clickedEvent, onSave, onCancel}) => {
       'Access-Control-Allow-Origin': '*'}
     })
     .then((response) => {
-      console.log(response)
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -72,7 +65,7 @@ const EditEvent = ({clickedEvent, onSave, onCancel}) => {
     })
     .then((data) => {
       // Handle the parsed JSON data here
-      console.log(data);
+      // console.log(data);
     })
     .catch((error) => {
       // Handle any errors, including parsing errors

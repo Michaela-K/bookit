@@ -1,7 +1,7 @@
-import { Slide, Typography } from "@mui/material";
+import { Slide } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect, useRef, useState } from "react";
-import { MessageText, PromotionsContainer, SliderImage } from "../../styles/Slider";
+import { MessageText, PromotionsContainer } from "../../styles/Slider";
 
 const customers = [
   {title:"Plan the Family Reunion"}, 

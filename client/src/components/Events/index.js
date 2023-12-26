@@ -4,32 +4,21 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import CreateIcon from '@mui/icons-material/Create';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Divider } from '@mui/material';
 
 import dayjs from 'dayjs';
-import Stack from '@mui/material/Stack';
-// import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 
 const Events = () => {
   const [valueStart, setValueStart] = React.useState(dayjs().format());
   const [valueEnd, setValueEnd] = React.useState(dayjs().format());
-  const [selectedFile, setSelectedFile] = useState(null);
-  const fileInput = React.useRef();
 
   const user_id = 1;
   const [event, setEvent] = useState({
@@ -44,7 +33,6 @@ const Events = () => {
   })
 
   const handleChange2 = (e) => {
-    console.log(e);
     setEvent({
       ...event,
       start: valueStart,
@@ -64,7 +52,6 @@ const Events = () => {
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
-    console.log(event)
 
     const res = await fetch('http://localhost:4000/api/events/user_id',{
       method:'POST',
@@ -73,18 +60,17 @@ const Events = () => {
       'Access-Control-Allow-Origin': '*'}
     })
     const data = await res.json()
-    console.log(data)
-    console.log(event)
+    // console.log(data)
     window.location.reload()
   }
 
 
   return (
-      <Container component="main" maxWidth="lg">
+      <Container component="main" maxWidth="sm">
         <CssBaseline />
         <Box
           sx={{
-            margin: "8vh 0vh",
+            margin: "5vh 0vh",
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

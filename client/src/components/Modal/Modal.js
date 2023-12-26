@@ -13,9 +13,6 @@ export default function Modal({children, modal, setModal, toggleModal, eventData
   };
 
   const handleSaveClick = () => {
-    // Send a request to update the event with editedTitle and editedLocation
-    // Update the event data in the state with the updated values if needed
-    // Then, setEditMode to false to exit edit mode
     setEditMode(false);
   };
 
@@ -52,33 +49,6 @@ export default function Modal({children, modal, setModal, toggleModal, eventData
     });
     setModal(!modal)
     window.location.reload();
-  };
-
-  const updateEvent = (e) => {
-    e.preventDefault();
-    let id = e.target.id;
-  
-    fetch(`http://localhost:4000/api/events/edit/${id}`, {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
-    .then((res) => {
-      if (res.ok === true) {
-        console.log("Event deleted successfully");
-      } else if (!res.ok) {
-        throw new Error(`HTTP error! Status: ${res.status}`);
-      } else {
-        return res.json();
-      }
-    })
-    .catch((error) => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
-    setModal(!modal)
-    // window.location.reload();
   };
 
   return (

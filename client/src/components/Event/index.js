@@ -21,8 +21,6 @@ export default function Event({modal, setModal, toggleModal, eventData, eventId,
   };
 
   useEffect(() => {
-    console.log(editMode)
-    console.log(modal)
     if (modal && eventId !== undefined && eventData.length > 0) {
       document.body.classList.add('active-modal');
     } else {
@@ -55,33 +53,6 @@ export default function Event({modal, setModal, toggleModal, eventData, eventId,
     });
     setModal(!modal)
     window.location.reload();
-  };
-
-  const updateEvent = (e) => {
-    e.preventDefault();
-    let id = e.target.id;
-  
-    fetch(`http://localhost:4000/api/events/edit/${id}`, {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
-    .then((res) => {
-      if (res.ok === true) {
-        console.log("Event deleted successfully");
-      } else if (!res.ok) {
-        throw new Error(`HTTP error! Status: ${res.status}`);
-      } else {
-        return res.json();
-      }
-    })
-    .catch((error) => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
-    setModal(!modal)
-    // window.location.reload();
   };
 
   return (

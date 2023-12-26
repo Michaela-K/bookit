@@ -23,8 +23,6 @@ router.delete("/:id", (req, res) => {
 
   //post /create events data for a user
   router.post('/:id', (req, res) => {
-    const event = req.body;
-    console.log(event);
     // const user_id = req.params.id;
     const user_id = 1
     // const thumbnail = 'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
