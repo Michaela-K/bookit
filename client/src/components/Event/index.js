@@ -3,7 +3,6 @@ import { formatDate } from '@fullcalendar/react'
 import "../Modal/Modal.css";
 
 import EditEvent from "../EditEvent"
-import Modal2 from "../Modal/Modal2"
 
 export default function Event({modal, setModal, toggleModal, eventData, eventId, clickedEvent}) {
 
@@ -14,9 +13,6 @@ export default function Event({modal, setModal, toggleModal, eventData, eventId,
   };
 
   const handleSaveClick = () => {
-    // Send a request to update the event with editedTitle and editedLocation
-    // Update the event data in the state with the updated values if needed
-    // Then, setEditMode to false to exit edit mode
     setEditMode(false);
   };
 
@@ -60,9 +56,7 @@ export default function Event({modal, setModal, toggleModal, eventData, eventId,
     {editMode ? 
 
       (
-        <Modal2 modal={editMode} setModal={setModal} toggleModal={toggleModal}>
           <EditEvent clickedEvent={clickedEvent} onSave={handleSaveClick} onCancel={() => setEditMode(false)}/>
-        </Modal2>
       )
 
       :
