@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { formatDate } from '@fullcalendar/react'
 import "../Modal/Modal.css";
+
 import EditEvent from "../EditEvent"
 import Modal2 from "../Modal/Modal2"
-
 
 export default function Event({modal, setModal, toggleModal, eventData, eventId, clickedEvent}) {
 
@@ -72,28 +72,41 @@ export default function Event({modal, setModal, toggleModal, eventData, eventId,
         modal && 
           (
           <div className="modal">
-          <div className="overlay" onClick={toggleModal}></div>
-          <div className="modal-content">
-              <br></br>
-              <h2>{clickedEvent.title}</h2>
-              <img src={clickedEvent.thumbnail} width={350} height={300} alt="new" />
-              <br></br>
-              <br></br>
-              <div></div>
-              <div className="events">
-              <b>Time:  </b>{formatDate(clickedEvent.start,{hour: 'numeric', minute: '2-digit'})} - {formatDate(clickedEvent.enddate,{hour: 'numeric', minute: '2-digit'})}
-              <br></br>
-              <b>Date: </b>{formatDate(clickedEvent.start, {year: 'numeric', month: 'short', day: 'numeric'})}
-              <br></br>
-              <b>Location: </b>{clickedEvent.location}
-              <br></br>
-              <b>id: </b>{clickedEvent.id}
+            <div className="overlay" onClick={toggleModal}></div>
+            <div className="modal-content">
+              <div className="modal-container">
+                <div className="heading">
+                  <h2>{clickedEvent.title}</h2>
+                  <button className="close-modal" onClick={toggleModal}>X</button>
+                </div>
+
+                <img src={clickedEvent.thumbnail} width={350} height={300} alt="new" />
+                
+              
+                <div className="events">
+                  <div className="time">
+                    <b>Time: </b>{" "}
+                    {formatDate(clickedEvent.start,{hour: 'numeric', minute: '2-digit'})} - {formatDate(clickedEvent.enddate,{hour: 'numeric', minute: '2-digit'})}
+                  </div>
+                  
+                  <div className="date">
+                    <b>Date: {" "}</b>{" "}
+                    {formatDate(clickedEvent.start, {year: 'numeric', month: 'short', day: 'numeric'})}
+                  </div>
+                  
+                  <div className="location">
+                    <b>Location: {" "}</b>{" "}
+                    {clickedEvent.location}
+                  </div>
+                </div>
+
+                <div className="edit-delete-btns">
+                  <button className="edit-btn" onClick={handleEditClick} id={clickedEvent.id}>EDIT</button>
+                  <button className="delete-btn" onClick={deleteEvent} id={clickedEvent.id} >DELETE</button>
+                </div>
               </div>
-              <button className="edit-modal" onClick={handleEditClick} id={clickedEvent.id}>EDIT</button>
-              <button className="delete-modal" onClick={deleteEvent} id={clickedEvent.id} >DELETE</button>
-              <button className="close-modal" onClick={toggleModal}>X</button>
-              </div>
-              </div>
+            </div>
+          </div>
           )
       )
     }

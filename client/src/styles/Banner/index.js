@@ -8,7 +8,7 @@ export const BannerContainer = styled(Box)(({ matches, theme }) => ({
   width: "100%",
   height: "100%",
   padding: "7vh 4vh 2vh 4vh",
-  background:" rgb(234,231,220)",
+  background:"rgb(234,231,220)",
   background:"linear-gradient(120deg, rgba(234,231,220,1) 20%, rgba(255,255,255,1) 100%)",
   [theme.breakpoints.down("md")]: {
     padding: "10vh 0vh 2vh 2vh",
