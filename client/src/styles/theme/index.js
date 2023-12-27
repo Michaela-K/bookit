@@ -1,11 +1,11 @@
 import { createTheme } from "@mui/material/styles";
 
 export const Colors = {
-  screen: '#C5C1C0',
-  steel: '#0A1612',
-  denim: '#E98074',
-  marigold: '#F7CE3E',
-  news: '#fffcf3',
+  screen: "#C5C1C0",
+  steel: "#0A1612",
+  denim: "#E98074",
+  marigold: "#F7CE3E",
+  news: "#fffcf3",
 
   primary: "#5f2c3e",
   secondary: "#d1adcc", //icon
@@ -42,11 +42,11 @@ const theme = createTheme({
       main: Colors.secondary,
     },
     background: {
-      default: '#EAE7DC'
+      default: "#EAE7DC",
     },
     button: {
-      default:Colors.marigold
-    }
+      default: Colors.marigold,
+    },
   },
 
   components: {
@@ -54,9 +54,9 @@ const theme = createTheme({
       defaultProps: {
         disableRipple: true,
         disableElevation: true,
-      }
-    }
-},
+      },
+    },
+  },
 });
 
 export default theme;

@@ -1,18 +1,22 @@
-import {ListItemButton, ListItemIcon } from "@mui/material";
+import { ListItemButton, ListItemIcon } from "@mui/material";
 import { MyList } from "../../styles/Navbar";
 import PersonIcon from "@mui/icons-material/Person";
 import { Colors } from "../../styles/theme";
-import { ActionIconsContainerDesktop, ActionIconsContainerMobile } from "../../styles/Navbar/index";
+import {
+  ActionIconsContainerDesktop,
+  ActionIconsContainerMobile,
+} from "../../styles/Navbar/index";
 
 export default function Actions({ matches }) {
-
-  const Component = matches ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
+  const Component = matches
+    ? ActionIconsContainerMobile
+    : ActionIconsContainerDesktop;
 
   return (
     <Component>
       <MyList type="row">
-      
-        <ListItemButton href="/myevents"
+        <ListItemButton
+          href="/myevents"
           sx={{
             justifyContent: "center",
           }}
@@ -24,7 +28,7 @@ export default function Actions({ matches }) {
               color: matches && Colors.secondary,
             }}
           >
-        <PersonIcon />
+            <PersonIcon />
           </ListItemIcon>
         </ListItemButton>
       </MyList>

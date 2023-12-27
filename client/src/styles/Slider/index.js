@@ -3,7 +3,7 @@ import { Box, styled } from "@mui/system";
 import { Colors } from "../theme";
 
 export const PromotionsContainer = styled(Box)(({ theme }) => ({
-  height: '8vh',
+  height: "8vh",
   margin: "0vh 0vh",
   [theme.breakpoints.up("md")]: {
     padding: "5px",
@@ -40,4 +40,3 @@ export const SliderImage = styled("img")(({ src, theme }) => ({
     height: "300px",
   },
 }));
-

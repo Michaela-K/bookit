@@ -188,11 +188,7 @@ export default function EditEvent({ clickedEvent, onSave, onCancel }) {
                   </Grid>
                   <Grid container justifyContent="center">
                     <Grid item>
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        sx={{ mt: 5}}
-                      >
+                      <Button type="submit" variant="contained" sx={{ mt: 5 }}>
                         Submit
                       </Button>
                     </Grid>

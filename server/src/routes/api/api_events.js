@@ -22,25 +22,25 @@ router.delete("/:id", (req, res) => {
 });
 
   //post /create events data for a user
-  router.post('/:id', (req, res) => {
-    // const user_id = req.params.id;
-    const user_id = 1
-    // const thumbnail = 'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
-    const queryString = `INSERT INTO events(user_id, title, location, start, enddate, description, thumbnail) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
-    const values = [user_id, event.title, event.location, event.start, event.enddate, event.description, event.thumbnail];
-    // const values = [user_id, event.title, event.location, event.password, event.date, event.description];
-    return pool
-      .query(queryString, values)
-      .then(result => {
-        console.log(result);
-        return res.json(result.rows[0])
-    })
-    .catch(err => {
-      res
-      .status(500)
-      .json({ error: err.message });
-    });
-  }); 
+  // router.post('/:id', (req, res) => {
+  //   // const user_id = req.params.id;
+  //   const user_id = 1
+  //   // const thumbnail = 'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+  //   const queryString = `INSERT INTO events(user_id, title, location, start, enddate, description, thumbnail) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
+  //   const values = [user_id, event.title, event.location, event.start, event.enddate, event.description, event.thumbnail];
+  //   // const values = [user_id, event.title, event.location, event.password, event.date, event.description];
+  //   return pool
+  //     .query(queryString, values)
+  //     .then(result => {
+  //       console.log(result);
+  //       return res.json(result.rows[0])
+  //   })
+  //   .catch(err => {
+  //     res
+  //     .status(500)
+  //     .json({ error: err.message });
+  //   });
+  // }); 
 
 // GET api/events/search
   router.get("/search", (req, res) => {

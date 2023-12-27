@@ -8,8 +8,9 @@ export const BannerContainer = styled(Box)(({ matches, theme }) => ({
   width: "100%",
   height: "100%",
   padding: "7vh 4vh 2vh 4vh",
-  background:"rgb(234,231,220)",
-  background:"linear-gradient(120deg, rgba(234,231,220,1) 20%, rgba(255,255,255,1) 100%)",
+  background: "rgb(234,231,220)",
+  background:
+    "linear-gradient(120deg, rgba(234,231,220,1) 20%, rgba(255,255,255,1) 100%)",
   [theme.breakpoints.down("md")]: {
     padding: "10vh 0vh 2vh 2vh",
     marginBottom: "0vh",
@@ -28,7 +29,7 @@ export const BannerContent = styled(Box)((theme) => ({
   justifyContent: "center",
   alignItems: "center",
   width: "60%",
-  maxWidth:"420px",
+  maxWidth: "420px",
   // padding: "2vw",
 }));
 
@@ -42,8 +43,8 @@ export const BannerImage = styled("img")(({ src, theme }) => ({
     height: "auto",
   },
   [theme.breakpoints.down("sm")]: {
-    width:"90vw",
-  //  display:"none"
+    width: "90vw",
+    //  display:"none"
   },
 }));
 
@@ -57,15 +58,15 @@ export const BannerTitle = styled(Typography)(({ matches, theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  textAlign:"center",
+  textAlign: "center",
   padding: "0px, 40px",
   color: "#282003",
-  [theme.breakpoints.down('md')]: {
-    fontSize: '3.5rem',    
+  [theme.breakpoints.down("md")]: {
+    fontSize: "3.5rem",
   },
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '2.5rem',    
-  }
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "2.5rem",
+  },
 }));
 
 export const BannerDescription = styled(Typography)(({ theme }) => ({
@@ -78,7 +79,7 @@ export const BannerDescription = styled(Typography)(({ theme }) => ({
   lineHeight: 1.25,
   letterSpacing: 1.25,
   marginBottom: "3em",
-  textAlign:"center",
+  textAlign: "center",
   [theme.breakpoints.down("md")]: {
     lineHeight: 1.15,
     letterSpacing: 1.15,
