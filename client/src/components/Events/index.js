@@ -18,6 +18,7 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 const Events = () => {
   const [valueStart, setValueStart] = React.useState(dayjs().format());
   const [valueEnd, setValueEnd] = React.useState(dayjs().format());
+  const [eventLink, setEventLink] = useState()
 
   const user_id = 1;
   const [event, setEvent] = useState({
@@ -62,7 +63,12 @@ const Events = () => {
     });
     const data = await res.json();
     console.log("handle submit btn in Events.js", data);
-    window.location.reload();
+
+    const eventId = data.id; // Assuming the response includes the event ID
+    const eventLink = `http://localhost:3000/event/${eventId}`; // Update with your website URL
+    setEventLink(eventLink); // Save the event link in state
+
+    // window.location.reload();
   };
 
   return (
@@ -176,6 +182,11 @@ const Events = () => {
             </Grid>
           </Box>
         </form>
+        {eventLink && (
+          <Typography variant="h6">
+            Event Link: <a href={eventLink}>{eventLink}</a>
+          </Typography>
+        )}
       </Box>
     </Container>
   );

@@ -12,6 +12,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.json());  //req.body
 app.use(cors());
+app.use(express.static("public"));
 // app.use((req, res, next) => {
 //   res.header('Access-Control-Allow-Origin', '*');
 //   next();
@@ -49,7 +50,6 @@ const {pool} = require("../lib/db");
 app.listen(4000)
 console.log("server on port 4000")
 
-app.use(express.static("public"));
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -67,3 +67,8 @@ app.use('/api/events', apiEvents(pool));
 
 const usersRouter = require('./routes/api/api_users');
 app.use('/api/users', usersRouter(pool));
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});

@@ -1,29 +1,40 @@
-const {Router} = require('express');
+const { Router } = require("express");
 const router = Router();
 // const {pool} = require('../../lib/db.js')
 
 module.exports = (pool) => {
-
-   // GET /events/search
-   router.get("/search", (req, res) => {
+  // GET /events/search
+  router.get("/search", (req, res) => {
     const templateVars = {
       user_id: req.session["user_id"],
       id: req.params.id,
-      query: req.body.query
-    }
-    res.render('search', templateVars);
-  })
-
-
+      query: req.body.query,
+    };
+    res.render("search", templateVars);
+  });
 
   // GET /events/:id/edit
   router.get("/:id/edit", (req, res) => {
-      const templateVars = {
+    const templateVars = {
       user_id: req.session["user_id"],
-      id: req.params.id
-    }
-    res.render('edit', templateVars);
-  })
+      id: req.params.id,
+    };
+    res.render("edit", templateVars);
+  });
+
+  // GET /events/:id
+  router.get("/:id", (req, res) => {
+    const id = req.params.id;
+    return pool
+      .query(`SELECT * FROM events WHERE id = $1;`, [id])
+      .then((result) => {
+        console.log(result)
+        return res.json(result.rows[0]);
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
 
   // POST /events/:id/edit
   // router.post("/:id/edit", (req, res) => {
@@ -46,7 +57,6 @@ module.exports = (pool) => {
 
   // });
 
-
   //events/delete/:id
   // router.post('/delete/:id', (req, res) => {
   //   // if (!req.session["user_id"]) {
@@ -66,7 +76,5 @@ module.exports = (pool) => {
   //     })
   //     });
 
-
   return router;
-
 };

@@ -26,3 +26,11 @@ CREATE TABLE events (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   thumbnail VARCHAR(255)
 );
+
+-- CREATE TABLE event_responses (
+--   id SERIAL PRIMARY KEY,
+--   event_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
+--   user_name TEXT REFERENCES users(name) ON DELETE CASCADE,
+--   email TEXT,
+--   is_attending BOOLEAN
+-- );
