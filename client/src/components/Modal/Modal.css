@@ -60,12 +60,21 @@ img{
   flex-direction: column;
 }
 
-.time, .date, .location, .id{
+.time, .date, .location, .id, .attendees{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 1.5vh 0px;
   border-bottom: 2px dotted lightgray;
+}
+.attendees{
+  flex-direction: column;
+  margin-bottom: 10px;
+  border-bottom: none;
+}
+.attendees span{
+  border-bottom: 1px dotted lightgray;
+  margin-bottom: 9px;
 }
 
 .edit-delete-btns{

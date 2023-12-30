@@ -9,3 +9,10 @@ VALUES (3, 'Food for you', 'Bens Diner', '2023-12-12T09:31:14','2023-12-13T00:31
 (1, 'Shop til you drop', 'Eaton Centre', '2023-12-14T10:30:14','2023-12-16T17:30:14','The spots to shop', 'https://media.istockphoto.com/photos/woman-holding-sale-shopping-bags-consumerism-shopping-lifestyle-picture-id1254508881?k=20&m=1254508881&s=612x612&w=0&h=d6KO9oMB3cMLGSFEu5GoGbYX0RpkHSEoUCARo7UagTI='),
 (2, 'Red Ross', 'Royal Museum', '2023-12-29T20:30:14', '2023-12-29T024:30:14', 'Musuems and art galleries', 'https://t3.ftcdn.net/jpg/02/06/11/90/360_F_206119095_AP0mloOqjp7zqOUQaXb08TrZdvrOJPtK.jpg');
 
+INSERT INTO attendees (event_id, user_name, email)
+VALUES (1, 'Rachel Green', 'rachelG@gmail.com'),
+(1, 'Ross Geller', 'dinodude@hotmail.com'),
+(3, 'Chandler Bing', 'mschnandlerbong@outlook.com'),
+(3, 'Monica Geller', 'monicaG@gmail.com'),
+(2, 'Rachel Green', 'rachelG@gmail.com'),
+(2, 'Monica Geller', 'monicaG@gmail.com');

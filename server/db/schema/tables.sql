@@ -7,6 +7,7 @@
 
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS events CASCADE;
+DROP TABLE IF EXISTS attendees CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -27,10 +28,9 @@ CREATE TABLE events (
   thumbnail VARCHAR(255)
 );
 
--- CREATE TABLE event_responses (
---   id SERIAL PRIMARY KEY,
---   event_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
---   user_name TEXT REFERENCES users(name) ON DELETE CASCADE,
---   email TEXT,
---   is_attending BOOLEAN
--- );
+CREATE TABLE attendees (
+  id SERIAL PRIMARY KEY,
+  event_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
+  user_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL
+);

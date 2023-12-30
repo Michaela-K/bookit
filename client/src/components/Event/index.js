@@ -112,8 +112,11 @@ export default function Event({
                     <b>Location: </b> {clickedEvent.location}
                   </div>
 
-                  <div className="location">
-                    <b>Attendees: </b> {clickedEvent.location}
+                  <div className="attendees">
+                    <p><b>Attendees: </b></p>
+                    {clickedEvent.attendee_user_names.map((attendee, index) => (
+                      <span key={index}> {attendee}</span>
+                    ))}
                   </div>
                 </div>
 
