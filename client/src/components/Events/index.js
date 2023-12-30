@@ -73,7 +73,7 @@ const Events = () => {
       })
       .then((data) => {
         console.log("handle submit btn in Events.js", data);
-        const eventId = data.id; // Assuming the response includes the event ID
+        const eventId = data.event.id; // Assuming the response includes the event ID
         const eventLink = `http://localhost:3000/event/${eventId}`; // Update with your website URL
         setEventLink(eventLink); // Save the event link in state
         console.log(eventLink);
@@ -83,38 +83,44 @@ const Events = () => {
       });
   };
 
-  useEffect(() => {
-  }, [eventLink]);
+  useEffect(() => {}, [eventLink]);
 
-  return (
-      eventLink ? 
-      (
-        <Grid container flexDirection="column" justifyContent="center" alignItems="center" mt={20} >
-          <Typography variant="h4">Event Link:</Typography>
-          <Typography variant="h6" color="grey">Share this link below with all potential attendees : </Typography>
-          <Grid item p={2}>
-            <Paper
-            elevation={2}
-            style={{
-              width: "45vw",
-              minWidth: "300px",
-              padding: "12px 25px",
-              alignItems: "center",
-              backgroundColor: "#fffcf3",
-            }}>
-              <Link
-                href={eventLink}
-                underline="hover"
-                color="primary"
-                target="_blank" // Open link in a new tab
-                fontSize={25}
-              >
-                {eventLink}
-              </Link>
-            </Paper>
-          </Grid>
-        </Grid>
-      ) : (
+  return eventLink ? (
+    <Grid
+      container
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      mt={20}
+    >
+      <Typography variant="h4">Event Link:</Typography>
+      <Typography variant="h6" color="grey">
+        Share this link below with all potential attendees :{" "}
+      </Typography>
+      <Grid item p={2}>
+        <Paper
+          elevation={2}
+          style={{
+            width: "45vw",
+            minWidth: "300px",
+            padding: "12px 25px",
+            alignItems: "center",
+            backgroundColor: "#fffcf3",
+          }}
+        >
+          <Link
+            href={eventLink}
+            underline="hover"
+            color="primary"
+            target="_blank" // Open link in a new tab
+            fontSize={25}
+          >
+            {eventLink}
+          </Link>
+        </Paper>
+      </Grid>
+    </Grid>
+  ) : (
     <Container component="main" maxWidth="sm">
       <CssBaseline />
       <Box
@@ -225,10 +231,8 @@ const Events = () => {
             </Grid>
           </Box>
         </form>
-        
       </Box>
     </Container>
-    )
   );
 };
 

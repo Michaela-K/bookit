@@ -31,6 +31,6 @@ CREATE TABLE events (
 CREATE TABLE attendees (
   id SERIAL PRIMARY KEY,
   event_id INTEGER REFERENCES events(id) ON DELETE CASCADE,
-  user_name VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL
+  user_name VARCHAR(255),
+  email VARCHAR(255)
 );

@@ -46,7 +46,7 @@ module.exports = (pool) => {
       .query(eventQueryString, eventValues)
       .then((eventResult) => {
         res.json(eventResult.rows[0]);
-
+        eventId = eventResult.rows[0].id;
         return pool.query(attendeeQueryString, [eventId]);
       })
       .then((attendeeResult) => {
