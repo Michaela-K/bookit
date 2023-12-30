@@ -111,6 +111,10 @@ export default function Event({
                   <div className="location">
                     <b>Location: </b> {clickedEvent.location}
                   </div>
+
+                  <div className="location">
+                    <b>Attendees: </b> {clickedEvent.location}
+                  </div>
                 </div>
 
                 <div className="edit-delete-btns">

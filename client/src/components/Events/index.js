@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+import {
+  Link,
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Grid,
+  Box,
+  Typography,
+  Container,
+  Paper,
+} from "@mui/material";
 import CreateIcon from "@mui/icons-material/Create";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-
 import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -62,7 +65,7 @@ const Events = () => {
       },
     })
       .then((res) => {
-        console.log(res)
+        console.log(res);
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }
@@ -70,18 +73,48 @@ const Events = () => {
       })
       .then((data) => {
         console.log("handle submit btn in Events.js", data);
-        // const eventId = data.id; // Assuming the response includes the event ID
-        // const eventLink = `http://localhost:3000/event/${eventId}`; // Update with your website URL
-        // setEventLink(eventLink); // Save the event link in state
-
-        // window.location.reload();
+        const eventId = data.id; // Assuming the response includes the event ID
+        const eventLink = `http://localhost:3000/event/${eventId}`; // Update with your website URL
+        setEventLink(eventLink); // Save the event link in state
+        console.log(eventLink);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   };
 
+  useEffect(() => {
+  }, [eventLink]);
+
   return (
+      eventLink ? 
+      (
+        <Grid container flexDirection="column" justifyContent="center" alignItems="center" mt={20} >
+          <Typography variant="h4">Event Link:</Typography>
+          <Typography variant="h6" color="grey">Share this link below with all potential attendees : </Typography>
+          <Grid item p={2}>
+            <Paper
+            elevation={2}
+            style={{
+              width: "45vw",
+              minWidth: "300px",
+              padding: "12px 25px",
+              alignItems: "center",
+              backgroundColor: "#fffcf3",
+            }}>
+              <Link
+                href={eventLink}
+                underline="hover"
+                color="primary"
+                target="_blank" // Open link in a new tab
+                fontSize={25}
+              >
+                {eventLink}
+              </Link>
+            </Paper>
+          </Grid>
+        </Grid>
+      ) : (
     <Container component="main" maxWidth="sm">
       <CssBaseline />
       <Box
@@ -152,7 +185,7 @@ const Events = () => {
 
               <Grid container justifyContent="center" item xs={12}>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <Grid container spacing={2} mt={5}>
+                  <Grid container spacing={2} mt={2}>
                     <Grid item xs={12} sm={6}>
                       <DateTimePicker
                         label="Start date and time"
@@ -185,20 +218,17 @@ const Events = () => {
             </Grid>
             <Grid container justifyContent="center">
               <Grid item>
-                <Button type="submit" variant="contained" sx={{ mt: 8, mb: 2 }}>
+                <Button type="submit" variant="contained" sx={{ mt: 5, mb: 2 }}>
                   Submit
                 </Button>
               </Grid>
             </Grid>
           </Box>
         </form>
-        {eventLink && (
-          <Typography variant="h6">
-            Event Link: <a href={eventLink}>{eventLink}</a>
-          </Typography>
-        )}
+        
       </Box>
     </Container>
+    )
   );
 };
 
