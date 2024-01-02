@@ -113,7 +113,7 @@ export default function Event({
                   </div>
 
                   <div className="attendees">
-                    <p><b>Attendees: </b></p>
+                    <p><b>Attendees: ({clickedEvent.attendee_user_names.length})</b></p>
                     {clickedEvent.attendee_user_names.map((attendee, index) => (
                       <span key={index}> {attendee}</span>
                     ))}
