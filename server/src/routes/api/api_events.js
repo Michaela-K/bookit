@@ -111,7 +111,15 @@ module.exports = (pool) => {
   router.get("/:eventId", (req, res) => {
     const eventId = req.params.eventId;
     return pool
-      .query(`SELECT * FROM events WHERE id = $1`, [eventId])
+    .query(
+      `
+      SELECT events.*, ARRAY_AGG(attendees.user_name) AS attendee_user_names
+      FROM events
+      LEFT JOIN attendees ON events.id = attendees.event_id
+      WHERE events.id = $1
+      GROUP BY events.id`, [eventId]
+    )
+      // .query(`SELECT * FROM events WHERE id = $1`, [eventId])
       .then((result) => {
         return res.json(result.rows);
       })

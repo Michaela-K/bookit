@@ -146,6 +146,24 @@ const EventDetail = () => {
         >
           <Typography variant="h6">End Date:</Typography>
           <Typography>{eventData.end}</Typography>
+
+        </Paper>
+        <Paper
+          elevation={2}
+          style={{
+            width: "40vw",
+            minWidth: "300px",
+            display: "flex",
+            gap: "30px",
+            padding: "10px 20px",
+            alignItems: "center",
+            marginBottom: "20px",
+            backgroundColor: "#fffcf3",
+          }}
+        >
+
+          <Typography variant="h6">Attending:</Typography>
+          <Typography>{eventData.attendee_user_names.length}</Typography>
         </Paper>
         <Grid container spacing={2} flexDirection="column" justifyContent="center" alignItems={"center"} mt={5}>
         <Typography variant="h6">RSVP : </Typography>
