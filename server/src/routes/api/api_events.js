@@ -25,6 +25,10 @@ module.exports = (pool) => {
   //POST //create events data for a user
   router.post("/:user_id", (req, res) => {
     const user_id = 1;
+    const attendee ={
+      user_name : "You",
+      email : "youremail@test.com",
+    }
     const event = req.body;
     const eventQueryString = `INSERT INTO events(user_id, title, location, start, enddate, description, thumbnail) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
     const eventValues = [
@@ -36,17 +40,16 @@ module.exports = (pool) => {
       event.description,
       event.thumbnail,
     ];
+    let eventId;
+
     const attendeeQueryString = `
-    INSERT INTO attendees(event_id) VALUES($1) RETURNING *;`
-    ;
-
-  let eventId;
-
+    INSERT INTO attendees(event_id, user_name, email) VALUES($1, $2, $3) RETURNING *;`;
+   
   // Create a Promise for each database query
   const eventPromise = pool.query(eventQueryString, eventValues);
   const attendeePromise = eventPromise.then((eventResult) => {
     eventId = eventResult.rows[0].id;
-    return pool.query(attendeeQueryString, [eventId]);
+    return pool.query(attendeeQueryString, [eventId, attendee.user_name, attendee.email]);
   });
 
   // Wait for both promises to resolve
