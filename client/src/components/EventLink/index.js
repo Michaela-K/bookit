@@ -8,27 +8,39 @@ import {
   Card,
   CardMedia,
   Button,
-  TextField
+  TextField,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
 
 const EventDetail = () => {
   const { eventId } = useParams(); //this is really user_id
   const [eventData, setEventData] = useState(null);
+  const [email, setEmail] = useState("");
+  const [user_name, setUserName] = useState("");
+  const [attendee, setAttendee] = useState({
+    event_id: eventId,
+    user_name: "",
+    email: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setAttendee((prevAttendee) => ({
+      ...prevAttendee,
+      [name]: value,
+    }));
+  };
 
   // Fetch event details based on the eventId from the URL
   useEffect(() => {
     const fetchEventDetails = async () => {
-      console.log(eventId)
       try {
         const response = await fetch(
           `http://localhost:4000/api/events/${eventId}`
         );
         if (response.ok) {
           const data = await response.json();
-          console.log(data)
-          const matchingEvent = data.find(event => eventId == event.id);
-          console.log(matchingEvent)
+          const matchingEvent = data.find((event) => eventId == event.id);
           setEventData(matchingEvent);
         } else {
           console.error("Error fetching event details:", response.statusText);
@@ -40,6 +52,32 @@ const EventDetail = () => {
 
     fetchEventDetails();
   }, [eventId]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch(`http://localhost:4000/api/events/attendees/${eventId}`, {
+      method: "POST",
+      body: JSON.stringify(attendee),
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then((res) => {
+        if (res.ok === true) {
+          console.log("Attendee successfully added");
+        } else if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        } else {
+          return res.json();
+        }
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+      window.location.reload();
+  };
 
   if (!eventData) {
     return <div>Loading...</div>;
@@ -146,7 +184,6 @@ const EventDetail = () => {
         >
           <Typography variant="h6">End Date:</Typography>
           <Typography>{eventData.end}</Typography>
-
         </Paper>
         <Paper
           elevation={2}
@@ -161,38 +198,48 @@ const EventDetail = () => {
             backgroundColor: "#fffcf3",
           }}
         >
-
           <Typography variant="h6">Attending:</Typography>
           <Typography>{eventData.attendee_user_names.length}</Typography>
         </Paper>
-        <Grid container spacing={2} flexDirection="column" justifyContent="center" alignItems={"center"} mt={5}>
-        <Typography variant="h6">RSVP : </Typography>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              required
-              id="Full Name"
-              label="First Name, Last Name"
-              name="Full Name"
-              autoComplete="Full Name"
-            />
-          </Grid>
 
-          <Grid item xs={12} sm={6}>
-            <TextField
-              required
-              id="email"
-              label="Email"
-              name="email"
-              autoComplete="email"
-            />
+        <form onSubmit={handleSubmit}>
+          <Grid
+            container
+            spacing={2}
+            flexDirection="column"
+            justifyContent="center"
+            alignItems={"center"}
+            mt={5}
+          >
+            <Typography variant="h6">RSVP : </Typography>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="Full Name"
+                label="First Name, Last Name"
+                name="user_name"
+                autoComplete="Full Name"
+                onChange={handleChange}
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="email"
+                label="Email"
+                name="email"
+                autoComplete="email"
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item>
+              <Button type="submit" variant="contained" sx={{ mt: 8, mb: 2 }}>
+                Submit
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Button type="submit" variant="contained" sx={{ mt: 8, mb: 2 }}>
-              Submit
-            </Button>
-          </Grid>
-        </Grid>
-        {/* Add more event details here */}
+        </form>
       </Box>
     </Container>
   );

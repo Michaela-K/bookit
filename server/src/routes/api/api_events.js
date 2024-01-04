@@ -37,8 +37,8 @@ module.exports = (pool) => {
       event.thumbnail,
     ];
     const attendeeQueryString = `
-    INSERT INTO attendees(event_id) VALUES($1) RETURNING *;
-  `;
+    INSERT INTO attendees(event_id) VALUES($1) RETURNING *;`
+    ;
 
   let eventId;
 
@@ -62,18 +62,41 @@ module.exports = (pool) => {
     });
   });
 
-  // GET api/events/search
-  router.get("/search", (req, res) => {
-    const id = req.params.id;
-    const query = req.params.query;
-    pool
-      .query(`SELECT * FROM events WHERE title LIKE $1;`, ["%" || query || "%"])
-      .then((data) => {
-        // console.log("api_events data", data);
-        console.log("query Data", data);
-        const eventsData = data.rows;
-        console.log("api_events searchData", eventsData);
-        res.json(eventsData);
+  // // GET api/events/search
+  // router.get("/search", (req, res) => {
+  //   const id = req.params.id;
+  //   const query = req.params.query;
+  //   pool
+  //     .query(`SELECT * FROM events WHERE title LIKE $1;`, ["%" || query || "%"])
+  //     .then((data) => {
+  //       // console.log("api_events data", data);
+  //       console.log("query Data", data);
+  //       const eventsData = data.rows;
+  //       console.log("api_events searchData", eventsData);
+  //       res.json(eventsData);
+  //     })
+  //     .catch((err) => {
+  //       res.status(500).json({ error: err.message });
+  //     });
+  // });
+
+  //Update one event
+  //  api/events/attendees/:eventId
+  router.post("/attendees/:eventId", (req, res) => {
+    const eventId = req.params.eventId;
+    const attendee = req.body;
+    console.log(attendee)
+    return pool
+      .query(
+        "INSERT INTO attendees (event_id, user_name, email) VALUES($1, $2, $3) RETURNING *;",
+        [
+          eventId,
+          attendee.user_name,
+          attendee.email,
+        ]
+      )
+      .then((result) => {
+        return res.json(result.rows[0]);
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
