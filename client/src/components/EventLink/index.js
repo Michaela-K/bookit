@@ -210,9 +210,10 @@ const EventDetail = () => {
             justifyContent="center"
             alignItems={"center"}
             mt={5}
+            sx={{ minWidth: "300px", width: "85vw" }}
           >
             <Typography variant="h6">RSVP : </Typography>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} sx={{ minWidth: "300px", width: "100%" }}>
               <TextField
                 required
                 id="Full Name"
@@ -220,10 +221,11 @@ const EventDetail = () => {
                 name="user_name"
                 autoComplete="Full Name"
                 onChange={handleChange}
+                sx={{ width: "100%" }}
               />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} sx={{ minWidth: "300px", width: "100%" }}>
               <TextField
                 required
                 id="email"
@@ -231,6 +233,7 @@ const EventDetail = () => {
                 name="email"
                 autoComplete="email"
                 onChange={handleChange}
+                sx={{ width: "100%" }}
               />
             </Grid>
             <Grid item>
