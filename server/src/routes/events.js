@@ -22,13 +22,13 @@ module.exports = (pool) => {
     res.render("edit", templateVars);
   });
 
-  // GET /events/:id
-  router.get("/:id", (req, res) => {
-    const id = req.params.id;
+  // GET /events/:eventId
+  router.get("/:eventId", (req, res) => {
+    const eventId = req.params.eventId;
     return pool
-      .query(`SELECT * FROM events WHERE id = $1;`, [id])
+      .query(`SELECT * FROM events WHERE id = $1;`, [eventId])
       .then((result) => {
-        console.log(result)
+        console.log("Result from Server", result)
         return res.json(result.rows[0]);
       })
       .catch((err) => {

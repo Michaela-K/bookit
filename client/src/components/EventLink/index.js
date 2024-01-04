@@ -13,19 +13,23 @@ import {
 import Grid from "@mui/material/Grid";
 
 const EventDetail = () => {
-  const { eventId } = useParams();
+  const { eventId } = useParams(); //this is really user_id
   const [eventData, setEventData] = useState(null);
 
   // Fetch event details based on the eventId from the URL
   useEffect(() => {
     const fetchEventDetails = async () => {
+      console.log(eventId)
       try {
         const response = await fetch(
           `http://localhost:4000/api/events/${eventId}`
         );
         if (response.ok) {
           const data = await response.json();
-          setEventData(data);
+          console.log(data)
+          const matchingEvent = data.find(event => eventId == event.id);
+          console.log(matchingEvent)
+          setEventData(matchingEvent);
         } else {
           console.error("Error fetching event details:", response.statusText);
         }

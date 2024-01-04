@@ -26,7 +26,6 @@ module.exports = (pool) => {
   router.post("/:user_id", (req, res) => {
     const user_id = 1;
     const event = req.body;
-    // const thumbnail = 'https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
     const eventQueryString = `INSERT INTO events(user_id, title, location, start, enddate, description, thumbnail) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *;`;
     const eventValues = [
       user_id,
@@ -38,26 +37,29 @@ module.exports = (pool) => {
       event.thumbnail,
     ];
     const attendeeQueryString = `
-    INSERT INTO attendees(event_id) VALUES($1)
-    RETURNING *;
+    INSERT INTO attendees(event_id) VALUES($1) RETURNING *;
   `;
-    let eventId;
-    return pool
-      .query(eventQueryString, eventValues)
-      .then((eventResult) => {
-        res.json(eventResult.rows[0]);
-        eventId = eventResult.rows[0].id;
-        return pool.query(attendeeQueryString, [eventId]);
-      })
-      .then((attendeeResult) => {
-        res.json({
-          event: eventId, // Return the event ID
-          attendee: attendeeResult.rows[0],
-        });
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
+
+  let eventId;
+
+  // Create a Promise for each database query
+  const eventPromise = pool.query(eventQueryString, eventValues);
+  const attendeePromise = eventPromise.then((eventResult) => {
+    eventId = eventResult.rows[0].id;
+    return pool.query(attendeeQueryString, [eventId]);
+  });
+
+  // Wait for both promises to resolve
+  Promise.all([eventPromise, attendeePromise])
+    .then(([eventResult, attendeeResult]) => {
+      res.json({
+        event: eventResult.rows[0],
+        attendee: attendeeResult.rows[0],
       });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
   });
 
   // GET api/events/search
@@ -106,10 +108,10 @@ module.exports = (pool) => {
   });
 
   // GET api/events/:user_id
-  router.get("/:user_id", (req, res) => {
-    const user_id = req.params.user_id;
+  router.get("/:eventId", (req, res) => {
+    const eventId = req.params.eventId;
     return pool
-      .query(`SELECT * FROM events WHERE user_id = $1`, [user_id])
+      .query(`SELECT * FROM events WHERE id = $1`, [eventId])
       .then((result) => {
         return res.json(result.rows);
       })

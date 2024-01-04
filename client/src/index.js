@@ -17,7 +17,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/events" element={<Events />} /> {/*    /create     */}
-      <Route path="/event/:eventId" element={<EventLink />} />
+      <Route path="/events/:eventId" element={<EventLink />} />
       <Route path="/myevents" element={<MyEvents />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
