@@ -1,17 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import "./index.css";
 import App from "./App";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Events from "./components/Events/index";
 import EventLink from "./components/EventLink";
 import MyEvents from "./components/MyEvents/index";
 import Login from "./components/Login/index";
 import Register from "./components/Register/index";
 import Navbar from "./components/Navbar";
+import { TodoContextProvider } from '../src/context';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  <TodoContextProvider>
   <BrowserRouter>
     <Navbar></Navbar>
     <Routes>
@@ -23,4 +27,5 @@ root.render(
       <Route path="/register" element={<Register />} />
     </Routes>
   </BrowserRouter>
+  </TodoContextProvider>
 );

@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext} from "react";
+
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+
 import Event from "../Event";
+import Modal2 from "../Modal/Modal2";
+
+import { TodoContext } from '../../context';
 
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import Modal2 from "../Modal/Modal2";
 dayjs.extend(customParseFormat);
 
 const MyEvents = () => {
+  const {eventData} = useContext(TodoContext);
   const [currentEvents, setCurrentEvents] = useState([]);
   const [clickedEvent, setClickedEvent] = useState([]);
   const [eventId, setEventId] = useState(0);
-  const [eventData, setEventData] = useState([]);
   // Modal
   const [modal, setModal] = useState(false);
 
@@ -22,25 +26,11 @@ const MyEvents = () => {
     setModal(!modal);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("http://localhost:4000/api/events");
-        const data = await res.json();
-        setEventData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []); // Empty dependency array ensures the effect runs once after the initial render
-
   const handleEventClick = (e) => {
     const clickedEventId = Number(e.event._def.publicId);
     const clickedEvent = eventData.find((event) => event.id === clickedEventId); // Find the clicked event by ID
-    setEventId(clickedEventId); //this is being set to undefined
-    setClickedEvent(clickedEvent); //this is also being set to undefined
+    setEventId(clickedEventId);
+    setClickedEvent(clickedEvent);
     setModal(!modal);
   };
 
@@ -85,7 +75,7 @@ const MyEvents = () => {
           />
         </Modal2>
         <div className="app-main" style={{ padding: "0px 3vh" }}>
-          <h4>All Events ({eventData.length})</h4>
+          <h4>All Events ({console.log(eventData)})</h4>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
