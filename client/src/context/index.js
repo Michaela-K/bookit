@@ -4,9 +4,8 @@ import { useEvents} from '../hooks'
 const TodoContext = createContext()
 
 function TodoContextProvider({children}){
-    // const [selectedTodo, setSelectedTodo] = useState(undefined)
-    // const [selectedProjectToEdit, setSelectedProjectToEdit] = useState(undefined)
-    // const [editProjectModal, setEditProjectModal] = useState(false)
+  const [clickedEvent, setClickedEvent] = useState([]);
+  const [currentEvents, setCurrentEvents] = useState([]);
 
     const eventData = useEvents()
 
@@ -14,7 +13,11 @@ function TodoContextProvider({children}){
         <TodoContext.Provider
             value={
                 {
-                  eventData
+                  eventData,
+                  clickedEvent,
+                  setClickedEvent,
+                  currentEvents,
+                  setCurrentEvents
                 }
             }
         >

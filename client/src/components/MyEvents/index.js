@@ -15,9 +15,7 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 
 const MyEvents = () => {
-  const {eventData} = useContext(TodoContext);
-  const [currentEvents, setCurrentEvents] = useState([]);
-  const [clickedEvent, setClickedEvent] = useState([]);
+  const {eventData, clickedEvent, setClickedEvent, currentEvents, setCurrentEvents} = useContext(TodoContext);
   const [eventId, setEventId] = useState(0);
   // Modal
   const [modal, setModal] = useState(false);
@@ -75,7 +73,7 @@ const MyEvents = () => {
           />
         </Modal2>
         <div className="app-main" style={{ padding: "0px 3vh" }}>
-          <h4>All Events ({console.log(eventData)})</h4>
+          <h4>All Events ({eventData.length})</h4>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
