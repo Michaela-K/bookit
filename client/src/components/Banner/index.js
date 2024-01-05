@@ -11,10 +11,10 @@ export default function Banner() {
   return (
     <BannerContainer>
       <BannerContent>
-        <BannerTitle>Finalize the details and Let's meet!</BannerTitle>
+        <BannerTitle>Tired of the back-and-forth in event planning? </BannerTitle>
 
         <BannerDescription variant="subtitle">
-          <b>FINALLY!</b>
+        Quickly confirm attendance by creating and sending event invitations to friends, family, and colleagues.
           <Button
             variant="contained"
             href="/register"
@@ -22,7 +22,8 @@ export default function Banner() {
               background: "#E98074",
               mt: "3vh",
               height: "5vh",
-              fontSize: "1.4rem",
+              fontSize: "1.2rem",
+              width: "15rem",
             }}
           >
             Get Started

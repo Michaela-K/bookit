@@ -4,11 +4,11 @@ import { Colors } from "../theme";
 
 export const BannerContainer = styled(Box)(({ matches, theme }) => ({
   display: "flex",
-  justifyContent: "space-around",
+  justifyContent: "space-between",
   width: "100%",
-  height: "100%",
-  padding: "7vh 4vh 2vh 4vh",
-  background: "rgb(234,231,220)",
+  height: "60%",
+  padding: "7vh 6vw 2vh 6vw",
+  // background: "lightblue",
   background:
     "linear-gradient(120deg, rgba(234,231,220,1) 20%, rgba(255,255,255,1) 100%)",
   [theme.breakpoints.down("md")]: {
@@ -24,27 +24,30 @@ export const BannerContainer = styled(Box)(({ matches, theme }) => ({
 }));
 
 export const BannerContent = styled(Box)((theme) => ({
+  // background: "pink",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "center",
-  width: "60%",
-  maxWidth: "420px",
+  alignItems: "left",
+  width: "50%",
+  // maxWidth: "420px",
   // padding: "2vw",
 }));
 
 export const BannerImage = styled("img")(({ src, theme }) => ({
+  // background: "lightpink",
   src: `url(${src})`,
   width: "40vw",
-  minWidth: "40px",
+  minWidth: "25vw",
+  paddingRight: "5vw",
   height: "auto",
   [theme.breakpoints.down("md")]: {
-    width: "80vw",
+    width: "50vw",
     height: "auto",
   },
   [theme.breakpoints.down("sm")]: {
-    width: "90vw",
-    //  display:"none"
+    width: "30vw",
+    display:"none"
   },
 }));
 
@@ -52,34 +55,36 @@ export const BannerTitle = styled(Typography)(({ matches, theme }) => ({
   fontFamily: '"Montserrat", "sans-serif"',
   fontWeight: "600",
   lineHeight: 1.5,
-  fontSize: "4rem",
-  marginBottom: "40px",
+  fontSize: "3.2rem",
+  marginBottom: "10px",
   width: "100%",
   display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  textAlign: "center",
+  // justifyContent: "center",
+  // alignItems: "center",
+  // textAlign: "center",
   padding: "0px, 40px",
   color: "#282003",
   [theme.breakpoints.down("md")]: {
-    fontSize: "3.5rem",
+    fontSize: "2.5rem",
+    padding: "0px, 0px",
   },
   [theme.breakpoints.down("sm")]: {
-    fontSize: "2.5rem",
+    fontSize: "1.5rem",
+    padding: "0px, 0px",
   },
 }));
 
 export const BannerDescription = styled(Typography)(({ theme }) => ({
   fontFamily: '"Montserrat", "sans-serif"',
-  fontSize: "1.8rem",
+  fontSize: "1.2rem",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "center",
+  // alignItems: "center",
   lineHeight: 1.25,
   letterSpacing: 1.25,
   marginBottom: "3em",
-  textAlign: "center",
+  // textAlign: "center",
   [theme.breakpoints.down("md")]: {
     lineHeight: 1.15,
     letterSpacing: 1.15,

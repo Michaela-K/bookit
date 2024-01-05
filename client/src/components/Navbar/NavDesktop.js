@@ -13,7 +13,7 @@ export default function NavDesktop({ matches }) {
       onclick: "/events",
     },
     {
-      text: "My Events",
+      text: "Events",
       onclick: "/myevents",
     },
     // {
@@ -52,13 +52,14 @@ export default function NavDesktop({ matches }) {
                 href={list.onclick}
                 key={list.text}
                 sx={{
-                  width: "15%",
+                  width: "10%",
                   display: "flex",
                   color: "black",
                   textAlign: "center",
                   textDecoration: "none",
                   fontFamily: '"Montserrat"',
                   fontSize: "2rem",
+                  marginRight: "20px"
                 }}
               >
                 <ListItemText primary={list.text}></ListItemText>

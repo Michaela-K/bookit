@@ -14,12 +14,11 @@ export const NavbarContainer = styled(Box)(() => ({
   zIndex: 99,
   marginTop: 0,
   justifyContent: "center",
-  padding: "2px 2vw",
+  padding: "2px 5vw",
 }));
 
 export const NavbarHeader = styled(Typography)(() => ({
-  // flexGrow: 1,
-  fontSize: "3em",
+  fontSize: "2em",
   fontFamily: '"Playfair Display", "serif"',
   color: Colors.denim,
 }));
