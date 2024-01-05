@@ -11,6 +11,7 @@ import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { sendApiRequest } from "../../helpers/api";
 
 export default function EditEvent({ clickedEvent, onSave, onCancel }) {
   const [valueStart, setValueStart] = React.useState(dayjs().format());
@@ -45,32 +46,18 @@ export default function EditEvent({ clickedEvent, onSave, onCancel }) {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     let id = Number(clickedEvent.id);
-
-    fetch(`http://localhost:4000/api/events/edit/${id}`, {
-      method: "POST",
-      body: JSON.stringify(event),
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json(); // Parse the JSON response
-      })
-      .then((data) => {
-        // Handle the parsed JSON data here
-        // console.log(data);
-      })
-      .catch((error) => {
-        // Handle any errors, including parsing errors
-        console.error("Error fetching data:", error);
-      });
+    try {
+      const url = `http://localhost:4000/api/events/edit/${id}`;
+      const method = "POST";
+      const responseData = await sendApiRequest(url, method, event);
+      console.log(responseData);
+      console.log("Event edited successfully");
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
     window.location.reload();
   };
 

@@ -35,7 +35,7 @@ const Events = () => {
     email: "",
   });
 
-  const handleChange2 = (e) => {
+  const handleChange = (e) => {
     setEvent({
       ...event,
       start: valueStart,
@@ -83,7 +83,7 @@ const Events = () => {
       });
   };
 
-  useEffect(() => {}, [eventLink]);
+  // useEffect(() => {}, [eventLink]);
 
   return eventLink ? (
     <Grid
@@ -148,7 +148,7 @@ const Events = () => {
                   label="Event Name"
                   name="title"
                   autoComplete="title"
-                  onChange={handleChange2}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -159,7 +159,7 @@ const Events = () => {
                   label="Location"
                   name="location"
                   autoComplete="location"
-                  onChange={handleChange2}
+                  onChange={handleChange}
                 />
               </Grid>
 
@@ -171,7 +171,7 @@ const Events = () => {
                   label="Add a link to your event image"
                   name="thumbnail"
                   autoComplete="thumbnail"
-                  onChange={handleChange2}
+                  onChange={handleChange}
                 />
               </Grid>
 
@@ -185,7 +185,7 @@ const Events = () => {
                   label="Describe the event, attach a map location or a pinterest idea board"
                   name="description"
                   autoComplete="description"
-                  onChange={handleChange2}
+                  onChange={handleChange}
                 />
               </Grid>
 

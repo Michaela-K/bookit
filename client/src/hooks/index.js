@@ -16,10 +16,6 @@ export const useEvents = () => {
   
       fetchData();
     }, []); // Empty dependency array ensures the effect runs once after the initial render
-    
-    // useEffect(() => {
-    //   console.log("Updated eventData:", eventData);
-    // }, [eventData]);
 
     return eventData;
 };

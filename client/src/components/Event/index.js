@@ -3,6 +3,7 @@ import { formatDate } from "@fullcalendar/react";
 import "../Modal/Modal.css";
 
 import EditEvent from "../EditEvent";
+import { sendApiRequest } from "../../helpers/api";
 
 export default function Event({
   modal,
@@ -30,29 +31,17 @@ export default function Event({
     }
   }, [modal, eventId, eventData, clickedEvent, editMode]);
 
-  const deleteEvent = (e) => {
+  const deleteEvent = async(e) => {
     e.preventDefault();
     let id = e.target.id;
-
-    fetch(`http://localhost:4000/api/events/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
-      .then((res) => {
-        if (res.ok === true) {
-          console.log("Event deleted successfully");
-        } else if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        } else {
-          return res.json();
-        }
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
+    try {
+      const url = `http://localhost:4000/api/events/${id}`;
+      const method = "DELETE";
+      await sendApiRequest(url, method);
+      console.log("Event deleted successfully");
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
     setModal(!modal);
     window.location.reload();
   };
