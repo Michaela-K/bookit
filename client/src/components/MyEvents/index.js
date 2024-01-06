@@ -33,8 +33,8 @@ const MyEvents = () => {
   };
 
   useEffect(() => {
-    console.log("Updated eventId:", eventId);
-    console.log("Updated clickedEvent:", clickedEvent);
+    // console.log("Updated eventId:", eventId);
+    // console.log("Updated clickedEvent:", clickedEvent);
   }, [eventId, clickedEvent]);
 
   const handleEvents = (events) => {

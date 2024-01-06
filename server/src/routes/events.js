@@ -19,7 +19,6 @@ module.exports = (pool) => {
     return pool
       .query(`SELECT * FROM events WHERE id = $1;`, [eventId])
       .then((result) => {
-        console.log("Result from Server", result)
         return res.json(result.rows[0]);
       })
       .catch((err) => {

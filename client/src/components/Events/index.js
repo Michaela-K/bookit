@@ -65,7 +65,6 @@ const Events = () => {
       },
     })
       .then((res) => {
-        console.log(res);
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }
@@ -76,7 +75,6 @@ const Events = () => {
         const eventId = data.event.id; // Assuming the response includes the event ID
         const eventLink = `http://localhost:3000/events/${eventId}`; // Update with your website URL
         setEventLink(eventLink); // Save the event link in state
-        console.log(eventId, eventLink);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -95,7 +93,7 @@ const Events = () => {
     >
       <Typography variant="h4">Event Link:</Typography>
       <Typography variant="h6" color="grey">
-        Share this link below with all potential attendees :{" "}
+        Share the link below with all potential attendees :{" "}
       </Typography>
       <Grid item p={2}>
         <Paper

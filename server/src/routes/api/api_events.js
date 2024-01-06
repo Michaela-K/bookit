@@ -70,7 +70,6 @@ module.exports = (pool) => {
   router.post("/attendees/:eventId", (req, res) => {
     const eventId = req.params.eventId;
     const attendee = req.body;
-    console.log(attendee)
     return pool
       .query(
         "INSERT INTO attendees (event_id, user_name, email) VALUES($1, $2, $3) RETURNING *;",
