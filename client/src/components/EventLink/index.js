@@ -4,13 +4,13 @@ import {
   Container,
   Typography,
   Box,
-  Paper,
   Card,
   CardMedia,
   Button,
   TextField,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import dayjs from "dayjs";
 
 const EventDetail = () => {
   const { eventId } = useParams(); //this is really user_id
@@ -85,122 +85,127 @@ const EventDetail = () => {
 
   return (
     <Container>
-      <Box mt={8} textAlign="center">
-        <Typography variant="h4">Event Details</Typography>
-      </Box>
-      <Box display="flex" flexDirection="column" alignItems="center" mt={3}>
-        <Card
+      <Card
+        elevation={10}
+        style={{
+          display:"flex", 
+          flexDirection:"column", 
+          justifyContent:"center",
+          alignItems:"center",
+          width:"100%",
+          marginTop:"4vh",
+          borderRadius:"10px"
+        }}>
+        <Typography variant="h4" m={3}>Event Details</Typography>
+        <Box
           elevation={8}
           style={{
-            width: "40vw",
+            width: "30vw",
+            height:"auto",
             minWidth: "300px",
             marginBottom: "60px",
             padding: "0px",
+            borderRadius:"100px"
           }}
-        >
+          >
           <CardMedia
             component="img"
             alt="Event Thumbnail"
             height="100%"
             image={eventData.thumbnail}
           />
-        </Card>
-        <Paper
-          elevation={2}
+        </Box>
+        <Box
           style={{
-            width: "40vw",
+            width: "30vw",
+            minWidth: "300px",
+            display: "flex",
+            justifyContent:"left",
+            gap: "20px",
+            padding: "0px 10px",
+            alignItems: "center",
+            marginBottom: "12px",
+            borderBottom: "2px dotted lightgrey",
+          }}
+        >
+          <Typography fontSize="1.1rem">Title:</Typography>
+          <Typography ml={8.5}>{eventData.title}</Typography>
+        </Box>
+        <Box
+          style={{
+            width: "30vw",
             minWidth: "300px",
             display: "flex",
             gap: "30px",
-            padding: "10px 20px",
+            padding: "0px 10px",
             alignItems: "center",
-            marginBottom: "20px",
-            backgroundColor: "#fffcf3",
+            marginBottom: "12px",
+            borderBottom: "2px dotted lightgrey",
           }}
         >
-          <Typography variant="h6">Title:</Typography>
-          <Typography>{eventData.title}</Typography>
-        </Paper>
-        <Paper
-          elevation={2}
-          style={{
-            width: "40vw",
+          <Typography fontSize="1.1rem">Location:</Typography>
+          <Typography ml={3}>{eventData.location}</Typography>
+        </Box>
+        <Box
+           style={{
+            width: "30vw",
             minWidth: "300px",
             display: "flex",
             gap: "30px",
-            padding: "10px 20px",
+            padding: "0px 10px",
             alignItems: "center",
-            marginBottom: "20px",
-            backgroundColor: "#fffcf3",
+            marginBottom: "12px",
+            borderBottom: "2px dotted lightgrey",
           }}
         >
-          <Typography variant="h6">Location:</Typography>
-          <Typography>{eventData.location}</Typography>
-        </Paper>
-        <Paper
-          elevation={2}
+          <Typography fontSize="1.1rem">Description:</Typography>
+          <Typography ml={0}>{eventData.description}</Typography>
+        </Box>
+        <Box
           style={{
-            width: "40vw",
+            width: "30vw",
             minWidth: "300px",
             display: "flex",
             gap: "30px",
-            padding: "10px 20px",
+            padding: "0px 10px",
             alignItems: "center",
-            marginBottom: "20px",
-            backgroundColor: "#fffcf3",
+            marginBottom: "12px",
+            borderBottom: "2px dotted lightgrey",
           }}
         >
-          <Typography variant="h6">Description:</Typography>
-          <Typography>{eventData.description}</Typography>
-        </Paper>
-        <Paper
-          elevation={2}
-          style={{
-            width: "40vw",
+          <Typography fontSize="1.1rem">Start Date:</Typography>
+          <Typography ml={1}>{dayjs(eventData.start).format("dddd D MMMM YYYY, h:mm A")}</Typography>
+        </Box>
+        <Box
+           style={{
+            width: "30vw",
             minWidth: "300px",
             display: "flex",
             gap: "30px",
-            padding: "10px 20px",
+            padding: "0px 10px",
             alignItems: "center",
-            marginBottom: "20px",
-            backgroundColor: "#fffcf3",
+            marginBottom: "12px",
+            borderBottom: "2px dotted lightgrey",
           }}
         >
-          <Typography variant="h6">Start Date:</Typography>
-          <Typography>{eventData.start}</Typography>
-        </Paper>
-        <Paper
-          elevation={2}
-          style={{
-            width: "40vw",
+          <Typography fontSize="1.1rem">End Date:</Typography>
+          <Typography ml={2}>{dayjs(eventData.end).format("dddd D MMMM YYYY, h:mm A")}</Typography>
+        </Box>
+        <Box
+           style={{
+            width: "30vw",
             minWidth: "300px",
             display: "flex",
             gap: "30px",
-            padding: "10px 20px",
+            padding: "0px 10px",
             alignItems: "center",
-            marginBottom: "20px",
-            backgroundColor: "#fffcf3",
+            marginBottom: "12px",
+            borderBottom: "2px dotted lightgrey",
           }}
         >
-          <Typography variant="h6">End Date:</Typography>
-          <Typography>{eventData.end}</Typography>
-        </Paper>
-        <Paper
-          elevation={2}
-          style={{
-            width: "40vw",
-            minWidth: "300px",
-            display: "flex",
-            gap: "30px",
-            padding: "10px 20px",
-            alignItems: "center",
-            marginBottom: "20px",
-            backgroundColor: "#fffcf3",
-          }}
-        >
-          <Typography variant="h6">Attending:</Typography>
-          <Typography>{eventData.attendee_user_names.length}</Typography>
-        </Paper>
+          <Typography fontSize="1.1rem">Attending:</Typography>
+          <Typography ml={2}>{eventData.attendee_user_names.length}</Typography>
+        </Box>
 
         <form onSubmit={handleSubmit}>
           <Grid
@@ -210,9 +215,9 @@ const EventDetail = () => {
             justifyContent="center"
             alignItems={"center"}
             mt={5}
-            sx={{ minWidth: "300px", width: "85vw" }}
+            sx={{ minWidth: "300px", width: "65vw" }}
           >
-            <Typography variant="h6">RSVP : </Typography>
+            <Typography variant="h4" >RSVP : </Typography>
             <Grid item xs={12} sm={6} sx={{ minWidth: "300px", width: "100%" }}>
               <TextField
                 required
@@ -243,7 +248,7 @@ const EventDetail = () => {
             </Grid>
           </Grid>
         </form>
-      </Box>
+      </Card>
     </Container>
   );
 };

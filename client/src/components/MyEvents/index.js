@@ -7,7 +7,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 
 import Event from "../Event";
 import Modal2 from "../Modal/Modal2";
-
+import "./MyEvents.css";
 import { TodoContext } from '../../context';
 
 import dayjs from "dayjs";
@@ -44,16 +44,12 @@ const MyEvents = () => {
   function renderEventContent(eventInfo) {
     return (
       <>
-        <div>
-          <u>
-            <b>{eventInfo.timeText}</b>
-          </u>
-          <br></br>
-          <b>{eventInfo.event.title}</b>
-          <br></br>
-          <i>{eventInfo.event._def.extendedProps.location}</i>
-          <br></br>
-          <i>{eventInfo.event.title}</i>
+        <div className="eventcontainer">
+          <span className="eventStart">
+           <div className="dot"></div>
+           {eventInfo.timeText}
+           <b className="title">{eventInfo.event.title}</b>
+          </span>
         </div>
       </>
     );
