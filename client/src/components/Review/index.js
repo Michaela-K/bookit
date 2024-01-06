@@ -46,8 +46,12 @@ const Review = () => {
           padding: "50px 20px",
         }}
       >
-        <Typography variant="h4">
-          What some of our customers have to say:
+        <Typography variant="h4"
+         sx={{
+          fontSize: "1.8rem",
+          // width:"50%"
+        }}>
+          What our customers are saying:
         </Typography>
         <Box
           sx={{
@@ -62,7 +66,7 @@ const Review = () => {
             return (
               <Card
                 key={list.name}
-                sx={{ width: "29vw", margin: "30px 10px", minWidth: "290px" }}
+                sx={{ width: "29vw", margin: "30px 10px", minWidth: "250px" }}
               >
                 <CardHeader
                   avatar={
@@ -77,7 +81,7 @@ const Review = () => {
                   subheader={list.date}
                 />
                 <CardContent>
-                  <Typography variant="h5">{list.statement}</Typography>
+                  <Typography variant="h5" sx={{fontSize: "1.3rem" }}>{list.statement}</Typography>
                 </CardContent>
               </Card>
             );

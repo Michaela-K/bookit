@@ -3,23 +3,29 @@ import { Box, styled } from "@mui/system";
 import { Colors } from "../theme";
 
 export const PromotionsContainer = styled(Box)(({ theme }) => ({
-  height: "8vh",
+  height:"8vh",
   margin: "0vh 0vh",
-  [theme.breakpoints.up("md")]: {
-    padding: "5px",
-  },
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   padding: "20px 0px 20px 0px",
   overflow: "hidden",
   background: Colors.denim,
+  [theme.breakpoints.up("md")]: {
+    padding: "5px",
+  },
+  [theme.breakpoints.up("sm")]: {
+    padding:"15px",
+    height:"10vh",
+  },
 }));
 
 export const MessageText = styled(Typography)(({ theme }) => ({
   fontFamily: '"Playfair Display", "serif"',
   color: Colors.white,
   fontSize: "1.8rem",
+  display:"flex",
+  justifyContent:"center",
   [theme.breakpoints.up("md")]: {
     fontSize: "2.5rem",
   },

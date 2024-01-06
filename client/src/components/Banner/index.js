@@ -22,8 +22,8 @@ export default function Banner() {
               background: "#E98074",
               mt: "3vh",
               height: "5vh",
-              fontSize: "1.2rem",
-              width: "15rem",
+              fontSize: "1.1rem",
+              width: "10rem",
             }}
           >
             Get Started
