@@ -15,8 +15,6 @@ import dayjs from "dayjs";
 const EventDetail = () => {
   const { eventId } = useParams(); //this is really user_id
   const [eventData, setEventData] = useState(null);
-  const [email, setEmail] = useState("");
-  const [user_name, setUserName] = useState("");
   const [attendee, setAttendee] = useState({
     event_id: eventId,
     user_name: "",

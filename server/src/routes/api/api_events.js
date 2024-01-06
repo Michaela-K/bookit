@@ -65,24 +65,6 @@ module.exports = (pool) => {
     });
   });
 
-  // // GET api/events/search
-  // router.get("/search", (req, res) => {
-  //   const id = req.params.id;
-  //   const query = req.params.query;
-  //   pool
-  //     .query(`SELECT * FROM events WHERE title LIKE $1;`, ["%" || query || "%"])
-  //     .then((data) => {
-  //       // console.log("api_events data", data);
-  //       console.log("query Data", data);
-  //       const eventsData = data.rows;
-  //       console.log("api_events searchData", eventsData);
-  //       res.json(eventsData);
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).json({ error: err.message });
-  //     });
-  // });
-
   //Update one event
   //  api/events/attendees/:eventId
   router.post("/attendees/:eventId", (req, res) => {

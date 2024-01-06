@@ -8,7 +8,6 @@ export const BannerContainer = styled(Box)(({ matches, theme }) => ({
   width: "100%",
   height: "60%",
   padding: "7vh 6vw 2vh 6vw",
-  // background: "lightblue",
   background:
     "linear-gradient(120deg, rgba(234,231,220,1) 20%, rgba(255,255,255,1) 100%)",
   [theme.breakpoints.down("md")]: {
@@ -24,18 +23,14 @@ export const BannerContainer = styled(Box)(({ matches, theme }) => ({
 }));
 
 export const BannerContent = styled(Box)((theme) => ({
-  // background: "pink",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "left",
   width: "50%",
-  // maxWidth: "420px",
-  // padding: "2vw",
 }));
 
 export const BannerImage = styled("img")(({ src, theme }) => ({
-  // background: "lightpink",
   src: `url(${src})`,
   width: "40vw",
   minWidth: "25vw",
@@ -59,9 +54,6 @@ export const BannerTitle = styled(Typography)(({ matches, theme }) => ({
   marginBottom: "10px",
   width: "100%",
   display: "flex",
-  // justifyContent: "center",
-  // alignItems: "center",
-  // textAlign: "center",
   padding: "0px, 40px",
   color: "#282003",
   [theme.breakpoints.down("md")]: {
@@ -80,11 +72,9 @@ export const BannerDescription = styled(Typography)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  // alignItems: "center",
   lineHeight: 1.25,
   letterSpacing: 1.25,
   marginBottom: "3em",
-  // textAlign: "center",
   [theme.breakpoints.down("md")]: {
     lineHeight: 1.15,
     letterSpacing: 1.15,

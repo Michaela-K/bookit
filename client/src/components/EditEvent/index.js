@@ -53,7 +53,6 @@ export default function EditEvent({ clickedEvent, onSave, onCancel }) {
       const url = `http://localhost:4000/api/events/edit/${id}`;
       const method = "POST";
       const responseData = await sendApiRequest(url, method, event);
-      console.log(responseData);
       console.log("Event edited successfully");
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);

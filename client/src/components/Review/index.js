@@ -49,7 +49,6 @@ const Review = () => {
         <Typography variant="h4"
          sx={{
           fontSize: "1.8rem",
-          // width:"50%"
         }}>
           What our customers are saying:
         </Typography>

@@ -10,7 +10,7 @@ import { Box } from "@mui/material";
 
 function App() {
   useEffect(() => {
-    document.title = "Michaela King";
+    document.title = "Finally!";
   }, []);
 
   return (
