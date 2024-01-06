@@ -21,11 +21,17 @@ CREATE TABLE events (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR(255),
   location VARCHAR(255),
-  start VARCHAR(255),
-  enddate VARCHAR(255),
+  start TIMESTAMP, -- Change the data type to TIMESTAMP
+  enddate TIMESTAMP, -- Change the data type to TIMESTAMP
   description TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  thumbnail VARCHAR(255)
+  thumbnail VARCHAR(255),
+  CONSTRAINT check_dates_within_current_month CHECK (
+    EXTRACT(YEAR FROM start) = EXTRACT(YEAR FROM CURRENT_DATE)
+    AND EXTRACT(MONTH FROM start) = EXTRACT(MONTH FROM CURRENT_DATE)
+    AND EXTRACT(YEAR FROM enddate) = EXTRACT(YEAR FROM CURRENT_DATE)
+    AND EXTRACT(MONTH FROM enddate) = EXTRACT(MONTH FROM CURRENT_DATE)
+  )
 );
 
 CREATE TABLE attendees (
