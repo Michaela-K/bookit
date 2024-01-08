@@ -1,7 +1,9 @@
 <a id="readme-top"></a>
 
 <h1 align="center"> BookIt </h1>
-Quickly get everyone to agree on the meetup, whether its family, coworkers or class mates. Create an event and quickly send the invite link out ans see who's coming.
+Quickly get everyone to agree on the meetup, whether its family, coworkers or class mates. 
+<br/>
+Create an event and quickly send out the invite link and see who's coming.
 <br />
 
 <h3 align="center">
@@ -13,7 +15,7 @@ Quickly get everyone to agree on the meetup, whether its family, coworkers or cl
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about">About The Project</a>
+      <a href="#about">The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -32,7 +34,7 @@ Quickly get everyone to agree on the meetup, whether its family, coworkers or cl
 
 ## About the Project <a id="about"></a>
 
-![Bookit Demo](public/bookit-demo-GIF.gif)
+![Bookit Demo](client/public/bookit_demo-GIF.gif)
 
 ### Built With
 
@@ -41,6 +43,7 @@ Quickly get everyone to agree on the meetup, whether its family, coworkers or cl
 - ExpressJS
 - NodesJs
 - Dayjs
+- FullCalendar
 - Material UI
 
 <p align="right"><a href="#readme-top">back to top</a></p>
@@ -60,7 +63,8 @@ Quickly get everyone to agree on the meetup, whether its family, coworkers or cl
    cd bookit
    npm install
    ```
-3. Set Up Configuration in React App - In your React project, create a ".env" file in the root directory - Add your configuration to this file as environment variables:
+3. Set Up Configuration in React App -
+In your React project, create a ".env" file in the server directory - Add your configuration to this file as environment variables:
    ```sh
     REACT_PORT=
     REACT_DB_PORT=
@@ -69,19 +73,19 @@ Quickly get everyone to agree on the meetup, whether its family, coworkers or cl
     REACT_DB_NAME=
     REACT_DB_PASS=
     ```
-4. Open terminal and Create a database in PostgreSQL
+4. Open your terminal and Create a database in PostgreSQL
     ```sh
-      psql -U postgres
-      CREATE DATABASE bookit;
-      \c bookit
+    psql -U postgres
+    CREATE DATABASE bookit;
+    \c bookit
     ```
-4. Open another terminal and start the app in the client
+4. Open a separate terminal window/tab and start the app in the client
    ```sh
    cd client
    npm start
    Visit http://localhost:3000/
    ```
-5. Open a third terminal and start the app in the server
+5. Open a third terminal window/tab and start the app in the server
    ```sh
    cd server
    npm start
@@ -95,6 +99,7 @@ Quickly get everyone to agree on the meetup, whether its family, coworkers or cl
 - [ ] Host the project (Work in Progress)
 - [x] Add new event
 - [x] Create event link
+- [x] Display event on FullCalendar
 - [x] Edit event
 - [x] Delete event
 - [x] Users confirm attendance(added to database)
