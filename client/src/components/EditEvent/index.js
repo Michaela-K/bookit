@@ -31,18 +31,17 @@ export default function EditEvent({ clickedEvent, onSave, onCancel }) {
   const handleChange = (e) => {
     setEvent({
       ...clickedEvent,
-      start: valueStart,
-      enddate: valueEnd,
       [e.target.name]: e.target.name ? e.target.value : undefined,
     });
   };
 
   const handleDatePickerChange = (name, dateValue) => {
+    const localDate = dateValue ? dayjs(dateValue).format("YYYY-MM-DDTHH:mm:ssZ") : null;
     setEvent({
       ...event,
-      start: valueStart,
-      enddate: valueEnd,
-      [name]: dateValue,
+      start: dayjs(valueStart).format("YYYY-MM-DDTHH:mm:ssZ"),
+      enddate: dayjs(valueEnd).format("YYYY-MM-DDTHH:mm:ssZ"),
+      [name]: localDate,
     });
   };
 

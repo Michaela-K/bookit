@@ -38,18 +38,17 @@ const Events = () => {
   const handleChange = (e) => {
     setEvent({
       ...event,
-      start: valueStart,
-      enddate: valueEnd,
       [e.target.name]: e.target.name ? e.target.value : undefined,
     });
   };
 
   const handleDatePickerChange = (name, dateValue) => {
+    const localDate = dateValue ? dayjs(dateValue).format("YYYY-MM-DDTHH:mm:ssZ") : null;
     setEvent({
       ...event,
-      start: valueStart,
-      enddate: valueEnd,
-      [name]: dateValue,
+      start: dayjs(valueStart).format("YYYY-MM-DDTHH:mm:ssZ"),
+      enddate: dayjs(valueEnd).format("YYYY-MM-DDTHH:mm:ssZ"),
+      [name]: localDate,
     });
   };
 
@@ -200,7 +199,7 @@ const Events = () => {
                           handleDatePickerChange("start", startValue);
                         }}
                         value={valueStart}
-                        format="YYYY-MM-DD HH:mm:ss"
+                        format="YYYY-MM-DD HH:mm:ssZ"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -212,7 +211,7 @@ const Events = () => {
                           handleDatePickerChange("enddate", endValue);
                         }}
                         value={valueEnd}
-                        format="YYYY-MM-DD HH:mm:ss"
+                        format="YYYY-MM-DD HH:mm:ssZ"
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </Grid>

@@ -187,7 +187,7 @@ const EventDetail = () => {
           }}
         >
           <Typography fontSize="1.1rem">End Date:</Typography>
-          <Typography ml={2}>{dayjs(eventData.end).format("dddd D MMMM YYYY, h:mm A")}</Typography>
+          <Typography ml={2}>{dayjs(eventData.enddate).format("dddd D MMMM YYYY, h:mm A")}</Typography>
         </Box>
         <Box
            style={{

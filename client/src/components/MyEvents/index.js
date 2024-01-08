@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -8,14 +8,23 @@ import interactionPlugin from "@fullcalendar/interaction";
 import Event from "../Event";
 import Modal2 from "../Modal/Modal2";
 import "./MyEvents.css";
-import { TodoContext } from '../../context';
+import { TodoContext } from "../../context";
 
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
+dayjs.extend(utc);
 
 const MyEvents = () => {
-  const {eventData, clickedEvent, setClickedEvent, currentEvents, setCurrentEvents} = useContext(TodoContext);
+  const calendarRef = React.useRef();
+  const {
+    eventData,
+    clickedEvent,
+    setClickedEvent,
+    currentEvents,
+    setCurrentEvents,
+  } = useContext(TodoContext);
   const [eventId, setEventId] = useState(0);
   // Modal
   const [modal, setModal] = useState(false);
@@ -46,15 +55,14 @@ const MyEvents = () => {
       <>
         <div className="eventcontainer">
           <span className="eventStart">
-           <div className="dot"></div>
-           {eventInfo.timeText}
-           <b className="title">{eventInfo.event.title}</b>
+            <div className="dot"></div>
+            {eventInfo.timeText}
+            <b className="title">{eventInfo.event.title}</b>
           </span>
         </div>
       </>
     );
   }
-
   return (
     <>
       <div className="app">
@@ -70,7 +78,8 @@ const MyEvents = () => {
         </Modal2>
         <div className="app-main" style={{ padding: "0px 3vh" }}>
           <h4>All Events ({eventData.length})</h4>
-          <FullCalendar
+          <FullCalendar 
+            timeZone="local"
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
               left: "title",
